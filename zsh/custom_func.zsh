@@ -1,64 +1,19 @@
-#!bin/zsh
-
-mynvim() {
-  nvim $@; 
-  clear;
+change() {
+    current_session=`tmux display-message -p '#S'`
+    current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
+    thumbnails='$HOME/Home/Shelf/WallPaper'
+    images=(`ls $thumbnails`)
+    num_images=${#images[*]}
+    myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
+    # echo $myfilename;
+    base64filename=`echo "${myfilename}" | base64`;
+    echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
+    unset $RANDOM
+    unset current_tty
+    unset current_session
 }
 
-if [[ -n $TMUX ]]; then
-  change() {
-    current_session=`tmux display-message -p '#S'`
-    current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
-    thumbnails='$HOME/Home/Shelf/WallPaper'
-    images=(`ls $thumbnails`)
-    num_images=${#images[*]}
-    myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
-    echo $myfilename > $current_tty
-    base64filename=`echo ""${myfilename}"" | base64`;
-    echo "\033]1337;SetBackgroundImageFile=${base64filename}\a" > $current_tty;
-    unset $RANDOM
-    unset current_tty
-    unset current_session
-  }
-  change_f() {
-    current_session=`tmux display-message -p '#S'`
-    current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
-    thumbnails='$HOME/Home/Shelf/WallPaper_Favorite'
-    images=(`ls $thumbnails`)
-    num_images=${#images[*]}
-    myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
-    base64filename=`echo "${myfilename}" | base64`;
-    echo "\033]1337;SetBackgroundImageFile=${base64filename}\a" > $current_tty;
-    unset $RANDOM
-    unset current_tty
-    unset current_session
-  }
-    blackout() {
-    current_session=`tmux display-message -p '#S'`
-    current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
-    echo "\033]1337;SetBackgroundImageFile=\a" > $current_tty;
-    unset current_tty
-    unset current_session
-  }
-  badge() {
-    printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "$1" > $current_tty | base64)
-  }
-else
-  change() {
-    current_session=`tmux display-message -p '#S'`
-    current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
-    thumbnails='$HOME/Home/Shelf/WallPaper'
-    images=(`ls $thumbnails`)
-    num_images=${#images[*]}
-    myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
-    # echo $myfilename;
-    base64filename=`echo "${myfilename}" | base64`;
-    echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
-    unset $RANDOM
-    unset current_tty
-    unset current_session
-  }
-  change_f() {
+change_f() {
     current_session=`tmux display-message -p '#S'`
     current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
     thumbnails='$HOME/Home/Shelf/WallPaper_Favorite'
@@ -71,18 +26,23 @@ else
     unset $RANDOM
     unset current_tty
     unset current_session
-  }
-  blackout() {
+}
+
+blackout() {
     current_session=`tmux display-message -p '#S'`
     current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
     echo "\033]1337;SetBackgroundImageFile=\a";
     unset current_tty
     unset current_session
-  }
-  badge() {
-    printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "$1" | base64)
-  }
-fi
+}
+
+badge() {
+    current_session=`tmux display-message -p '#S'`
+    current_tty=`tmux list-clients -t $current_session | awk '{print $1;}' | sed 's/.$//'`
+    printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "$1" | base64) > $current_tty
+    unset current_tty
+    unset current_session
+}
 
 cpprun() {
   g++-10 $1 -o $2 && ./$2;
@@ -114,7 +74,7 @@ Atcoder() {
 }
 
 AtCodeCheck() {
-  g++-9 AtCoder.cpp -o Answer.out && 
+  g++-9 AtCoder.cpp -o Answer.out &&
     (
       if [[ `cat TEST_SET_1` != 'None' ]]; then
         echo "############################### TEST_SET_1 ###############################"
@@ -146,6 +106,7 @@ hcd() {
   else
     pushd $dirname > /dev/null
   fi
+  unset dirname
 }
 
 fcd() {
@@ -175,3 +136,4 @@ zle -N hcd
 zle -N fvi
 bindkey '^A' hcd
 bindkey '^O' fvi
+
