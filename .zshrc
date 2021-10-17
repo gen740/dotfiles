@@ -1,7 +1,8 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                   « Zinit and Pluigns »                           │
 # ┼───────────────────────────────────────────────────────────────────────┼
-# ### Added by Zinit's installer
+
+# Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
   print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
   command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -36,14 +37,16 @@ compinit
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                        « Options »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
+
 if [[ ! -n $TMUX ]]; then # Start tmux on Login
   tmux new-session
 fi
 
-LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
-export LS_COLORS
 setopt hist_ignore_dups # 開始と終了を記録
 setopt EXTENDED_HISTORY
+
+LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
+export LS_COLORS
 
 bindkey -v
 bindkey ^F forward-char
@@ -58,7 +61,7 @@ bindkey "^h" backward-delete-char
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                         « PATH »                                  │
 # ┼───────────────────────────────────────────────────────────────────────┼
-# set rtp+=/usr/local/opt/fzf
+
 # export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.iterm2:$PATH"
 # export PATH="$HOME/.nodebrew/current/bin/:$PATH"
@@ -74,12 +77,14 @@ export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                  « Enviroment Variables »                         │
 # ┼───────────────────────────────────────────────────────────────────────┼
+
 # export CC="/usr/local/opt/llvm/bin/clang++"
 # export C="/usr/local/opt/llvm/bin/clang"
 # export CC="/usr/local/bin/g++-9"
 # export C="/usr/local/bin/gcc-9"
-# alias gcc="/usr/local/opt/llvm/bin/clang"
 # export CC="/usr/local/bin/g++-11"
+# export C="/usr/local/bin/gcc-11"
+
 # export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
 # export CXX="/usr/local/opt/llvm/bin/clang++"
 # export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
@@ -88,33 +93,25 @@ export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
 # export CXX=/usr/local/bin/g++-10
 # export CMAKE_CXX_COMPILER="/usr/local/bin/g++-9"
 # export CXX=/usr/local/bin/g++-9
-# export CPPFLAGS="-I/usr/local/opt/ruby/include $CPPFLAGS"
-# export CPPFLAGS="-I/usr/local/opt/zlib/include $CPPFLAGS"
-# export PATH="$HOME/.local/bin:$PATH"
-# export LDFLAGS="-L/usr/local/opt/zlib/lib $LDFLAGS"
-# # export PKG_CONFIG_PATH="/usr/local/opt/qt@5/lib/pkgconfig"
-# export PYTHONHOME="$HOME/.pyenv/versions/3.8.6/lib/python3.8"
-# export PYTHONPATH="$HOME/.pyenv/versions/3.8.6/lib:$HOME/.pyenv/versions/3.8.6/Python.framework/Versions/3.8/lib/python3.8/site-packages:$PYTHONPATH"
-# export Qt5_DIR=/usr/local/opt/qt5
-# export BAT_THEME="gruvbox-dark"
-# export CPPFLAGS="-I/usr/local/opt/qt@5/include"
-export TERM="xterm-256color"
-# export EDITOR='nvim'
-# export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-# export GIT_EDITOR=nvim
-# export LDFLAGS="-L/usr/local/opt/qt@5/lib $LDFLAGS"
-# export LIBRARY_PATH=/usr/local/lib
+
+export BAT_THEME="gruvbox-dark"
+export EDITOR='nvim'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export GIT_EDITOR=nvim
+export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存先
+export HISTORY_IGNORE="ls:l:s"
+export HISTSIZE=5000 # メモリに保存される履歴の件数
+export LANG=ja_JP.UTF-8
 export OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
-# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PYTHON_CONFIGURE_OPTS="--enable-framework "
-export LANG=ja_JP.UTF-8
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PYTHON_CONFIGURE_OPTS="--enable-framework "
 export SAVEHIST=50000 # 履歴ファイルに保存される履歴の件数
-export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存先
-export HISTSIZE=5000 # メモリに保存される履歴の件数
-export HISTORY_IGNORE="ls:l:s"
+export TERM="xterm-256color"
+
 source $HOME/.dotfiles/zsh/custom_func.zsh
 source $HOME/.dotfiles/zsh/template.zsh
+
 export ROS_VERSION=2
 export ROS_PYTHON_VERSION=3
 export ROS_DISTRO=foxy
@@ -125,7 +122,7 @@ alias updatebd=/usr/libexec/locate.updatedb
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                        « Aliases »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
-alias activate='source bin/activate'
+
 alias att='mpv /System/Library/Sounds/Funk.aiff'
 alias ff='cd ~/Home'
 alias find='fd -HI .'
@@ -135,17 +132,9 @@ alias ll='lsd -Al'
 alias ls='lsd'
 alias l='lsd'
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
-alias tp="open -a /Applications/Typora.app"
-
 alias v='nvim'
 alias vi='nvim'
 alias vv='nvim'
-# alias vi='change; nvim'
-# alias vv='change_f; nvim'
-alias w3m='w3m -sixel -o display_image=1'
-alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" --exclude="*.cmake"    \
-  --exclude="CMakeFiles" --exclude="Makefile" --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" \
-  --exclude=".git" --exclude="build*"'
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -172,3 +161,4 @@ typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
+# vim:foldmethod=marker:

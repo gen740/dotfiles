@@ -18,7 +18,7 @@
     quotepath = false
 
 [alias]
-    ada = !git add -A && git commit
+    ada = !git add -A
     co = checkout
     br = branch
     subup = submodule update --init --recursive
