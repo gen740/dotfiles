@@ -1,0 +1,47 @@
+[init]
+    defaultBranch = main
+
+[user]
+    name = Fujimoto
+    email = genfujimoto@gmail.com
+
+[http]
+    sslVerify = false
+
+[push]
+    default = simple
+    recurseSubmodules = check
+
+[core]
+    editor = nvim
+    excludesfile = /Users/fujimotogen/.gitignore_global
+    quotepath = false
+
+[alias]
+    ada = !git add -A && git commit
+    co = checkout
+    br = branch
+    subup = submodule update --init --recursive
+    sgl = log --graph --oneline --decorate --all --pretty='format:%C(yellow)%h %C(reset)%s %C(red)%d %C(cyan)[%an]'
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[diff]
+    tool = nvimdiff
+
+[merge]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+
+[mergetool "nvimdiff"]
+    cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+    keepBackup = false
+
+[credential]
+    helper = osxkeychain
