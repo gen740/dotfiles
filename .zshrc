@@ -1,33 +1,32 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                   « Zinit and Pluigns »                           │
 # ┼───────────────────────────────────────────────────────────────────────┼
+# zinit light-mode for \
+#     zinit-zsh/z-a-rust \
+#     zinit-zsh/z-a-as-monitor \
+#     zinit-zsh/z-a-patch-dl \
+#     zinit-zsh/z-a-bin-gem-node
 
-# Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-  print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-  command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-  command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# zinit light romkatv/powerlevel10k
+# zinit light-mode for zdharma-continuum/fast-syntax-highlighting
+# zinit light-mode for zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-completions
+
+
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+# if the init script doesn't exist
+if ! zgen saved; then
+  zgen load romkatv/powerlevel10k powerlevel10k
+  zgen load zdharma-continuum/fast-syntax-highlighting
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-completions
 fi
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-zinit ice wait'0'
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
 
 ## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*:default' menu select=1 
+# zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # zstyle ':completion:*' menu select=2
 autoload -Uz compinit
@@ -44,6 +43,8 @@ fi
 
 setopt hist_ignore_dups # 開始と終了を記録
 setopt EXTENDED_HISTORY
+setopt share_history
+setopt auto_list
 
 LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
@@ -54,6 +55,29 @@ bindkey ^N down-line-or-history
 bindkey ^P up-line-or-history
 bindkey "^?" backward-delete-char
 bindkey "^h" backward-delete-char
+
+export REPORTTIME=10
+
+export BAT_THEME="gruvbox-dark"
+export EDITOR='nvim'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export GIT_EDITOR=nvim
+export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存先
+export HISTORY_IGNORE="ls|l|s|la|ll|cd *|cd|hcd|fcd|fvi|history|exit|popd|pushd"
+export HISTSIZE=5000 # メモリに保存される履歴の件数
+export LANG=ja_JP.UTF-8
+# export LANG=en_US.UTF-8
+export MANPAGER='nvim -M +Man! -c "set nu"'
+export PAGER='nvim -M +Man! -c "set nu"'
+export MANWIDTH=999
+export SAVEHIST=50000 # 履歴ファイルに保存される履歴の件数
+export TERM="xterm-256color"
+export VISUAL='nvim'
+
+source $HOME/.dotfiles/zsh/custom_func.zsh
+source $HOME/.dotfiles/zsh/template.zsh
+source $HOME/.dotfiles/.iterm2_shell_integration.zsh
+test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -66,11 +90,12 @@ bindkey "^h" backward-delete-char
 # export PATH="$HOME/.iterm2:$PATH"
 # export PATH="$HOME/.nodebrew/current/bin/:$PATH"
 # export PATH="$HOME/.cargo/bin/:$PATH"
-# export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
-# export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="$HOME/.luarocks/bin:$PATH"
-export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
+# export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
 # export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
 # }}}
@@ -78,46 +103,30 @@ export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
 # │ {{{                  « Enviroment Variables »                         │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-# export CC="/usr/local/opt/llvm/bin/clang++"
+# export CC="/usr/local/opthttps://github.com/fanglingsu/vimb.git/llvm/bin/clang++"
 # export C="/usr/local/opt/llvm/bin/clang"
-# export CC="/usr/local/bin/g++-9"
-# export C="/usr/local/bin/gcc-9"
-# export CC="/usr/local/bin/g++-11"
-# export C="/usr/local/bin/gcc-11"
-
 # export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
 # export CXX="/usr/local/opt/llvm/bin/clang++"
+
+# export CC="/usr/local/bin/g++-11"
+# export C="/usr/local/bin/gcc-11"
 # export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
 # export CXX=/usr/local/bin/g++-11
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-10"
-# export CXX=/usr/local/bin/g++-10
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-9"
-# export CXX=/usr/local/bin/g++-9
 
-export BAT_THEME="gruvbox-dark"
-export EDITOR='nvim'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export GIT_EDITOR=nvim
-export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存先
-export HISTORY_IGNORE="ls:l:s"
-export HISTSIZE=5000 # メモリに保存される履歴の件数
-export LANG=ja_JP.UTF-8
-export OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
-export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
+# export OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
+# export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/local/Cellar/gtk+3/3.24.30/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PYTHON_CONFIGURE_OPTS="--enable-framework "
-export SAVEHIST=50000 # 履歴ファイルに保存される履歴の件数
-export TERM="xterm-256color"
-
-source $HOME/.dotfiles/zsh/custom_func.zsh
-source $HOME/.dotfiles/zsh/template.zsh
 
 export ROS_VERSION=2
 export ROS_PYTHON_VERSION=3
 export ROS_DISTRO=foxy
 export ROS_DOMAIN_ID=222
-alias updatebd=/usr/libexec/locate.updatedb
 
+# export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export CXXFLAGS="-I/usr/local/Cellar/gtk+3/3.24.30/include/gtk-3.0"
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                        « Aliases »                                │
@@ -127,11 +136,12 @@ alias att='mpv /System/Library/Sounds/Funk.aiff'
 alias ff='cd ~/Home'
 alias find='fd -HI .'
 alias ggg='git add --all && git commit'
+alias l='lsd'
 alias la='lsd -A'
 alias ll='lsd -Al'
 alias ls='lsd'
-alias l='lsd'
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
+alias updatebd=/usr/libexec/locate.updatedb
 alias v='nvim'
 alias vi='nvim'
 alias vv='nvim'
@@ -140,6 +150,7 @@ alias vv='nvim'
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                     « Powerlevel10k »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -161,4 +172,33 @@ typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[2 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[6 q'
+  fi
+}
+zle -N zle-keymap-select
+
+# Use beam shape cursor on startup.
+echo -ne '\e[6 q'
+
+# Use beam shape cursor for each new prompt.
+preexec() {
+   echo -ne '\e[6 q'
+}
+
+# Enter vim
+# if [[ ! -n $NVIM_LISTEN_ADDRESS ]]; then
+#     nvim +terminal
+# fi
+
 # vim:foldmethod=marker:

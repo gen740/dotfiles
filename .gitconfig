@@ -42,6 +42,3 @@
 [mergetool "nvimdiff"]
     cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
     keepBackup = false
-
-[credential]
-    helper = osxkeychain

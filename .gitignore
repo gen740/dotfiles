@@ -26,3 +26,4 @@ target
 .zcompdump
 .zsh_history
 .zsh_sessions
+.iterm2
