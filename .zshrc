@@ -136,10 +136,14 @@ alias att='mpv /System/Library/Sounds/Funk.aiff'
 alias ff='cd ~/Home'
 alias find='fd -HI .'
 alias ggg='git add --all && git commit'
-alias l='lsd'
-alias la='lsd -A'
-alias ll='lsd -Al'
-alias ls='lsd'
+
+if [[ "whence lsd" ]]; then
+  alias l='lsd'
+  alias la='lsd -A'
+  alias ll='lsd -Al'
+  alias ls='lsd'
+fi
+
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
 alias updatebd=/usr/libexec/locate.updatedb
 alias v='nvim'
