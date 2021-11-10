@@ -137,7 +137,7 @@ alias ff='cd ~/Home'
 alias find='fd -HI .'
 alias ggg='git add --all && git commit'
 
-if [[ "whence lsd" ]]; then
+if whence lsd > /dev/null ; then
   alias l='lsd'
   alias la='lsd -A'
   alias ll='lsd -Al'
