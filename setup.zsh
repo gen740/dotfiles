@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-if [[whence -p "zgen"]]; then
+if whence zgen > /dev/null; then
   git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
 
