@@ -90,11 +90,11 @@ test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2
 # export PATH="$HOME/.iterm2:$PATH"
 # export PATH="$HOME/.nodebrew/current/bin/:$PATH"
 # export PATH="$HOME/.cargo/bin/:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
-export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="$HOME/.luarocks/bin:$PATH"
+# export PATH="$HOME/go/bin:$PATH"
+# export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+# export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PATH="$HOME/.luarocks/bin:$PATH"
 # export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
 # export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
@@ -103,36 +103,48 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 # │ {{{                  « Enviroment Variables »                         │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-# export CC="/usr/local/opthttps://github.com/fanglingsu/vimb.git/llvm/bin/clang++"
-# export C="/usr/local/opt/llvm/bin/clang"
-# export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
-# export CXX="/usr/local/opt/llvm/bin/clang++"
+export CC="/usr/local/opt/llvm/bin/clang++"
+export C="/usr/local/opt/llvm/bin/clang"
+export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
+export CXX="/usr/local/opt/llvm/bin/clang++"
 
 # export CC="/usr/local/bin/g++-11"
 # export C="/usr/local/bin/gcc-11"
 # export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
 # export CXX=/usr/local/bin/g++-11
 
+# export CC="/usr/local/bin/g++-9"
+# export C="/usr/local/bin/gcc-9"
+# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-9"
+# export CXX=/usr/local/bin/g++-9
+
 # export OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 # export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="/usr/local/Cellar/gtk+3/3.24.30/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/Cellar/qt@5/5.15.2_1/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/opt/qt@5/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/opt/vtk@9.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/opt/pcl/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/usr/local/Cellar/gtk+3/3.24.30/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PYTHON_CONFIGURE_OPTS="--enable-framework "
 
-export ROS_VERSION=2
-export ROS_PYTHON_VERSION=3
-export ROS_DISTRO=foxy
-export ROS_DOMAIN_ID=222
+# export ROS_VERSION=2
+# export ROS_PYTHON_VERSION=3
+# export ROS_DISTRO=foxy
+# export ROS_DOMAIN_ID=222
 
 # export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
-export CXXFLAGS="-I/usr/local/Cellar/gtk+3/3.24.30/include/gtk-3.0"
+# export CXXFLAGS="-I/usr/local/Cellar/gtk+3/3.24.30/include/gtk-3.0"
+# export LDFLAGS="-L/usr/local/opt/qt@5/lib"
+# export CPPFLAGS="-I/usr/local/opt/qt@5/include"
+
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                        « Aliases »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-alias att='mpv /System/Library/Sounds/Funk.aiff'
 alias ff='cd ~/Home'
 alias find='fd -HI .'
 alias ggg='git add --all && git commit'
