@@ -17,6 +17,11 @@ init(){
             echo "please give me a second variable"
         fi
         cp -r $templatedir/Latex $2
+    elif [[ $1 = "typescript" ]]; then
+        if [[ $2 = "" ]]; then
+            echo "please give me a second variable"
+        fi
+        cp -r $templatedir/typescript $2
     else
         echo "No Such Template {$1}"
     fi

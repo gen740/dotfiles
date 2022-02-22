@@ -1,18 +1,6 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                   « Zinit and Pluigns »                           │
 # ┼───────────────────────────────────────────────────────────────────────┼
-# zinit light-mode for \
-#     zinit-zsh/z-a-rust \
-#     zinit-zsh/z-a-as-monitor \
-#     zinit-zsh/z-a-patch-dl \
-#     zinit-zsh/z-a-bin-gem-node
-
-# zinit light romkatv/powerlevel10k
-# zinit light-mode for zdharma-continuum/fast-syntax-highlighting
-# zinit light-mode for zsh-users/zsh-autosuggestions
-# zinit light zsh-users/zsh-completions
-
-
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
 
@@ -20,7 +8,7 @@ source "${HOME}/.zgen/zgen.zsh"
 if ! zgen saved; then
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen load zdharma-continuum/fast-syntax-highlighting
-  zgen load zsh-users/zsh-autosuggestions
+  # zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-completions
 fi
 
@@ -68,7 +56,7 @@ export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=ja_JP.UTF-8
 # export LANG=en_US.UTF-8
 export MANPAGER='nvim -M +Man! -c "set nu"'
-export PAGER='nvim -M +Man! -c "set nu"'
+# export PAGER='nvim -M +Man! -c "set nonu"'
 export MANWIDTH=999
 export SAVEHIST=50000 # 履歴ファイルに保存される履歴の件数
 export TERM="xterm-256color"
@@ -86,9 +74,11 @@ test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2
 # │ {{{                         « PATH »                                  │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
+export PATH="$HOME/.nodebrew/current/bin/:$PATH"
+export PATH="$HOME/go/bin/:$PATH"
+export PATH="/Users/fujimotogen/.deno/bin:$PATH"
 # export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.iterm2:$PATH"
-# export PATH="$HOME/.nodebrew/current/bin/:$PATH"
 # export PATH="$HOME/.cargo/bin/:$PATH"
 # export PATH="$HOME/go/bin:$PATH"
 # export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
@@ -162,6 +152,13 @@ alias v='nvim'
 alias vi='nvim'
 alias vv='nvim'
 
+alias vz='nvim ~/.dotfiles/.zshrc'
+alias vq='nvim ~/home/Shelf/Memo/QuickMemo.md'
+alias vk='cd ~/home/Shelf/qmk/keyboards/crkbd/keymaps/mykeymap && nvim ~/home/Shelf/qmk/keyboards/crkbd/keymaps/mykeymap/genf.h'
+alias va='nvim ~/home/Shelf/Novel/memo.txt'
+alias pcd='cd ~/.local/share/nvim/site/pack/packer/start/Preview.vim'
+alias kindlegen='/Applications/Kindle\ Previewer\ 3.app/Contents/lib/fc/bin/kindlegen'
+
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                     « Powerlevel10k »                             │
@@ -172,7 +169,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=11
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=' ' # ﬌      
 typeset -g POWERLEVEL9K_FOLDER_ICON=''
@@ -190,31 +187,25 @@ typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 # ┼───────────────────────────────────────────────────────────────────────┼
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[2 q'
-
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[6 q'
-  fi
-}
-zle -N zle-keymap-select
-
-# Use beam shape cursor on startup.
-echo -ne '\e[6 q'
-
-# Use beam shape cursor for each new prompt.
-preexec() {
-   echo -ne '\e[6 q'
-}
-
-# Enter vim
-# if [[ ! -n $NVIM_LISTEN_ADDRESS ]]; then
-#     nvim +terminal
-# fi
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+#     echo -ne '\e[2 q'
+#
+#   elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+#     echo -ne '\e[6 q'
+#   fi
+# }
+# zle -N zle-keymap-select
+#
+# # Use beam shape cursor on startup.
+# echo -ne '\e[6 q'
+# # Use beam shape cursor for each new prompt.
+# preexec() {
+#    echo -ne '\e[6 q'
+# }
 
 # vim:foldmethod=marker:

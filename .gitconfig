@@ -2,8 +2,8 @@
     defaultBranch = main
 
 [user]
-    name = Fujimoto
-    email = genfujimoto@gmail.com
+	name = gen fujimoto
+	email = genfuimoto@gmail.com
 
 [http]
     sslVerify = false
