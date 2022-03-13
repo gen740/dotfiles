@@ -14,9 +14,7 @@ fi
 
 ## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' menu select=2
 autoload -Uz compinit
 compinit
 
@@ -64,8 +62,6 @@ export VISUAL='nvim'
 
 source $HOME/.dotfiles/zsh/custom_func.zsh
 source $HOME/.dotfiles/zsh/template.zsh
-source $HOME/.dotfiles/.iterm2_shell_integration.zsh
-test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -76,7 +72,8 @@ test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2
 
 export PATH="$HOME/.nodebrew/current/bin/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
-export PATH="/Users/fujimotogen/.deno/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
+# export PATH="/usr/local/opt/ruby/bin:$PATH"
 # export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.iterm2:$PATH"
 # export PATH="$HOME/.cargo/bin/:$PATH"
@@ -93,42 +90,22 @@ export PATH="/Users/fujimotogen/.deno/bin:$PATH"
 # │ {{{                  « Enviroment Variables »                         │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-export CC="/usr/local/opt/llvm/bin/clang++"
-export C="/usr/local/opt/llvm/bin/clang"
-export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
-export CXX="/usr/local/opt/llvm/bin/clang++"
+# export CC="/usr/local/opt/llvm/bin/clang"
+# export CXX="/usr/local/opt/llvm/bin/clang++"
+# export CMAKE_C_COMPILER="/usr/local/opt/llvm/bin/clang++"
+# export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
 
-# export CC="/usr/local/bin/g++-11"
-# export C="/usr/local/bin/gcc-11"
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
+# export CC="/usr/local/bin/gcc-11"
 # export CXX=/usr/local/bin/g++-11
+# export CMAKE_C_COMPILER="/usr/local/bin/gcc-11"
+# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
 
-# export CC="/usr/local/bin/g++-9"
-# export C="/usr/local/bin/gcc-9"
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-9"
+# export CC="/usr/local/bin/gcc-9"
 # export CXX=/usr/local/bin/g++-9
+# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-9"
+# export CMAKE_C_COMPILER="/usr/local/bin/gcc-9"
 
-# export OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
-# export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
-# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/Cellar/qt@5/5.15.2_1/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/opt/qt@5/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/opt/vtk@9.1/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/opt/pcl/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/Cellar/gtk+3/3.24.30/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PYTHON_CONFIGURE_OPTS="--enable-framework "
-
-# export ROS_VERSION=2
-# export ROS_PYTHON_VERSION=3
-# export ROS_DISTRO=foxy
-# export ROS_DOMAIN_ID=222
-
-# export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
-# export CXXFLAGS="-I/usr/local/Cellar/gtk+3/3.24.30/include/gtk-3.0"
-# export LDFLAGS="-L/usr/local/opt/qt@5/lib"
-# export CPPFLAGS="-I/usr/local/opt/qt@5/include"
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -152,12 +129,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vv='nvim'
 
-alias vz='nvim ~/.dotfiles/.zshrc'
-alias vq='nvim ~/home/Shelf/Memo/QuickMemo.md'
-alias vk='cd ~/home/Shelf/qmk/keyboards/crkbd/keymaps/mykeymap && nvim ~/home/Shelf/qmk/keyboards/crkbd/keymaps/mykeymap/genf.h'
-alias va='nvim ~/home/Shelf/Novel/memo.txt'
-alias pcd='cd ~/.local/share/nvim/site/pack/packer/start/Preview.vim'
-alias kindlegen='/Applications/Kindle\ Previewer\ 3.app/Contents/lib/fc/bin/kindlegen'
+# alias startdocker='docker exec -u gen740 -w "/home/gen740" -it R1 /bin/zsh'
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -185,27 +157,4 @@ typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
-
-# Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[2 q'
-#
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[6 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-#
-# # Use beam shape cursor on startup.
-# echo -ne '\e[6 q'
-# # Use beam shape cursor for each new prompt.
-# preexec() {
-#    echo -ne '\e[6 q'
-# }
-
 # vim:foldmethod=marker:

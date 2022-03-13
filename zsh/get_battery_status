@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if battery_info=$(/usr/bin/pmset -g ps | awk '{ if (NR == 2) print $3 " " $4 }' | sed -e "s/;//g" -e "s/%//") ; then
   battery_quantity=$(echo $battery_info | awk '{print $1}')

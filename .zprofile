@@ -2,8 +2,15 @@
 
 export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(rbenv init -)"
+
+
+if whence pyenv > /dev/null ; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+if whence rbenv > /dev/null ; then
+  eval "$(rbenv init - zsh)"
+fi
 
 # source $HOME/.cargo/env
