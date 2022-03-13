@@ -35,6 +35,9 @@ setopt auto_list
 LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
 
+# c-s でフリーズしないようにする
+stty stop undef
+
 bindkey -v
 bindkey ^F forward-char
 bindkey ^N down-line-or-history
