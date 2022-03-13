@@ -136,4 +136,3 @@ zle -N hcd
 zle -N fvi
 bindkey '^A' hcd
 bindkey '^O' fvi
-

@@ -5,6 +5,9 @@ init(){
     if [[ $1 = "cmake" ]]; then
         cp -r $templatedir/cmake/* .
         git submodule add https://github.com/sakra/cotire.git .cotire
+    elif [[ $1 = "cmake_cotire" ]]; then
+        cp -r $templatedir/cmake_cotire/* .
+        git submodule add https://github.com/sakra/cotire.git .cotire
     elif [[ $1 = "gitignore" ]]; then
         cp -r $templatedir/gitignore .gitignore
     elif [[ $1 = "python" ]]; then
