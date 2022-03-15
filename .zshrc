@@ -1,10 +1,8 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                   « Zinit and Pluigns »                           │
 # ┼───────────────────────────────────────────────────────────────────────┼
-# load zgen
 source "${HOME}/.zgen/zgen.zsh"
 
-# if the init script doesn't exist
 if ! zgen saved; then
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen load zdharma-continuum/fast-syntax-highlighting
@@ -73,13 +71,9 @@ source $HOME/.dotfiles/zsh/template.zsh
 # │ {{{                         « PATH »                                  │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-export PATH="$HOME/.nodebrew/current/bin/:$PATH"
-export PATH="$HOME/go/bin/:$PATH"
-export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # export PATH="/usr/local/opt/ruby/bin:$PATH"
 # export PATH="$HOME/.iterm2:$PATH"
-# export PATH="$HOME/.cargo/bin/:$PATH"
 # export PATH="$HOME/go/bin:$PATH"
 # export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
 # export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
@@ -87,6 +81,16 @@ export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.luarocks/bin:$PATH"
 # export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
 # export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+if whence deno > /dev/null ; then
+  export PATH="$HOME/.deno/bin:$PATH"
+fi
+if whence go > /dev/null ; then
+  export PATH="$HOME/go/bin/:$PATH"
+fi
+if whence cargo > /dev/null ; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -131,7 +135,7 @@ alias updatebd=/usr/libexec/locate.updatedb
 alias v='nvim'
 alias vi='nvim'
 alias vv='nvim'
-
+alias kindlegen='/Applications/Kindle\ Previewer\ 3.app/Contents/lib/fc/bin/kindlegen'
 # alias startdocker='docker exec -u gen740 -w "/home/gen740" -it R1 /bin/zsh'
 
 # }}}
@@ -145,8 +149,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
-typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=11
-typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=' ' # ﬌      
+typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
+# typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=' ' # ﬌      
 typeset -g POWERLEVEL9K_FOLDER_ICON=''
 typeset -g POWERLEVEL9K_HOME_ICON=''
 typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
@@ -156,6 +160,7 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='N' # ''
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V' # ''
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
+typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 
 # }}}
