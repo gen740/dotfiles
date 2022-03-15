@@ -130,6 +130,16 @@ if whence lsd > /dev/null ; then
   alias ls='lsd'
 fi
 
+if whence pyenv > /dev/null ; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+if whence rbenv > /dev/null ; then
+  eval "$(rbenv init - zsh)"
+fi
+
+
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
 alias updatebd=/usr/libexec/locate.updatedb
 alias v='nvim'
