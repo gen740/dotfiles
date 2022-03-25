@@ -107,10 +107,10 @@ fi
 # export CMAKE_C_COMPILER="/usr/local/bin/gcc-11"
 # export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
 
-# export CC="/usr/local/bin/gcc-9"
-# export CXX=/usr/local/bin/g++-9
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-9"
-# export CMAKE_C_COMPILER="/usr/local/bin/gcc-9"
+export CC="/usr/local/bin/gcc-10"
+export CXX=/usr/local/bin/g++-10
+export CMAKE_CXX_COMPILER="/usr/local/bin/g++-10"
+export CMAKE_C_COMPILER="/usr/local/bin/gcc-10"
 
 export PYTHON_CONFIGURE_OPTS="--enable-framework "
 
