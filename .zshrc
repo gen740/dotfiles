@@ -6,6 +6,7 @@ source "${HOME}/.zgen/zgen.zsh"
 if ! zgen saved; then
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen load zdharma-continuum/fast-syntax-highlighting
+  # zgen load spaceship-prompt/spaceship-prompt spaceship
   # zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-completions
 fi
@@ -15,6 +16,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
+
+# eval "$(starship init zsh)"
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -54,12 +57,15 @@ export HISTORY_IGNORE="ls|l|s|la|ll|cd *|cd|hcd|fcd|fvi|history|exit|popd|pushd"
 export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=ja_JP.UTF-8
 # export LANG=en_US.UTF-8
-export MANPAGER='nvim -M +Man! -c "set nu"'
+# export MANPAGER='nvim -M +Man! -c "set nu"'
 # export PAGER='nvim -M +Man! -c "set nonu"'
 export MANWIDTH=999
 export SAVEHIST=50000 # 履歴ファイルに保存される履歴の件数
 export TERM="xterm-256color"
 export VISUAL='nvim'
+
+# export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/usr/include:/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/System/Library/Frameworks"
+# export LD_LIBRARY_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/System/Library/Frameworks"
 
 source $HOME/.dotfiles/zsh/custom_func.zsh
 source $HOME/.dotfiles/zsh/template.zsh
@@ -71,7 +77,7 @@ source $HOME/.dotfiles/zsh/template.zsh
 # │ {{{                         « PATH »                                  │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
 # export PATH="/usr/local/opt/ruby/bin:$PATH"
 # export PATH="$HOME/.iterm2:$PATH"
 # export PATH="$HOME/go/bin:$PATH"
@@ -107,10 +113,20 @@ fi
 # export CMAKE_C_COMPILER="/usr/local/bin/gcc-11"
 # export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
 
-export CC="/usr/local/bin/gcc-10"
-export CXX=/usr/local/bin/g++-10
-export CMAKE_CXX_COMPILER="/usr/local/bin/g++-10"
-export CMAKE_C_COMPILER="/usr/local/bin/gcc-10"
+# export CC="/usr/local/bin/gcc-10"
+# export CXX=/usr/local/bin/g++-10
+# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-10"
+# export CMAKE_C_COMPILER="/usr/local/bin/gcc-10"
+
+# export CC=/usr/local/bin/clang-14
+# export CXX=/usr/local/bin/clang++
+# export CMAKE_CXX_COMPILER=~/.local/bin/clang-15
+# export CMAKE_C_COMPILER=~/.local/bin/clang++-15
+
+# export CC=~/.local/bin/clang
+# export CXX=~/.local/bin/clang++
+# export CMAKE_CXX_COMPILER=~/.local/bin/clang
+# export CMAKE_C_COMPILER=~/.local/bin/clang++
 
 export PYTHON_CONFIGURE_OPTS="--enable-framework "
 
@@ -139,6 +155,9 @@ if whence rbenv > /dev/null ; then
   eval "$(rbenv init - zsh)"
 fi
 
+if [ -e ~/.zshrc ]; then
+  source ~/.zshrc
+fi
 
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
 alias updatebd=/usr/libexec/locate.updatedb
@@ -159,8 +178,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
-# typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=' ' # ﬌      
 typeset -g POWERLEVEL9K_FOLDER_ICON=''
 typeset -g POWERLEVEL9K_HOME_ICON=''
 typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
