@@ -11,6 +11,13 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-completions
 fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+
 ## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -77,16 +84,6 @@ source $HOME/.dotfiles/zsh/template.zsh
 # │ {{{                         « PATH »                                  │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-# export PATH="$HOME/.local/bin:$PATH"
-# export PATH="/usr/local/opt/ruby/bin:$PATH"
-# export PATH="$HOME/.iterm2:$PATH"
-# export PATH="$HOME/go/bin:$PATH"
-# export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
-# export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
-# export PATH="/usr/local/opt/llvm/bin:$PATH"
-# export PATH="$HOME/.luarocks/bin:$PATH"
-# export PATH="$HOME/home/Shelf/Tools/neovide/target/release:$PATH"
-# export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
 if whence deno > /dev/null ; then
   export PATH="$HOME/.deno/bin:$PATH"
@@ -97,38 +94,6 @@ fi
 if whence cargo > /dev/null ; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
-
-# }}}
-# ┼───────────────────────────────────────────────────────────────────────┼
-# │ {{{                  « Enviroment Variables »                         │
-# ┼───────────────────────────────────────────────────────────────────────┼
-
-# export CC="/usr/local/opt/llvm/bin/clang"
-# export CXX="/usr/local/opt/llvm/bin/clang++"
-# export CMAKE_C_COMPILER="/usr/local/opt/llvm/bin/clang++"
-# export CMAKE_CXX_COMPILER="/usr/local/opt/llvm/bin/clang++"
-
-# export CC="/usr/local/bin/gcc-11"
-# export CXX=/usr/local/bin/g++-11
-# export CMAKE_C_COMPILER="/usr/local/bin/gcc-11"
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
-
-# export CC="/usr/local/bin/gcc-10"
-# export CXX=/usr/local/bin/g++-10
-# export CMAKE_CXX_COMPILER="/usr/local/bin/g++-10"
-# export CMAKE_C_COMPILER="/usr/local/bin/gcc-10"
-
-# export CC=/usr/local/bin/clang-14
-# export CXX=/usr/local/bin/clang++
-# export CMAKE_CXX_COMPILER=~/.local/bin/clang-15
-# export CMAKE_C_COMPILER=~/.local/bin/clang++-15
-
-# export CC=~/.local/bin/clang
-# export CXX=~/.local/bin/clang++
-# export CMAKE_CXX_COMPILER=~/.local/bin/clang
-# export CMAKE_C_COMPILER=~/.local/bin/clang++
-
-export PYTHON_CONFIGURE_OPTS="--enable-framework "
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -155,42 +120,17 @@ if whence rbenv > /dev/null ; then
   eval "$(rbenv init - zsh)"
 fi
 
+if [ -e ~/.zshrc_local ]; then
+  source ~/.zshrc_local
+fi
+
 if [ -e ~/.zshrc ]; then
   source ~/.zshrc
 fi
 
-alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
-alias updatebd=/usr/libexec/locate.updatedb
 alias v='nvim'
 alias vi='nvim'
 alias vv='nvim'
-alias kindlegen='/Applications/Kindle\ Previewer\ 3.app/Contents/lib/fc/bin/kindlegen'
-# alias startdocker='docker exec -u gen740 -w "/home/gen740" -it R1 /bin/zsh'
-
-# }}}
-# ┼───────────────────────────────────────────────────────────────────────┼
-# │ {{{                     « Powerlevel10k »                             │
-# ┼───────────────────────────────────────────────────────────────────────┼
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
-
-typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
-typeset -g POWERLEVEL9K_FOLDER_ICON=''
-typeset -g POWERLEVEL9K_HOME_ICON=''
-typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
-typeset -g POWERLEVEL9K_FOLDER_ICON=''
-typeset -g POWERLEVEL9K_ETC_ICON=''
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='N' # ''
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V' # ''
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
-typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
-typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
