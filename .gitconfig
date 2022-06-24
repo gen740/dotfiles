@@ -19,8 +19,7 @@
 
 [alias]
     ada = !git add -A
-    co = checkout
-    br = branch
+    ca = commit -a
     subup = submodule update --init --recursive
     sgl = log --graph --oneline --decorate --all --pretty='format:%C(yellow)%h %C(reset)%s %C(red)%d %C(cyan)[%an]'
 

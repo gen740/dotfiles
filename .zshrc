@@ -4,14 +4,13 @@
 source "${HOME}/.zgen/zgen.zsh"
 
 if ! zgen saved; then
-  zgen load romkatv/powerlevel10k powerlevel10k
-  zgen load zdharma-continuum/fast-syntax-highlighting
-  zgen load zsh-users/zsh-autosuggestions
-  zgen load zsh-users/zsh-completions
+    zgen load romkatv/powerlevel10k powerlevel10k
+    zgen load zdharma-continuum/fast-syntax-highlighting
+    zgen load zsh-users/zsh-completions
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
@@ -28,7 +27,7 @@ compinit
 # ┼───────────────────────────────────────────────────────────────────────┼
 
 if [[ ! -n $TMUX ]]; then # Start tmux on Login
-  tmux new-session
+    tmux new-session
 fi
 
 setopt hist_ignore_dups # 開始と終了を記録
@@ -73,55 +72,78 @@ export VISUAL='nvim'
 # │ {{{                    « PATH and Alias »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-
-if whence deno > /dev/null ; then
-  export PATH="$HOME/.deno/bin:$PATH"
-fi
-
-if whence go > /dev/null ; then
-  export PATH="$HOME/go/bin/:$PATH"
-fi
-
-if whence cargo > /dev/null ; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-if whence pyenv > /dev/null ; then
-  eval "$(pyenv init --path)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
-if whence rbenv > /dev/null ; then
-  eval "$(rbenv init - zsh)"
-fi
-
-if whence fdfind > /dev/null; then
-  alias fd=fdfind
-fi
-
-if whence fd > /dev/null ; then
-  alias find='fd -HI .'
-fi
-
-if whence lsd > /dev/null ; then
-  alias l='lsd'
-  alias la='lsd -A'
-  alias ll='lsd -Al'
-  alias ls='lsd'
-fi
-
-if whence nvim > /dev/null ; then
-  alias v='nvim'
-  alias vi='nvim'
-fi
-
 if [ -e ~/.zshrc_local ]; then
-  source ~/.zshrc_local
+    source ~/.zshrc_local
 fi
 
 if [ -e ~/.zshrc ]; then
-  source ~/.zshrc
+    source ~/.zshrc
 fi
+
+if whence deno > /dev/null ; then
+    export PATH="$HOME/.deno/bin:$PATH"
+fi
+
+if whence go > /dev/null ; then
+    export PATH="$HOME/go/bin/:$PATH"
+fi
+
+if [ -e $HOME/.local/bin ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -e $HOME/.cargo/env ]; then
+    source $HOME/.cargo/env
+fi
+
+if whence pyenv > /dev/null ; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+if whence rbenv > /dev/null ; then
+    eval "$(rbenv init - zsh)"
+fi
+
+if whence fdfind > /dev/null; then
+    alias fd=fdfind
+fi
+
+if whence fd > /dev/null ; then
+    alias find='fd -HI .'
+fi
+
+if whence lsd > /dev/null ; then
+    alias l='lsd'
+    alias la='lsd -A'
+    alias ll='lsd -Al'
+    alias ls='lsd'
+fi
+
+if whence nvim > /dev/null ; then
+    alias v='nvim'
+    alias vi='nvim'
+fi
+
+# LABRARIES PATH
+export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+export LIBRARY_PATH="/opt/intel/oneapi/mkl/latest/lib:$LIBRARY_PATH"
+export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
+export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
+
+typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
+typeset -g POWERLEVEL9K_HOME_ICON=''
+typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
+typeset -g POWERLEVEL9K_ETC_ICON=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='N' # ''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V' # ''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
+typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
+typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
