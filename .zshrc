@@ -26,10 +26,6 @@ compinit
 # │ {{{                        « Options »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-if [[ ! -n $TMUX ]]; then # Start tmux on Login
-    tmux new-session
-fi
-
 setopt hist_ignore_dups # 開始と終了を記録
 setopt EXTENDED_HISTORY
 setopt share_history
@@ -144,6 +140,12 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V' # '�
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
+
+
+if [[ ! -n $TMUX ]]; then # Start tmux on Login
+    tmux new-session
+fi
+
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
