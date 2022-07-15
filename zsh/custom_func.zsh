@@ -48,11 +48,7 @@ badge() {
     unset current_session
 }
 
-mutal_sync() {
-  fswatch -o $1 $2 | xargs -I{} unison -batch $1 $2
-}
-
-hcd() {
+hh() {
     dirname=`fd -c never . ~/Home/ -aHI --type d --exclude .git --exclude Labo/Qt --exclude build --exclude _build \
         --exclude .build --exclude mbed-os --exclude .cache --exclude node_modules \
         --exclude cmake_build --exclude bin --exclude keyboards --exclude tests --exclude boost-for-raspi \
@@ -65,8 +61,8 @@ hcd() {
     unset dirname
 }
 
-fcd() {
-    dirname=`fd -c never . --type d --exclude .git | fzf-tmux`
+ff() {
+    dirname=`fd -c never . --type d --exclude .git $1 | fzf-tmux`
     if [[ $dirname == ""  ]]; then
     else
         pushd $dirname > /dev/null
@@ -74,17 +70,8 @@ fcd() {
     unset dirname
 }
 
-fvi() {
-    filename=`fd . --type f --exclude ".git" --exclude "build*" --exclude "*.o" --exclude "*.a" --exclude "*.so" | fzf-tmux`
-    if [[ $filename == ""  ]]; then
-    else
-        nvim $filename
-    fi
-    unset filename
-}
-
 # Custom Bindings
-zle -N hcd
-zle -N fvi
-bindkey '^A' hcd
-bindkey '^O' fvi
+# zle -N hcd
+# zle -N fvi
+# bindkey '^A' hcd
+# bindkey '^O' fvi

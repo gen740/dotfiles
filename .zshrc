@@ -26,23 +26,20 @@ compinit
 # │ {{{                        « Options »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-setopt hist_ignore_dups # 開始と終了を記録
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 setopt EXTENDED_HISTORY
-setopt share_history
-setopt auto_list
+setopt SHARE_HISTORY
+setopt AUTO_LIST
 
 LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
 
 stty stop undef # c-s でフリーズしないようにする
 
-bindkey -v
-bindkey ^F forward-char
-bindkey ^N down-line-or-history
-bindkey ^P up-line-or-history
-bindkey "^?" backward-delete-char
-bindkey "^h" backward-delete-char
+bindkey -e
 
+export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
 export REPORTTIME=10
 
 export BAT_THEME="gruvbox-dark"
@@ -53,11 +50,16 @@ export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存
 export HISTORY_IGNORE="ls|l|s|la|ll|cd *|cd|hcd|fcd|fvi|history|exit|popd|pushd"
 export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=ja_JP.UTF-8
-# export LANG=en_US.UTF-8
 export MANWIDTH=999
-export SAVEHIST=50000 # 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000 # 履歴ファイルに保存される履歴の件数
 export TERM="xterm-256color"
 export VISUAL='nvim'
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+ 
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
+
 
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
@@ -105,12 +107,15 @@ if whence fdfind > /dev/null; then
     alias fd=fdfind
 fi
 
+if [ -e /usr/local/opt/llvm/bin ]; then
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+fi
+
 if whence fd > /dev/null ; then
     alias find='fd -HI .'
 fi
 
 if whence lsd > /dev/null ; then
-    alias l='lsd'
     alias la='lsd -A'
     alias ll='lsd -Al'
     alias ls='lsd'
@@ -129,6 +134,7 @@ export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
 export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
+typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
 typeset -g POWERLEVEL9K_FOLDER_ICON=''
 typeset -g POWERLEVEL9K_HOME_ICON=''
 typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
@@ -139,13 +145,12 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='N' # '�
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V' # ''
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
-typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
+typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=50
 
 
-if [[ ! -n $TMUX ]]; then # Start tmux on Login
+if [[ ! -n $TMUX && ! -n $NVIM ]]; then # Start tmux on Login
     tmux new-session
 fi
-
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼

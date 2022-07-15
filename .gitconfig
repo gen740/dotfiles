@@ -2,8 +2,8 @@
     defaultBranch = main
 
 [user]
-	name = gen740
-	email = gen740@gmail.com
+    name = gen740
+    email = genfujimoto@gmail.com
 
 [http]
     sslVerify = false
@@ -18,7 +18,7 @@
     quotepath = false
 
 [alias]
-    ada = !git add -A
+    ada = add -A
     ca = commit -a
     subup = submodule update --init --recursive
     sgl = log --graph --oneline --decorate --all --pretty='format:%C(yellow)%h %C(reset)%s %C(red)%d %C(cyan)[%an]'
