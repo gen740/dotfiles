@@ -48,7 +48,7 @@ badge() {
     unset current_session
 }
 
-hh() {
+h() {
     dirname=`fd -c never . ~/Home/ -aHI --type d --exclude .git --exclude Labo/Qt --exclude build --exclude _build \
         --exclude .build --exclude mbed-os --exclude .cache --exclude node_modules \
         --exclude cmake_build --exclude bin --exclude keyboards --exclude tests --exclude boost-for-raspi \
