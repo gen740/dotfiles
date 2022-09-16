@@ -2,6 +2,8 @@ If:
   PathMatch:
     - .*\.cpp
     - .*\.cc
+    - .*\.hpp
+    - .*\.h # C のヘッダーと被る
 
 CompileFlags:
   Add:
@@ -27,12 +29,16 @@ Diagnostics:
       - cppcoreguidelines*
     Remove:
       - modernize-use-trailing-return-type
+      - bugprone-easily-swappable-parameters
       - readability-magic-numbers
       - readability-uppercase-literal-suffix
       - readability-identifier-length
       - readability-identifier-naming
+      - readability-implicit-bool-conversion
+      - readability-isolate-declaration
       - cppcoreguidelines-avoid-magic-numbers
       - cppcoreguidelines-avoid-non-const-global-variables
+      - cppcoreguidelines-init-variables
 
 InlayHints:
   Enabled: Yes
@@ -43,10 +49,9 @@ Hover:
   ShowAKA: Yes
 
 ---
-
 If:
   PathMatch:
-    - .*\.h
+    - .*\.c
 
 CompileFlags:
   Add:
@@ -65,12 +70,16 @@ Diagnostics:
       - cppcoreguidelines*
     Remove:
       - modernize-use-trailing-return-type
+      - bugprone-easily-swappable-parameters
       - readability-magic-numbers
       - readability-uppercase-literal-suffix
       - readability-identifier-length
       - readability-identifier-naming
+      - readability-implicit-bool-conversion
+      - readability-isolate-declaration
       - cppcoreguidelines-avoid-magic-numbers
       - cppcoreguidelines-avoid-non-const-global-variables
+      - cppcoreguidelines-init-variables
 
 InlayHints:
   Enabled: Yes
