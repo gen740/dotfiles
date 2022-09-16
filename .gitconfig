@@ -1,9 +1,6 @@
-[init]
-    defaultBranch = main
-
 [user]
-    name = gen740
-    email = genfujimoto@gmail.com
+	name = Gen740
+	email = keener_slimier_0m@icloud.com
 
 [http]
     sslVerify = false
