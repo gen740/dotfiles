@@ -26,6 +26,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
 
+
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                        « Options »                                │
@@ -106,12 +107,22 @@ if [ -e $HOME/.cargo/env ]; then
 fi
 
 if whence pyenv > /dev/null ; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
+    pyenv () {
+        unset -f pyenv
+        eval "$(pyenv init --path)"
+        eval "$(pyenv virtualenv-init -)"
+        pyenv "$@"
+    }
 fi
 
 if whence rbenv > /dev/null ; then
-    eval "$(rbenv init - zsh)"
+    rbenv () {
+        unset -f rbenv
+        eval "$(pyenv init --path)"
+        eval "$(pyenv virtualenv-init -)"
+        eval "$(rbenv init - zsh)"
+        rbenv "$@"
+    }
 fi
 
 if whence fdfind > /dev/null; then
@@ -146,18 +157,19 @@ if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
         $HOME/.local/tools/emsdk/emsdk activate latest > /dev/null &> /dev/null
         source $HOME/.local/tools/emsdk/emsdk_env.sh > /dev/null &> /dev/null
     }
+    emcc() {
+        unset -f emcc
+        emsactivate()
+        emcc "$@"
+    }
 fi
-
-
 
 # LABRARIES PATH
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 export LIBRARY_PATH="/opt/intel/oneapi/mkl/latest/lib:$LIBRARY_PATH"
 export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
-# export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
-# export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
-export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/usr/include:$CPLUS_INCLUDE_PATH"
-# export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/System/Library/Frameworks:$CPLUS_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
@@ -173,9 +185,9 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 
-
 # if [[ ! -n $TMUX && ! -n $NVIM ]]; then # Start tmux on Login
 #     tmux new-session
+#     tmux attach || tmux
 # fi
 
 # }}}
