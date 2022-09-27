@@ -1,10 +1,16 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 
--- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+-- -- The filled in variant of the < symbol
+-- local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+--
+-- -- The filled in variant of the > symbol
+-- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+wezterm.on("gui-startup", function()
+  local _, _, window = mux.spawn_window({})
+  window:gui_window():maximize()
+end)
 
 return {
   font = wezterm.font("SFMono Nerd Font"),
@@ -29,46 +35,31 @@ return {
     "aqua",
     "white",
   },
-  window_background_image = "/Users/fujimotogen/home/Shelf/WallPaper/ex2.jpg",
-  window_background_image_hsb = {
-    -- Darken the background image by reducing it to 1/3rd
-    brightness = 0.013,
-
-    -- You can adjust the hue by scaling its value.
-    -- a multiplier of 1.0 leaves the value unchanged.
-    repeat_x = "Mirror",
-    hue = 1.0,
-    -- attachment = "Fixed",
-    height = 123,
-
-    -- You can adjust the saturation also.
-    saturation = 1.0,
+  background = {
+    {
+      source = {
+        File = "/Users/fujimotogen/home/Shelf/Pixiv/100960965_p0.jpg",
+      },
+      -- width = "100%",
+      -- height = "100%",
+      width = "Contain",
+      height = "Contain",
+      -- repeat_x = "NoRepeat",
+      -- repeat_y = "NoRepeat",
+      hsb = { brightness = 0.02 },
+      attachment = "Fixed",
+      horizontal_align = "Center",
+      vertical_align = "Top",
+    },
   },
-  tab_bar_style = {
-    active_tab_left = wezterm.format({
-      { Background = { Color = "#0b0022" } },
-      { Foreground = { Color = "#2b2042" } },
-      { Text = SOLID_LEFT_ARROW },
-    }),
-    active_tab_right = wezterm.format({
-      { Background = { Color = "#0b0022" } },
-      { Foreground = { Color = "#2b2042" } },
-      { Text = SOLID_RIGHT_ARROW },
-    }),
-    inactive_tab_left = wezterm.format({
-      { Background = { Color = "#0b0022" } },
-      { Foreground = { Color = "#1b1032" } },
-      { Text = SOLID_LEFT_ARROW },
-    }),
-    inactive_tab_right = wezterm.format({
-      { Background = { Color = "#0b0022" } },
-      { Foreground = { Color = "#1b1032" } },
-      { Text = SOLID_RIGHT_ARROW },
-    }),
-  },
-  window_decorations = "NONE",
+  -- window_decorations = "NONE",
+  window_decorations = "RESIZE",
   enable_tab_bar = false,
-  -- initial_rows = 60,
-  -- initial_cols = 300,
+  -- initial_rows = 65,
+  -- initial_cols = 203,
   color_scheme = "nightfox",
+  default_cwd = "/Users/fujimotogen/home",
+  set_environment_variables = {
+    term = "wezterm",
+  },
 }
