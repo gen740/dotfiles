@@ -5,5 +5,7 @@ fi
 
 echo "export ZDOTDIR=${HOME}/.dotfiles" >> ~/.zshenv
 
-ln -sf `pwd`/.gitconfig $HOME/.gitconfig
+if [[ ! -f ~/.gitconfig ]]; then
+    cp -sf `pwd`/.gitconfig $HOME/.gitconfig
+fi
 ln -sf `pwd`/.tmux.conf $HOME/.tmux.conf

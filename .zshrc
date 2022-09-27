@@ -58,7 +58,6 @@ export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=ja_JP.UTF-8
 export MANWIDTH=100
 export SAVEHIST=100000 # 履歴ファイルに保存される履歴の件数
-export TERM="xterm-256color"
 export VISUAL='nvim'
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -76,6 +75,8 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f "/Users/fujimotogen/.ghcup/env" ] && source "/Users/fujimotogen/.ghcup/env" # ghcup-env
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -107,12 +108,8 @@ if [ -e $HOME/.cargo/env ]; then
 fi
 
 if whence pyenv > /dev/null ; then
-    pyenv () {
-        unset -f pyenv
-        eval "$(pyenv init --path)"
-        eval "$(pyenv virtualenv-init -)"
-        pyenv "$@"
-    }
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 if whence rbenv > /dev/null ; then
@@ -133,9 +130,18 @@ if [ -e /usr/local/opt/llvm/bin ]; then
     export PATH="/usr/local/opt/llvm/bin:$PATH"
 fi
 
-# if [ -e "$HOME/.local/tools/llvm-15.0.0/bin" ]; then
-#     export PATH="$HOME/.local/tools/llvm-15.0.0/bin:$PATH"
-# fi
+if [ -e /opt/OpenBLAS ]; then
+  export OpenBLAS_DIR=/opt/OpenBLAS
+  export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
+
+if [ -e /usr/local/share/eigen3/cmake ]; then
+    export CMAKE_PREFIX_PATH=/usr/local/share/eigen3/cmake:$CMAKE_PREFIX_PATH
+fi
+
+if [ -e /usr/local/opt/google-benchmark ]; then
+    export benchmark_DIR=/usr/local/opt/google-benchmark
+fi
 
 if whence fd > /dev/null ; then
     alias find='fd -HI .'
@@ -165,11 +171,11 @@ if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
 fi
 
 # LABRARIES PATH
-export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
-export LIBRARY_PATH="/opt/intel/oneapi/mkl/latest/lib:$LIBRARY_PATH"
-export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
-export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
-export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
+# export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+# export LIBRARY_PATH="/opt/intel/oneapi/mkl/latest/lib:$LIBRARY_PATH"
+# export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
+# export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
+# export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
