@@ -191,10 +191,10 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 
-# if [[ ! -n $TMUX && ! -n $NVIM ]]; then # Start tmux on Login
-#     tmux new-session
-#     tmux attach || tmux
-# fi
+if [[ ! -n $TMUX && ! -n $NVIM ]]; then # Start tmux on Login
+    # tmux new-session
+    tmux attach || tmux
+fi
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
