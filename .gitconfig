@@ -1,7 +1,3 @@
-[user]
-	name = Gen740
-	email = keener_slimier_0m@icloud.com
-
 [http]
     sslVerify = false
 
