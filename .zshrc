@@ -112,7 +112,7 @@ if [ -e /usr/local/go ]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 
-if [ -e $HOEM/.pyenv/bin ]; then
+if [ -e $HOME/.pyenv/bin ]; then
     export PATH="$HOME/.pyenv/bin:$PATH"
 fi
 
