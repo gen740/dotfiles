@@ -70,9 +70,6 @@ export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
  
-# export PYTHON_CONFIGURE_OPTS="--enable-shared"
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
-
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -113,6 +110,11 @@ if [ -e /usr/local/go ]; then
 fi
 
 if [ -e $HOME/.pyenv/bin ]; then
+    if [ $OSTYPE -eq 'darwin' ]; then
+        export PYTHON_CONFIGURE_OPTS="--enable-framework"
+    else
+        export PYTHON_CONFIGURE_OPTS="--enable-shared"
+    fi
     export PATH="$HOME/.pyenv/bin:$PATH"
 fi
 
