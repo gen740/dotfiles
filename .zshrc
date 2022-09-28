@@ -110,7 +110,7 @@ if [ -e /usr/local/go ]; then
 fi
 
 if [ -e $HOME/.pyenv/bin ]; then
-    if [ $OSTYPE -eq 'darwin' ]; then
+    if [ $OSTYPE == 'darwin' ]; then
         export PYTHON_CONFIGURE_OPTS="--enable-framework"
     else
         export PYTHON_CONFIGURE_OPTS="--enable-shared"
