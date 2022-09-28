@@ -108,7 +108,17 @@ if [ -e $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
+if [ -e /usr/local/go ]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
+
+if [ -e $HOEM/.pyenv/bin ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+fi
+
 if whence pyenv > /dev/null ; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    eval "$(pyenv init -)"
     eval "$(pyenv init --path)"
     eval "$(pyenv virtualenv-init -)"
 fi
