@@ -1,65 +1,62 @@
-local wezterm = require("wezterm")
+local wezterm = require('wezterm')
 local mux = wezterm.mux
 
--- -- The filled in variant of the < symbol
--- local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
---
--- -- The filled in variant of the > symbol
--- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+-- The filled in variant of the < symbol
+local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
-wezterm.on("gui-startup", function()
+-- The filled in variant of the > symbol
+local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+
+wezterm.on('gui-startup', function()
   local _, _, window = mux.spawn_window({})
   window:gui_window():maximize()
 end)
 
 return {
-  font = wezterm.font("SFMono Nerd Font"),
+  font = wezterm.font_with_fallback({
+    {
+      family = 'SFMono Nerd Font',
+    },
+    {
+      family = 'HackGenNerd',
+    },
+  }),
+  default_cursor_style = 'SteadyBlock',
+  colors = {
+    cursor_fg = 'black',
+    cursor_bg = 'gray',
+    compose_cursor = 'gray',
+  },
   font_size = 16.0,
-  ansi = {
-    "black",
-    "maroon",
-    "green",
-    "olive",
-    "navy",
-    "purple",
-    "teal",
-    "silver",
-  },
-  brights = {
-    "grey",
-    "red",
-    "lime",
-    "yellow",
-    "blue",
-    "fuchsia",
-    "aqua",
-    "white",
-  },
   background = {
     {
       source = {
-        File = "/Users/fujimotogen/home/Shelf/Pixiv/100960965_p0.jpg",
+        File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/100960965_p0.jpg',
       },
-      -- width = "100%",
-      -- height = "100%",
-      width = "Contain",
-      height = "Contain",
+      width = 'Contain',
+      height = 'Contain',
       -- repeat_x = "NoRepeat",
       -- repeat_y = "NoRepeat",
-      hsb = { brightness = 0.02 },
-      attachment = "Fixed",
-      horizontal_align = "Center",
-      vertical_align = "Top",
+      hsb = { brightness = 0.015 },
+      attachment = 'Fixed',
+      horizontal_align = 'Center',
+      vertical_align = 'Top',
     },
   },
-  -- window_decorations = "NONE",
-  window_decorations = "RESIZE",
+  window_decorations = 'RESIZE', -- "NONE"
+  tab_bar_at_bottom = true,
+  -- hide_tab_bar_if_only_one_tab = true,
   enable_tab_bar = false,
-  -- initial_rows = 65,
-  -- initial_cols = 203,
-  color_scheme = "nightfox",
-  default_cwd = "/Users/fujimotogen/home",
+  color_scheme = 'nordfox',
+  default_cwd = '/Users/fujimotogen/home',
+  cursor_blink_rate = 0,
   set_environment_variables = {
-    term = "wezterm",
+    TERM = 'wezterm',
+  },
+  hyperlink_rules = {
+    {
+      regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+      format = 'https://www.github.com/$1/$3',
+    },
   },
 }
