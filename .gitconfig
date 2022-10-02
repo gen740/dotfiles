@@ -7,7 +7,6 @@
 
 [core]
     editor = nvim
-    excludesfile = /Users/fujimotogen/.gitignore_global
     quotepath = false
 
 [alias]

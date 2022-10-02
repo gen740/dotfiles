@@ -125,14 +125,16 @@ if whence pyenv > /dev/null ; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-if whence rbenv > /dev/null ; then
-    rbenv () {
-        unset -f rbenv
-        eval "$(pyenv init --path)"
-        eval "$(pyenv virtualenv-init -)"
-        eval "$(rbenv init - zsh)"
-        rbenv "$@"
-    }
+if [ -e /opt/OpenBLAS ]; then
+    export OpenBLAS_DIR=/opt/OpenBLAS
+    export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
+
+if [ -e /opt/gRPC ]; then
+    export gRPC_DIR=/opt/gRPC
+    export protobuf_DIR=/opt/gRPC
+    export PKG_CONFIG_PATH=/opt/gRPC/lib/pkgconfig:$PKG_CONFIG_PATH
+    export PATH=/opt/gRPC/bin:$PATH
 fi
 
 if whence fdfind > /dev/null; then

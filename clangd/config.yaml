@@ -9,7 +9,7 @@ CompileFlags:
   Add:
     - -Wall
     - -Wextra
-    - -std=c++20
+    - -Wno-unknown-warning-option
     - -isystem/Users/fujimotogen/.local/include
     - -isystem/usr/local/include
     - -isystem/usr/local/opt/llvm/bin/../include/c++/v1
@@ -54,11 +54,13 @@ Hover:
 If:
   PathMatch:
     - .*\.c
+    # - .*\.h # C のヘッダーと被る
 
 CompileFlags:
   Add:
     - -Wall
     - -Wextra
+    - -Wno-unknown-warning-option
 
 Diagnostics:
   UnusedIncludes: Strict
