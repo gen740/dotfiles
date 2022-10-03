@@ -1,11 +1,11 @@
 local wezterm = require('wezterm')
 local mux = wezterm.mux
 
--- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+-- -- The filled in variant of the < symbol
+-- local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+--
+-- -- The filled in variant of the > symbol
+-- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
 wezterm.on('gui-startup', function()
   local _, _, window = mux.spawn_window({})
@@ -27,20 +27,21 @@ return {
     cursor_bg = 'gray',
     compose_cursor = 'gray',
   },
-  font_size = 16.0,
+  font_size = 18.0,
   background = {
     {
       source = {
-        File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/100960965_p0.jpg',
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/100960965_p0.jpg',
+        File = '/Users/fujimotogen/home/Shelf/WallPaper/out/357.jpeg',
       },
-      width = 'Contain',
-      height = 'Contain',
-      -- repeat_x = "NoRepeat",
-      -- repeat_y = "NoRepeat",
+      width = 'Cover',
+      height = 'Cover',
+      repeat_x = "NoRepeat",
+      repeat_y = "NoRepeat",
       hsb = { brightness = 0.015 },
       attachment = 'Fixed',
       horizontal_align = 'Center',
-      vertical_align = 'Top',
+      vertical_align = 'Middle',
     },
   },
   window_decorations = 'RESIZE', -- "NONE"
