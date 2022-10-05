@@ -36,8 +36,8 @@ return {
       },
       width = 'Cover',
       height = 'Cover',
-      repeat_x = "NoRepeat",
-      repeat_y = "NoRepeat",
+      repeat_x = 'NoRepeat',
+      repeat_y = 'NoRepeat',
       hsb = { brightness = 0.015 },
       attachment = 'Fixed',
       horizontal_align = 'Center',
@@ -59,5 +59,11 @@ return {
       regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
       format = 'https://www.github.com/$1/$3',
     },
+  },
+  window_padding = {
+    left = 24,
+    right = 24,
+    top = 11,
+    bottom = 11,
   },
 }
