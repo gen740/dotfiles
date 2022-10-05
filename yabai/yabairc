@@ -1,23 +1,24 @@
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
+yabai -m config focus_follows_mouse autofocus
+# yabai -m config auto_balance on
+
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.94
+
 yabai -m space 1 --label main
 yabai -m space 2 --label browser
 yabai -m space 3 --label sms
 yabai -m space 4 --label stack
 yabai -m space 5 --label todo
 
+yabai -m config layout bsp
 yabai -m config --space 1 layout float
-yabai -m config --space 2 layout bsp
-yabai -m config --space 3 layout bsp
+yabai -m config --space 2 layout managed
+yabai -m config --space 3 layout managed
 yabai -m config --space 4 layout stack
-yabai -m config --space 5 layout bsp
-
-yabai -m config focus_follows_mouse autoraise 
-
-yabai -m config window_opacity on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.9
+yabai -m config --space 5 layout managed
 
 # vim:set ft=bash
-
