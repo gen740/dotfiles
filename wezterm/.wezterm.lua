@@ -31,14 +31,14 @@ return {
   background = {
     {
       source = {
-        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/100960965_p0.jpg',
-        File = '/Users/fujimotogen/home/Shelf/WallPaper/out/357.jpeg',
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/91012382_p0.jpg',
+        File = '/Users/fujimotogen/home/Shelf/WallPaper/out/103.jpeg',
       },
       width = 'Cover',
       height = 'Cover',
       repeat_x = 'NoRepeat',
       repeat_y = 'NoRepeat',
-      hsb = { brightness = 0.015 },
+      hsb = { brightness = 0.022 },
       attachment = 'Fixed',
       horizontal_align = 'Center',
       vertical_align = 'Middle',

@@ -105,6 +105,10 @@ if [ -e $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
+if whence opam > /dev/null ; then
+    eval $(opam env)
+fi
+
 if [ -e /usr/local/go ]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
