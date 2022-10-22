@@ -97,6 +97,10 @@ if whence go > /dev/null ; then
     export PATH="$HOME/go/bin/:$PATH"
 fi
 
+if [ -e /usr/local/go ]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
+
 if [ -e $HOME/.local/bin ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
@@ -107,10 +111,6 @@ fi
 
 if whence opam > /dev/null ; then
     eval $(opam env)
-fi
-
-if [ -e /usr/local/go ]; then
-    export PATH=$PATH:/usr/local/go/bin
 fi
 
 if [ -e $HOME/.pyenv/bin ]; then
@@ -145,13 +145,29 @@ if whence fdfind > /dev/null; then
     alias fd=fdfind
 fi
 
-if [ -e /usr/local/opt/llvm/bin ]; then
-    export PATH="/usr/local/opt/llvm/bin:$PATH"
-fi
+# if [ -e /usr/local/opt/llvm/bin ]; then
+#     export PATH="/usr/local/opt/llvm/bin:$PATH"
+# fi
 
 if [ -e /opt/OpenBLAS ]; then
-  export OpenBLAS_DIR=/opt/OpenBLAS
-  export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
+    export OpenBLAS_DIR=/opt/OpenBLAS
+    export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
+
+# if [ -e /opt/openmpi ]; then
+#     export PATH=/opt/openmpi/bin:$PATH
+#     export PKG_CONFIG_PATH=/opt/openmpi/lib/pkgconfig:$PKG_CONFIG_PATH
+# fi
+
+if [ -e /opt/intel/oneapi/mkl/latest ]; then
+    export PATH=/opt/intel/oneapi/mkl/latest/bin:$PATH
+    export MKL_DIR=/opt/intel/oneapi/mkl/latest
+    export PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/latest/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
+
+if [ -e /opt/boost ]; then
+    export Boost_DIR=/opt/Boost
+    export PKG_CONFIG_PATH=/opt/Boost/lib/pkgconfig:$PKG_CONFIG_PATH
 fi
 
 if [ -e /usr/local/share/eigen3/cmake ]; then
@@ -189,6 +205,20 @@ if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
     }
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
+if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
+    mkdir $(dirname $MY_SESSION_BUS_SOCKET)
+fi
+eval `dbus-launch --sh-syntax`
+
+if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
+    echo "EXISTS"
+fi
+
 # LABRARIES PATH
 # export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 # export LIBRARY_PATH="/opt/intel/oneapi/mkl/latest/lib:$LIBRARY_PATH"
@@ -210,10 +240,11 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 
-if [[ ! -n $TMUX && ! -n $NVIM ]]; then # Start tmux on Login
+if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
     # tmux new-session
     tmux attach || tmux
 fi
+
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼

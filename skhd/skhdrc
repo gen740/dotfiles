@@ -1,9 +1,14 @@
+# ctrl + shift + alt - 0x27 : yabai -m window --space 1 # quate
+# ctrl + shift + alt - 0x2B : yabai -m window --space 2 # comma
+# ctrl + shift + alt - 0x2F : yabai -m window --space 3 # period
+# ctrl + shift + alt - p : yabai -m window --space 4
+# ctrl + shift + alt - y : yabai -m window --space 5
 
-ctrl + shift + alt - 0x27 : yabai -m window --space 1 # quate
-ctrl + shift + alt - 0x2B : yabai -m window --space 2 # comma
-ctrl + shift + alt - 0x2F : yabai -m window --space 3 # period
-ctrl + shift + alt - p : yabai -m window --space 4
-ctrl + shift + alt - y : yabai -m window --space 5
+ctrl + shift + alt - a : yabai -m window --space 1 # quate
+ctrl + shift + alt - o : yabai -m window --space 2 # comma
+ctrl + shift + alt - e : yabai -m window --space 3 # period
+ctrl + shift + alt - u : yabai -m window --space 4
+ctrl + shift + alt - i : yabai -m window --space 5
 
 ctrl + shift + alt - 0x3B : yabai -m window --toggle zoom-parent
 
@@ -18,6 +23,8 @@ ctrl + shift + alt - h : yabai -m window --swap west
 ctrl + shift + alt - n : yabai -m window --swap east
 ctrl + shift + alt - c : yabai -m window --swap north
 ctrl + shift + alt - w : yabai -m window --swap south
+ctrl + shift + alt - z : sudo /Users/fujimotogen/.dotfiles/zsh/toggle_lowpower_mode.zsh
+ctrl + shift + alt - 0x1B : pmset displaysleepnow
 
 cmd + ctrl + shift + alt - a : yabai -m space --focus 1
 cmd + ctrl + shift + alt - o : yabai -m space --focus 2

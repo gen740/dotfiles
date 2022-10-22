@@ -38,7 +38,7 @@ return {
       height = 'Cover',
       repeat_x = 'NoRepeat',
       repeat_y = 'NoRepeat',
-      hsb = { brightness = 0.022 },
+      hsb = { brightness = 0.030 },
       attachment = 'Fixed',
       horizontal_align = 'Center',
       vertical_align = 'Middle',
@@ -48,18 +48,20 @@ return {
   tab_bar_at_bottom = true,
   -- hide_tab_bar_if_only_one_tab = true,
   enable_tab_bar = false,
-  color_scheme = 'nordfox',
+  color_scheme = 'nightfox',
   default_cwd = '/Users/fujimotogen/home',
   cursor_blink_rate = 0,
   set_environment_variables = {
     TERM = 'wezterm',
   },
-  hyperlink_rules = {
+  keys = {
     {
-      regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-      format = 'https://www.github.com/$1/$3',
+      key = '¥',
+      mods = '',
+      action = wezterm.action.SendString('\\'),
     },
   },
+  hyperlink_rules = {},
   window_padding = {
     left = 24,
     right = 24,

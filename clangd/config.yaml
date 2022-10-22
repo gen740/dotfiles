@@ -31,6 +31,7 @@ Diagnostics:
     Remove:
       - modernize-use-trailing-return-type
       - bugprone-easily-swappable-parameters
+      - google-explicit-constructor
       - readability-magic-numbers
       - readability-uppercase-literal-suffix
       - readability-identifier-length
