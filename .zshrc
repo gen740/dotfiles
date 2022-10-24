@@ -7,13 +7,12 @@ if ! zgen saved; then
     zgen load romkatv/powerlevel10k powerlevel10k
     zgen load zdharma-continuum/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions
-    zgen load sobolevn/wakatime-zsh-plugin
+    # zgen load sobolevn/wakatime-zsh-plugin
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
 if [ -e $HOME/.local/zsh ]; then
@@ -74,7 +73,7 @@ export OMP_NUM_THREADS=16
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f "/Users/fujimotogen/.ghcup/env" ] && source "/Users/fujimotogen/.ghcup/env" # ghcup-env
+# [ -f "/Users/fujimotogen/.ghcup/env" ] && source "/Users/fujimotogen/.ghcup/env" # ghcup-env
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -113,20 +112,18 @@ if whence opam > /dev/null ; then
     eval $(opam env)
 fi
 
-if [ -e $HOME/.pyenv/bin ]; then
+if whence pyenv > /dev/null ; then
     if [[ $OSTYPE == 'darwin' ]]; then
         export PYTHON_CONFIGURE_OPTS="--enable-framework"
     else
         export PYTHON_CONFIGURE_OPTS="--enable-shared"
     fi
     export PATH="$HOME/.pyenv/bin:$PATH"
-fi
-
-if whence pyenv > /dev/null ; then
     export PYENV_ROOT="$HOME/.pyenv"
-    eval "$(pyenv init -)"
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
+    ZSH_PYENV_LAZY_VIRTUALENV=true
+    zgen load davidparsson/zsh-pyenv-lazy
+    # eval "$(pyenv init -)"
+    # eval "$(pyenv virtualenv-init -)"
 fi
 
 if [ -e /opt/OpenBLAS ]; then
@@ -159,11 +156,11 @@ fi
 #     export PKG_CONFIG_PATH=/opt/openmpi/lib/pkgconfig:$PKG_CONFIG_PATH
 # fi
 
-if [ -e /opt/intel/oneapi/mkl/latest ]; then
-    export PATH=/opt/intel/oneapi/mkl/latest/bin:$PATH
-    export MKL_DIR=/opt/intel/oneapi/mkl/latest
-    export PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/latest/lib/pkgconfig:$PKG_CONFIG_PATH
-fi
+# if [ -e /opt/intel/oneapi/mkl/latest ]; then
+#     export PATH=/opt/intel/oneapi/mkl/latest/bin:$PATH
+#     export MKL_DIR=/opt/intel/oneapi/mkl/latest
+#     export PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/latest/lib/pkgconfig:$PKG_CONFIG_PATH
+# fi
 
 if [ -e /opt/boost ]; then
     export Boost_DIR=/opt/Boost
@@ -205,26 +202,23 @@ if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
     }
 fi
 
+# nvm
+export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export NVM_AUTO_USE=true
+zgen load lukechilds/zsh-nvm
+# nvm_activate() {
+#     [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#     [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# }
 
-export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
-if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
-    mkdir $(dirname $MY_SESSION_BUS_SOCKET)
+if dbus-launch deno > /dev/null ; then
+    export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
+    if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
+        mkdir $(dirname $MY_SESSION_BUS_SOCKET)
+    fi
+    eval `dbus-launch --sh-syntax`
 fi
-eval `dbus-launch --sh-syntax`
-
-if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
-    echo "EXISTS"
-fi
-
-# LABRARIES PATH
-# export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
-# export LIBRARY_PATH="/opt/intel/oneapi/mkl/latest/lib:$LIBRARY_PATH"
-# export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
-# export CPLUS_INCLUDE_PATH="/usr/local/include:$CPLUS_INCLUDE_PATH"
-# export CPLUS_INCLUDE_PATH="$HOME/.local/include:$CPLUS_INCLUDE_PATH"
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
