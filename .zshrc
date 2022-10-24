@@ -212,7 +212,7 @@ zgen load lukechilds/zsh-nvm
 #     [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 # }
 
-if dbus-launch deno > /dev/null ; then
+if dbus-launch > /dev/null ; then
     export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
     if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
         mkdir $(dirname $MY_SESSION_BUS_SOCKET)
