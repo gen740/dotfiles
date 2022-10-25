@@ -28,22 +28,22 @@ return {
     compose_cursor = 'gray',
   },
   font_size = 18.0,
-  background = {
-    {
-      source = {
-        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/91012382_p0.jpg',
-        File = '/Users/fujimotogen/home/Shelf/WallPaper/out/103.jpeg',
-      },
-      width = 'Cover',
-      height = 'Cover',
-      repeat_x = 'NoRepeat',
-      repeat_y = 'NoRepeat',
-      hsb = { brightness = 0.030 },
-      attachment = 'Fixed',
-      horizontal_align = 'Center',
-      vertical_align = 'Middle',
-    },
-  },
+  -- background = {
+  --   {
+  --     source = {
+  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/91012382_p0.jpg',
+  --       File = '/Users/fujimotogen/home/Shelf/WallPaper/out/103.jpeg',
+  --     },
+  --     width = 'Cover',
+  --     height = 'Cover',
+  --     repeat_x = 'NoRepeat',
+  --     repeat_y = 'NoRepeat',
+  --     hsb = { brightness = 0.030 },
+  --     attachment = 'Fixed',
+  --     horizontal_align = 'Center',
+  --     vertical_align = 'Middle',
+  --   },
+  -- },
   window_decorations = 'RESIZE', -- "NONE"
   tab_bar_at_bottom = true,
   -- hide_tab_bar_if_only_one_tab = true,
