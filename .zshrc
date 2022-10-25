@@ -65,10 +65,10 @@ export XDG_DATA_HOME=$HOME/.local/share
 export MANPAGER="col -b -x|nvim -R -c 'set ft=man nolist nomod noma' -"
 export PAGER=less
 
-export OPENBLAS_NUM_THREADS=16
-export GOTO_NUM_THREADS=16
-export OMP_NUM_THREADS=16
- 
+# export OPENBLAS_NUM_THREADS=16
+# export GOTO_NUM_THREADS=16
+# export OMP_NUM_THREADS=16
+  
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -108,9 +108,9 @@ if [ -e $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
-if whence opam > /dev/null ; then
-    eval $(opam env)
-fi
+# if whence opam > /dev/null ; then
+#     eval $(opam env)
+# fi
 
 if whence pyenv > /dev/null ; then
     if [[ $OSTYPE == 'darwin' ]]; then
@@ -120,23 +120,27 @@ if whence pyenv > /dev/null ; then
     fi
     export PATH="$HOME/.pyenv/bin:$PATH"
     export PYENV_ROOT="$HOME/.pyenv"
+    # export PATH="$HOME/.pyenv/bin:$PATH"
+    # export PYENV_ROOT="$HOME/.pyenv"
+    # eval "$(pyenv init -)"
+    # eval "$(pyenv virtualenv-init -)"
     ZSH_PYENV_LAZY_VIRTUALENV=true
     zgen load davidparsson/zsh-pyenv-lazy
     # eval "$(pyenv init -)"
     # eval "$(pyenv virtualenv-init -)"
 fi
 
-if [ -e /opt/OpenBLAS ]; then
-    export OpenBLAS_DIR=/opt/OpenBLAS
-    export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
-fi
+# if [ -e /opt/OpenBLAS ]; then
+#     export OpenBLAS_DIR=/opt/OpenBLAS
+#     export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
+# fi
 
-if [ -e /opt/gRPC ]; then
-    export gRPC_DIR=/opt/gRPC
-    export protobuf_DIR=/opt/gRPC
-    export PKG_CONFIG_PATH=/opt/gRPC/lib/pkgconfig:$PKG_CONFIG_PATH
-    export PATH=/opt/gRPC/bin:$PATH
-fi
+# if [ -e /opt/gRPC ]; then
+#     export gRPC_DIR=/opt/gRPC
+#     export protobuf_DIR=/opt/gRPC
+#     export PKG_CONFIG_PATH=/opt/gRPC/lib/pkgconfig:$PKG_CONFIG_PATH
+#     export PATH=/opt/gRPC/bin:$PATH
+# fi
 
 if whence fdfind > /dev/null; then
     alias fd=fdfind
@@ -145,11 +149,6 @@ fi
 # if [ -e /usr/local/opt/llvm/bin ]; then
 #     export PATH="/usr/local/opt/llvm/bin:$PATH"
 # fi
-
-if [ -e /opt/OpenBLAS ]; then
-    export OpenBLAS_DIR=/opt/OpenBLAS
-    export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
-fi
 
 # if [ -e /opt/openmpi ]; then
 #     export PATH=/opt/openmpi/bin:$PATH
@@ -162,18 +161,18 @@ fi
 #     export PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/latest/lib/pkgconfig:$PKG_CONFIG_PATH
 # fi
 
-if [ -e /opt/boost ]; then
-    export Boost_DIR=/opt/Boost
-    export PKG_CONFIG_PATH=/opt/Boost/lib/pkgconfig:$PKG_CONFIG_PATH
-fi
+# if [ -e /opt/boost ]; then
+#     export Boost_DIR=/opt/Boost
+#     export PKG_CONFIG_PATH=/opt/Boost/lib/pkgconfig:$PKG_CONFIG_PATH
+# fi
 
-if [ -e /usr/local/share/eigen3/cmake ]; then
-    export CMAKE_PREFIX_PATH=/usr/local/share/eigen3/cmake:$CMAKE_PREFIX_PATH
-fi
+# if [ -e /usr/local/share/eigen3/cmake ]; then
+#     export CMAKE_PREFIX_PATH=/usr/local/share/eigen3/cmake:$CMAKE_PREFIX_PATH
+# fi
 
-if [ -e /usr/local/opt/google-benchmark ]; then
-    export benchmark_DIR=/usr/local/opt/google-benchmark
-fi
+# if [ -e /usr/local/opt/google-benchmark ]; then
+#     export benchmark_DIR=/usr/local/opt/google-benchmark
+# fi
 
 if whence fd > /dev/null ; then
     alias find='fd -HI .'
@@ -190,17 +189,17 @@ if whence nvim > /dev/null ; then
     alias vi='nvim'
 fi
 
-if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
-    emsactivate() {
-        $HOME/.local/tools/emsdk/emsdk activate latest > /dev/null &> /dev/null
-        source $HOME/.local/tools/emsdk/emsdk_env.sh > /dev/null &> /dev/null
-    }
-    emcc() {
-        unset -f emcc
-        emsactivate()
-        emcc "$@"
-    }
-fi
+# if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
+#     emsactivate() {
+#         $HOME/.local/tools/emsdk/emsdk activate latest > /dev/null &> /dev/null
+#         source $HOME/.local/tools/emsdk/emsdk_env.sh > /dev/null &> /dev/null
+#     }
+#     emcc() {
+#         unset -f emcc
+#         emsactivate()
+#         emcc "$@"
+#     }
+# fi
 
 # nvm
 export NVM_LAZY_LOAD=true
