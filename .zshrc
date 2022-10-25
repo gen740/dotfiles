@@ -7,7 +7,6 @@ if ! zgen saved; then
     zgen load romkatv/powerlevel10k powerlevel10k
     zgen load zdharma-continuum/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions
-    # zgen load sobolevn/wakatime-zsh-plugin
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -65,15 +64,13 @@ export XDG_DATA_HOME=$HOME/.local/share
 export MANPAGER="col -b -x|nvim -R -c 'set ft=man nolist nomod noma' -"
 export PAGER=less
 
-# export OPENBLAS_NUM_THREADS=16
-# export GOTO_NUM_THREADS=16
-# export OMP_NUM_THREADS=16
+export OPENBLAS_NUM_THREADS=16
+export GOTO_NUM_THREADS=16
+export OMP_NUM_THREADS=16
   
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# [ -f "/Users/fujimotogen/.ghcup/env" ] && source "/Users/fujimotogen/.ghcup/env" # ghcup-env
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -108,10 +105,6 @@ if [ -e $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
-# if whence opam > /dev/null ; then
-#     eval $(opam env)
-# fi
-
 if whence pyenv > /dev/null ; then
     if [[ $OSTYPE == 'darwin' ]]; then
         export PYTHON_CONFIGURE_OPTS="--enable-framework"
@@ -120,27 +113,11 @@ if whence pyenv > /dev/null ; then
     fi
     export PATH="$HOME/.pyenv/bin:$PATH"
     export PYENV_ROOT="$HOME/.pyenv"
-    # export PATH="$HOME/.pyenv/bin:$PATH"
-    # export PYENV_ROOT="$HOME/.pyenv"
-    # eval "$(pyenv init -)"
-    # eval "$(pyenv virtualenv-init -)"
     ZSH_PYENV_LAZY_VIRTUALENV=true
     zgen load davidparsson/zsh-pyenv-lazy
     # eval "$(pyenv init -)"
     # eval "$(pyenv virtualenv-init -)"
 fi
-
-# if [ -e /opt/OpenBLAS ]; then
-#     export OpenBLAS_DIR=/opt/OpenBLAS
-#     export PKG_CONFIG_PATH=/opt/OpenBLAS/lib/pkgconfig:$PKG_CONFIG_PATH
-# fi
-
-# if [ -e /opt/gRPC ]; then
-#     export gRPC_DIR=/opt/gRPC
-#     export protobuf_DIR=/opt/gRPC
-#     export PKG_CONFIG_PATH=/opt/gRPC/lib/pkgconfig:$PKG_CONFIG_PATH
-#     export PATH=/opt/gRPC/bin:$PATH
-# fi
 
 if whence fdfind > /dev/null; then
     alias fd=fdfind
@@ -150,29 +127,13 @@ fi
 #     export PATH="/usr/local/opt/llvm/bin:$PATH"
 # fi
 
-# if [ -e /opt/openmpi ]; then
-#     export PATH=/opt/openmpi/bin:$PATH
-#     export PKG_CONFIG_PATH=/opt/openmpi/lib/pkgconfig:$PKG_CONFIG_PATH
-# fi
+if [ -e /usr/local/share/eigen3/cmake ]; then
+    export CMAKE_PREFIX_PATH=/usr/local/share/eigen3/cmake:$CMAKE_PREFIX_PATH
+fi
 
-# if [ -e /opt/intel/oneapi/mkl/latest ]; then
-#     export PATH=/opt/intel/oneapi/mkl/latest/bin:$PATH
-#     export MKL_DIR=/opt/intel/oneapi/mkl/latest
-#     export PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/latest/lib/pkgconfig:$PKG_CONFIG_PATH
-# fi
-
-# if [ -e /opt/boost ]; then
-#     export Boost_DIR=/opt/Boost
-#     export PKG_CONFIG_PATH=/opt/Boost/lib/pkgconfig:$PKG_CONFIG_PATH
-# fi
-
-# if [ -e /usr/local/share/eigen3/cmake ]; then
-#     export CMAKE_PREFIX_PATH=/usr/local/share/eigen3/cmake:$CMAKE_PREFIX_PATH
-# fi
-
-# if [ -e /usr/local/opt/google-benchmark ]; then
-#     export benchmark_DIR=/usr/local/opt/google-benchmark
-# fi
+if [ -e /usr/local/opt/google-benchmark ]; then
+    export benchmark_DIR=/usr/local/opt/google-benchmark
+fi
 
 if whence fd > /dev/null ; then
     alias find='fd -HI .'
@@ -189,27 +150,25 @@ if whence nvim > /dev/null ; then
     alias vi='nvim'
 fi
 
-# if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
-#     emsactivate() {
-#         $HOME/.local/tools/emsdk/emsdk activate latest > /dev/null &> /dev/null
-#         source $HOME/.local/tools/emsdk/emsdk_env.sh > /dev/null &> /dev/null
-#     }
-#     emcc() {
-#         unset -f emcc
-#         emsactivate()
-#         emcc "$@"
-#     }
-# fi
+if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
+    emsactivate() {
+        $HOME/.local/tools/emsdk/emsdk activate latest > /dev/null &> /dev/null
+        source $HOME/.local/tools/emsdk/emsdk_env.sh > /dev/null &> /dev/null
+    }
+    emcc() {
+        unset -f emcc
+        emsactivate()
+        emcc "$@"
+    }
+fi
 
 # nvm
 export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.nvm"
 export NVM_AUTO_USE=true
 zgen load lukechilds/zsh-nvm
-# nvm_activate() {
-#     [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-#     [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-# }
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 if whence dbus-launch > /dev/null ; then
     export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
@@ -234,7 +193,6 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 
 if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
-    # tmux new-session
     tmux attach || tmux
 fi
 
