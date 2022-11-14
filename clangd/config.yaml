@@ -1,95 +1,96 @@
-If:
-  PathMatch:
-    - .*\.cpp
-    - .*\.cc
-    - .*\.hpp
-    - .*\.h # C のヘッダーと被る
-
-CompileFlags:
-  Add:
-    - -Wall
-    - -Wextra
-    - -Wno-unknown-warning-option
-    - -isystem/Users/fujimotogen/.local/include
-    - -isystem/usr/local/include
-    - -isystem/usr/local/opt/llvm/bin/../include/c++/v1
-    - -isystem/usr/local/Cellar/llvm/14.0.6_1/lib/clang/14.0.6/include
-    - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/usr/include
-    - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/System/Library/Frameworks
-  CompilationDatabase: ./build/compile_commands.json
-
-Diagnostics:
-  UnusedIncludes: Strict
-  ClangTidy:
-    Add:
-      - modernize*
-      - bugprone*
-      - google*
-      - performance*
-      - readability*
-      - cppcoreguidelines*
-    Remove:
-      - modernize-use-trailing-return-type
-      - bugprone-easily-swappable-parameters
-      - google-explicit-constructor
-      - readability-magic-numbers
-      - readability-uppercase-literal-suffix
-      - readability-identifier-length
-      - readability-identifier-naming
-      - readability-implicit-bool-conversion
-      - readability-isolate-declaration
-      - cppcoreguidelines-avoid-magic-numbers
-      - cppcoreguidelines-avoid-non-const-global-variables
-      - cppcoreguidelines-init-variables
-      - cppcoreguidelines-owning-memory
-
-InlayHints:
-  Enabled: Yes
-  ParameterNames: Yes
-  DeducedTypes: Yes
-
-Hover:
-  ShowAKA: Yes
-
----
-If:
-  PathMatch:
-    - .*\.c
-    # - .*\.h # C のヘッダーと被る
-
-CompileFlags:
-  Add:
-    - -Wall
-    - -Wextra
-    - -Wno-unknown-warning-option
-
-Diagnostics:
-  UnusedIncludes: Strict
-  ClangTidy:
-    Add:
-      - modernize*
-      - bugprone*
-      - google*
-      - performance*
-      - readability*
-      - cppcoreguidelines*
-    Remove:
-      - modernize-use-trailing-return-type
-      - bugprone-easily-swappable-parameters
-      - readability-magic-numbers
-      - readability-uppercase-literal-suffix
-      - readability-identifier-length
-      - readability-identifier-naming
-      - readability-implicit-bool-conversion
-      - readability-isolate-declaration
-      - cppcoreguidelines-avoid-magic-numbers
-      - cppcoreguidelines-avoid-non-const-global-variables
-      - cppcoreguidelines-init-variables
-
-InlayHints:
-  Enabled: Yes
-  ParameterNames: Yes
-  DeducedTypes: Yes
-
-Hover:
-  ShowAKA: Yes
+# If:
+#   PathMatch:
+#     - .*\.cpp
+#     - .*\.cc
+#     - .*\.hpp
+#     - .*\.h # C のヘッダーと被る
+#
+# CompileFlags:
+#   Add:
+#     - -Wall
+#     - -Wextra
+#     - -Wno-unknown-warning-option
+#     - -isystem/Users/fujimotogen/.local/include
+#     - -isystem/usr/local/include
+#     - -isystem/usr/local/opt/llvm/bin/../include/c++/v1
+#     - -isystem/usr/local/Cellar/llvm/14.0.6_1/lib/clang/14.0.6/include
+#     - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/usr/include
+#     - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/System/Library/Frameworks
+#   CompilationDatabase: ./build/compile_commands.json
+#
+# Diagnostics:
+#   UnusedIncludes: Strict
+#   ClangTidy:
+#     Add:
+#       - modernize*
+#       - bugprone*
+#       - google*
+#       - performance*
+#       - readability*
+#       - cppcoreguidelines*
+#     Remove:
+#       - modernize-use-trailing-return-type
+#       - bugprone-easily-swappable-parameters
+#       - google-explicit-constructor
+#       - readability-magic-numbers
+#       - readability-uppercase-literal-suffix
+#       - readability-identifier-length
+#       - readability-identifier-naming
+#       - readability-implicit-bool-conversion
+#       - readability-isolate-declaration
+#       - cppcoreguidelines-avoid-magic-numbers
+#       - cppcoreguidelines-avoid-non-const-global-variables
+#       - cppcoreguidelines-init-variables
+#       - cppcoreguidelines-owning-memory
+#       - cppcoreguidelines-pro-type-reinterpret-cast
+#       - cppcoreguidelines-pro-bounds-pointer-arithmetic
+# InlayHints:
+#   Enabled: Yes
+#   ParameterNames: Yes
+#   DeducedTypes: Yes
+#
+# Hover:
+#   ShowAKA: Yes
+#
+# ---
+# If:
+#   PathMatch:
+#     - .*\.c
+#     # - .*\.h # C のヘッダーと被る
+#
+# CompileFlags:
+#   Add:
+#     - -Wall
+#     - -Wextra
+#     - -Wno-unknown-warning-option
+#
+# Diagnostics:
+#   UnusedIncludes: Strict
+#   ClangTidy:
+#     Add:
+#       - modernize*
+#       - bugprone*
+#       - google*
+#       - performance*
+#       - readability*
+#       - cppcoreguidelines*
+#     Remove:
+#       - modernize-use-trailing-return-type
+#       - bugprone-easily-swappable-parameters
+#       - readability-magic-numbers
+#       - readability-uppercase-literal-suffix
+#       - readability-identifier-length
+#       - readability-identifier-naming
+#       - readability-implicit-bool-conversion
+#       - readability-isolate-declaration
+#       - cppcoreguidelines-avoid-magic-numbers
+#       - cppcoreguidelines-avoid-non-const-global-variables
+#       - cppcoreguidelines-init-variables
+#
+# InlayHints:
+#   Enabled: Yes
+#   ParameterNames: Yes
+#   DeducedTypes: Yes
+#
+# Hover:
+#   ShowAKA: Yes

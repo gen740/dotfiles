@@ -23,27 +23,34 @@ return {
   }),
   default_cursor_style = 'SteadyBlock',
   colors = {
+    -- background = 'gray',
     cursor_fg = 'black',
     cursor_bg = 'gray',
     compose_cursor = 'gray',
   },
   font_size = 18.0,
-  -- background = {
-  --   {
-  --     source = {
-  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/Pixiv/91012382_p0.jpg',
-  --       File = '/Users/fujimotogen/home/Shelf/WallPaper/out/103.jpeg',
-  --     },
-  --     width = 'Cover',
-  --     height = 'Cover',
-  --     repeat_x = 'NoRepeat',
-  --     repeat_y = 'NoRepeat',
-  --     hsb = { brightness = 0.030 },
-  --     attachment = 'Fixed',
-  --     horizontal_align = 'Center',
-  --     vertical_align = 'Middle',
-  --   },
-  -- },
+  background = {
+    {
+      source = {
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/181.jpeg',
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/210.jpeg',
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/212.jpeg',
+        File = '/Users/fujimotogen/home/Shelf/WallPaper/out/231.jpeg',
+      },
+      width = 'Cover',
+      height = 'Cover',
+      repeat_x = 'NoRepeat',
+      repeat_y = 'NoRepeat',
+      hsb = {
+        brightness = 0.010,
+        hue = 1.0,
+        saturation = 0.6,
+      },
+      attachment = 'Fixed',
+      horizontal_align = 'Center',
+      vertical_align = 'Middle',
+    },
+  },
   window_decorations = 'RESIZE', -- "NONE"
   tab_bar_at_bottom = true,
   -- hide_tab_bar_if_only_one_tab = true,
@@ -54,13 +61,13 @@ return {
   set_environment_variables = {
     TERM = 'wezterm',
   },
-  keys = {
-    {
-      key = '¥',
-      mods = '',
-      action = wezterm.action.SendString('\\'),
-    },
-  },
+  -- keys = {
+  --   {
+  --     key = '¥',
+  --     mods = '',
+  --     action = wezterm.action.SendString('\\'),
+  --   },
+  -- },
   hyperlink_rules = {},
   window_padding = {
     left = 24,
