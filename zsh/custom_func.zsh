@@ -52,8 +52,7 @@ h() {
     dirname=`fd -c never . ~/Home/ -aHI --type d --exclude .git --exclude Labo/Qt --exclude build --exclude _build \
         --exclude .build --exclude mbed-os --exclude .cache --exclude node_modules \
         --exclude cmake_build --exclude bin --exclude keyboards --exclude tests --exclude boost-for-raspi \
-        --exclude typings --exclude external --exclude .deps \
-        --exclude python3.8 | fzf-tmux`
+        --exclude typings --exclude external --exclude .deps | fzf-tmux`
     if [[ $dirname == ""  ]]; then
     else
         pushd $dirname > /dev/null

@@ -44,7 +44,7 @@ stty stop undef # c-s でフリーズしないようにする
 bindkey -e
 
 export WORDCHARS='[]~!$%'
-export REPORTTIME=10
+export REPORTTIME=30
 
 export BAT_THEME="gruvbox-dark"
 export EDITOR='nvim'
@@ -67,7 +67,7 @@ export PAGER=less
 export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
-  
+
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -105,7 +105,8 @@ if [ -e $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
-if whence pyenv > /dev/null ; then
+# if whence pyenv > /dev/null ; then
+if [ -e $HOME/.pyenv ]; then
     if [[ $OSTYPE == 'darwin' ]]; then
         export PYTHON_CONFIGURE_OPTS="--enable-framework"
     else
@@ -135,6 +136,10 @@ if [ -e /usr/local/opt/google-benchmark ]; then
     export benchmark_DIR=/usr/local/opt/google-benchmark
 fi
 
+
+if [ -e $HOME/vcpkg ]; then
+  export VCPKG_ROOT="$HOME/vcpkg"  
+fi
 if whence fd > /dev/null ; then
     alias find='fd -HI .'
 fi
@@ -170,13 +175,13 @@ zgen load lukechilds/zsh-nvm
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-if whence dbus-launch > /dev/null ; then
-    export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
-    if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
-        mkdir $(dirname $MY_SESSION_BUS_SOCKET)
-    fi
-    eval `dbus-launch --sh-syntax`
-fi
+# if whence dbus-launch > /dev/null ; then
+#     export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
+#     if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
+#         mkdir $(dirname $MY_SESSION_BUS_SOCKET)
+#     fi
+#     eval `dbus-launch --sh-syntax`
+# fi
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
@@ -195,7 +200,6 @@ typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
     tmux attach || tmux
 fi
-
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
