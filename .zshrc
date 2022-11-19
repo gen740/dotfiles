@@ -30,11 +30,11 @@ compinit
 # │ {{{                        « Options »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-setopt HIST_IGNORE_DUPS # Duplicated commands is ignored
+setopt HIST_IGNORE_DUPS  # Duplicated commands is ignored
 setopt HIST_IGNORE_SPACE # Command which start with whitespace is ignored
-setopt EXTENDED_HISTORY # Record timestamp
-setopt SHARE_HISTORY # Share History among ttys
-setopt AUTO_LIST
+setopt EXTENDED_HISTORY  # Record timestamp
+setopt AUTO_LIST         # Automatically list choices on an ambiguous completion.
+# setopt SHARE_HISTORY     # Share History among ttys
 
 LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
@@ -77,33 +77,39 @@ export OMP_NUM_THREADS=16
 # │ {{{                    « PATH and Alias »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-if [ -e ~/.zshrc_local ]; then
-    source ~/.zshrc_local
-fi
+[ -e ~/.zshrc_local ] && source ~/.zshrc_local
+[ -e ~/.zshrc ] && source ~/.zshrc
 
-if [ -e ~/.zshrc ]; then
-    source ~/.zshrc
-fi
+whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
+whence go > /dev/null     && export PATH="$HOME/go/bin/:$PATH"
 
-if whence deno > /dev/null ; then
-    export PATH="$HOME/.deno/bin:$PATH"
-fi
+[ -e /usr/local/go ]    && export PATH=$PATH:/usr/local/go/bin
+[ -e /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
+[ -e $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 
-if whence go > /dev/null ; then
-    export PATH="$HOME/go/bin/:$PATH"
-fi
+[ -e $HOME/.cargo/env ] && source $HOME/.cargo/env
+# [ -e /usr/local/opt/llvm/bin ] && export PATH="/usr/local/opt/llvm/bin:$PATH"
 
-if [ -e /usr/local/go ]; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
 
-if [ -e $HOME/.local/bin ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
+[ -e /usr/local/opt/google-benchmark ] && export benchmark_DIR=/usr/local/opt/google-benchmark
+[ -e $HOME/vcpkg ] && export VCPKG_ROOT="$HOME/vcpkg"  
 
-if [ -e $HOME/.cargo/env ]; then
-    source $HOME/.cargo/env
-fi
+## Aliases
+whence fdfind > /dev/null && alias fd=fdfind
+whence fd > /dev/null     && alias find='fd -HI .'
+
+whence lsd > /dev/null && {
+    alias la='lsd -A'
+    alias ll='lsd -Al'
+    alias ls='lsd'
+}
+
+whence nvim > /dev/null && { 
+    alias v='nvim'
+    alias vi='nvim'
+}
+
+[ -e $HOME/.config/nvim ] && alias nvconf="nvim $HOME/.config/nvim/init.lua -c 'cd $HOME/.config/nvim'"
 
 # if whence pyenv > /dev/null ; then
 if [ -e $HOME/.pyenv ]; then
@@ -118,41 +124,6 @@ if [ -e $HOME/.pyenv ]; then
     zgen load davidparsson/zsh-pyenv-lazy
     # eval "$(pyenv init -)"
     # eval "$(pyenv virtualenv-init -)"
-fi
-
-if whence fdfind > /dev/null; then
-    alias fd=fdfind
-fi
-
-# if [ -e /usr/local/opt/llvm/bin ]; then
-#     export PATH="/usr/local/opt/llvm/bin:$PATH"
-# fi
-
-if [ -e /usr/local/share/eigen3/cmake ]; then
-    export CMAKE_PREFIX_PATH=/usr/local/share/eigen3/cmake:$CMAKE_PREFIX_PATH
-fi
-
-if [ -e /usr/local/opt/google-benchmark ]; then
-    export benchmark_DIR=/usr/local/opt/google-benchmark
-fi
-
-
-if [ -e $HOME/vcpkg ]; then
-  export VCPKG_ROOT="$HOME/vcpkg"  
-fi
-if whence fd > /dev/null ; then
-    alias find='fd -HI .'
-fi
-
-if whence lsd > /dev/null ; then
-    alias la='lsd -A'
-    alias ll='lsd -Al'
-    alias ls='lsd'
-fi
-
-if whence nvim > /dev/null ; then
-    alias v='nvim'
-    alias vi='nvim'
 fi
 
 if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
@@ -197,8 +168,11 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 
-if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
-    tmux attach || tmux
+
+if whence tmux > /dev/null ; then
+    if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
+        tmux attach || tmux
+    fi
 fi
 
 # }}}
