@@ -92,7 +92,7 @@ whence go > /dev/null     && export PATH="$HOME/go/bin/:$PATH"
 
 
 [ -e /usr/local/opt/google-benchmark ] && export benchmark_DIR=/usr/local/opt/google-benchmark
-[ -e $HOME/vcpkg ] && export VCPKG_ROOT="$HOME/vcpkg"  
+[ -e $HOME/vcpkg ] && export VCPKG_ROOT="$HOME/vcpkg"
 
 ## Aliases
 whence fdfind > /dev/null && alias fd=fdfind
@@ -146,13 +146,13 @@ zgen load lukechilds/zsh-nvm
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# if whence dbus-launch > /dev/null ; then
-#     export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
-#     if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
-#         mkdir $(dirname $MY_SESSION_BUS_SOCKET)
-#     fi
-#     eval `dbus-launch --sh-syntax`
-# fi
+if whence dbus-launch > /dev/null ; then
+    export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
+    if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
+        mkdir $(dirname $MY_SESSION_BUS_SOCKET)
+    fi
+    eval `dbus-launch --sh-syntax`
+fi
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
