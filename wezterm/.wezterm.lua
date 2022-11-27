@@ -28,7 +28,7 @@ return {
     cursor_bg = 'gray',
     compose_cursor = 'gray',
   },
-  font_size = 18.0,
+  font_size = 16.0,
   background = {
     {
       source = {
@@ -48,7 +48,7 @@ return {
       repeat_x = 'NoRepeat',
       repeat_y = 'NoRepeat',
       hsb = {
-        brightness = 0.008,
+        brightness = 0.012,
         hue = 1.0,
         saturation = 0.6,
       },
@@ -75,10 +75,15 @@ return {
   --   },
   -- },
   hyperlink_rules = {},
+  -- disable_default_key_bindings = true,
   window_padding = {
     left = 24,
     right = 24,
     top = 11,
     bottom = 11,
+  },
+  keys = {
+    { key = '^', mods = 'CTRL|SHIFT', action = wezterm.action({ SendString = '\u{1e}' }) },
+    { key = 'q', mods = 'CTRL', action = wezterm.action({ SendString = '\u{11}' }) },
   },
 }
