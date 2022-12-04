@@ -1,6 +1,6 @@
 stubs
 typings
 pyrightconfig.json
-Taskfile.yaml
+.python-version
 
 # vim:commentstring=#%s
