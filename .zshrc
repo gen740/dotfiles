@@ -54,6 +54,7 @@ export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存
 export HISTORY_IGNORE="ls|l|s|la|ll|cd *|cd|hcd|fcd|fvi|history|exit|popd|pushd"
 export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=ja_JP.UTF-8
+export LESSCHARSET=utf-8
 export MANWIDTH=100
 export SAVEHIST=100000 # 履歴ファイルに保存される履歴の件数
 export VISUAL='nvim'
