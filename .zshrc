@@ -62,7 +62,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
-export MANPAGER="col -b -x|nvim -R -c 'set ft=man nolist nomod noma' -"
+export MANPAGER="nvim +Man!"
 export PAGER=less
 
 export OPENBLAS_NUM_THREADS=16
@@ -78,11 +78,16 @@ export OMP_NUM_THREADS=16
 # │ {{{                    « PATH and Alias »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
+# [ -e /opt/homebrew ]    && export PATH=/opt/homebrew/bin:$PATH
+# [ -e $HOME/.local/homebrew ]    && export PATH=$HOME/.local/homebrew/bin:$PATH
+
+
 [ -e ~/.zshrc_local ] && source ~/.zshrc_local
 [ -e ~/.zshrc ] && source ~/.zshrc
 
 whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
 whence go > /dev/null     && export PATH="$HOME/go/bin/:$PATH"
+
 
 [ -e /usr/local/go ]    && export PATH=$PATH:/usr/local/go/bin
 [ -e /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
@@ -96,6 +101,8 @@ whence go > /dev/null     && export PATH="$HOME/go/bin/:$PATH"
 [ -e $HOME/vcpkg ] && export VCPKG_ROOT="$HOME/vcpkg"
 
 ## Aliases
+alias pcopy="pwd | pbcopy"
+alias tenki="curl https://wttr.in/Tokyo"
 whence fdfind > /dev/null && alias fd=fdfind
 whence fd > /dev/null     && alias find='fd -HI .'
 

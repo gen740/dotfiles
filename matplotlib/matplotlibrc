@@ -112,8 +112,8 @@
 ## ***************************************************************************
 ## See https://matplotlib.org/api/artist_api.html#module-matplotlib.lines
 ## for more information on line properties.
-#lines.linewidth: 1.5               # line width in points
-#lines.linestyle: -                 # solid line
+lines.linewidth: 1.0               # line width in points
+lines.linestyle: -                 # solid line
 #lines.color:     C0                # has no affect on plot(); see axes.prop_cycle
 #lines.marker:          None        # the default marker
 #lines.markerfacecolor: auto        # the default marker face color
@@ -368,7 +368,7 @@ font.sans-serif : TakaoPGothic, DejaVu Sans, Bitstream Vera Sans, Lucida Grande,
 ## https://matplotlib.org/api/axes_api.html#module-matplotlib.axes
 axes.facecolor:     white   # axes background color
 axes.edgecolor:     black   # axes edge color
-axes.linewidth:     0.5     # edge line width
+axes.linewidth:     0.7     # edge line width
 axes.grid:          True   # display grid or not
 axes.grid.axis:     both    # which axis the grid should apply to
 axes.grid.which:    major   # grid lines at {major, minor, both} ticks
@@ -519,8 +519,8 @@ axes.titlecolor:    auto    # color of the axes title, auto falls back to
 ## ***************************************************************************
 #grid.color:     "#b0b0b0"  # grid color
 #grid.linestyle: -          # solid
-#grid.linewidth: 0.8        # in points
-#grid.alpha:     1.0        # transparency, between 0.0 and 1.0
+grid.linewidth: 0.5        # in points
+grid.alpha:     0.8        # transparency, between 0.0 and 1.0
 
 
 ## ***************************************************************************
@@ -559,8 +559,8 @@ axes.titlecolor:    auto    # color of the axes title, auto falls back to
 #figure.titleweight: normal    # weight of the figure title
 #figure.labelsize:   large     # size of the figure label (``Figure.sup[x|y]label()``)
 #figure.labelweight: normal    # weight of the figure label
-#figure.figsize:     6.4, 4.8  # figure size in inches
-#figure.dpi:         100       # figure dots per inch
+figure.figsize:     6, 4  # figure size in inches
+figure.dpi:         200       # figure dots per inch
 #figure.facecolor:   white     # figure face color
 #figure.edgecolor:   white     # figure edge color
 #figure.frameon:     True      # enable figure frame
