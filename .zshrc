@@ -69,6 +69,8 @@ export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
 
+export PIPX_DEFAULT_PYTHON=~/.pyenv/versions/pipx/bin/python3
+
 [ -f ~/.dotfiles/zsh/custom_func.zsh ] && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ] && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -121,8 +123,9 @@ whence nvim > /dev/null && {
 
 # if whence pyenv > /dev/null ; then
 if [ -e $HOME/.pyenv ]; then
-    if [[ $OSTYPE == 'darwin' ]]; then
-        export PYTHON_CONFIGURE_OPTS="--enable-framework"
+    if [[ $OSTYPE =~ 'darwin*' ]]; then
+        # export PYTHON_CONFIGURE_OPTS="--enable-framework=~/.local/frameworks"
+        export PYTHON_CONFIGURE_OPTS="--enable-shared"
     else
         export PYTHON_CONFIGURE_OPTS="--enable-shared"
     fi
@@ -147,20 +150,23 @@ if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
 fi
 
 # nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 export NVM_LAZY_LOAD=true
-export NVM_DIR="$HOME/.nvm"
 export NVM_AUTO_USE=true
-zgen load lukechilds/zsh-nvm
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-if whence dbus-launch > /dev/null ; then
-    export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
-    if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
-        mkdir $(dirname $MY_SESSION_BUS_SOCKET)
-    fi
-    eval `dbus-launch --sh-syntax`
-fi
+export PATH=/Users/fujimotogen/.config/nvm/versions/node/v18.14.0/bin:$PATH
+
+zgen load lukechilds/zsh-nvm
+
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# if whence dbus-launch > /dev/null ; then
+#     export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
+#     if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
+#         mkdir $(dirname $MY_SESSION_BUS_SOCKET)
+#     fi
+#     eval `dbus-launch --sh-syntax`
+# fi
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
