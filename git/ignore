@@ -3,4 +3,4 @@ typings
 pyrightconfig.json
 .python-version
 
-# vim:commentstring=#%s
+# vim: ft=gitignore
