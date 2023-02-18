@@ -23,27 +23,27 @@ return {
     compose_cursor = 'gray',
   },
   font_size = 16.0,
-  -- background = {
-  --   {
-  --     source = {
-  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/7.jpeg',
-  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/8.jpeg',
-  --       File = '/Users/fujimotogen/home/Shelf/WallPaper/out/10.jpeg',
-  --     },
-  --     width = 'Cover',
-  --     height = 'Cover',
-  --     repeat_x = 'NoRepeat',
-  --     repeat_y = 'NoRepeat',
-  --     hsb = {
-  --       brightness = 0.016,
-  --       hue = 0.7,
-  --       saturation = 1.0,
-  --     },
-  --     attachment = 'Fixed',
-  --     horizontal_align = 'Center',
-  --     vertical_align = 'Middle',
-  --   },
-  -- },
+  background = {
+    {
+      source = {
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/7.jpeg',
+        -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/8.jpeg',
+        File = '/Users/fujimotogen/home/Shelf/WallPaper/out/10.jpeg',
+      },
+      width = 'Cover',
+      height = 'Cover',
+      repeat_x = 'NoRepeat',
+      repeat_y = 'NoRepeat',
+      hsb = {
+        brightness = 0.016,
+        hue = 0.7,
+        saturation = 1.0,
+      },
+      attachment = 'Fixed',
+      horizontal_align = 'Center',
+      vertical_align = 'Middle',
+    },
+  },
   window_decorations = 'RESIZE', -- "NONE"
   tab_bar_at_bottom = true,
   enable_tab_bar = false,
