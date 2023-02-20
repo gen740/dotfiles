@@ -89,17 +89,20 @@ export PIPX_DEFAULT_PYTHON=~/.pyenv/versions/pipx/bin/python3
 
 whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
 
-[ -e /usr/local/go ]    && export PATH=$PATH:/usr/local/go/bin  \
-    || [ -e $HOME/go ]  && export PATH=$PATH:$HOME/go/bin
-[ -e /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
-[ -e $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
+[ -d /usr/local/go ]    && export PATH=/usr/local/go/bin:$PATH  \
+    || [ -d $HOME/go ]  && export PATH=$HOME/go/bin:$PATH
+[ -d /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
+[ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 
-[ -e $HOME/.cargo/env ] && source $HOME/.cargo/env
-# [ -e /usr/local/opt/llvm/bin ] && export PATH="/usr/local/opt/llvm/bin:$PATH"
+[ -d $HOME/.cargo/env ] && source $HOME/.cargo/env
+# [ -d /usr/local/opt/llvm/bin ] && export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 
-[ -e /usr/local/opt/google-benchmark ] && export benchmark_DIR=/usr/local/opt/google-benchmark
-[ -e $HOME/vcpkg ] && export VCPKG_ROOT="$HOME/vcpkg"
+[ -d /usr/local/opt/google-benchmark ] && export benchmark_DIR=/usr/local/opt/google-benchmark
+[ -d $HOME/vcpkg ] && export VCPKG_ROOT="$HOME/vcpkg"
+
+[ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -d ~/.linuxbrew ] && eval "$(~/.linuxbrew/bin/brew shellenv)"
 
 ## Aliases
 alias pcopy="pwd | pbcopy"
