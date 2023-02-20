@@ -88,10 +88,9 @@ export PIPX_DEFAULT_PYTHON=~/.pyenv/versions/pipx/bin/python3
 [ -e ~/.zshrc ] && source ~/.zshrc
 
 whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
-whence go > /dev/null     && export PATH="$HOME/go/bin/:$PATH"
 
-
-[ -e /usr/local/go ]    && export PATH=$PATH:/usr/local/go/bin
+[ -e /usr/local/go ]    && export PATH=$PATH:/usr/local/go/bin  \
+    || [ -e $HOME/go ]  && export PATH=$PATH:$HOME/go/bin
 [ -e /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
 [ -e $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 
