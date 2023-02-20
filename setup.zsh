@@ -1,15 +1,18 @@
 #!/usr/bin/env zsh
-if ! whence zgen > /dev/null; then
-  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-fi
+# if ! whence zgen > /dev/null; then
+#   git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+# fi
+#
+# echo "export ZDOTDIR=${HOME}/.dotfiles" >> ~/.zshenv
 
-echo "export ZDOTDIR=${HOME}/.dotfiles" >> ~/.zshenv
 
-ln -sf `pwd`/.tmux.conf $HOME/.tmux.conf
-ln -sf `pwd`/wezterm/.wezterm.lua $HOME/.wezterm.lua
-ln -sf `pwd`/skhd $HOME/.config/skhd
-ln -sf `pwd`/yabai $HOME/.config/yabai
-ln -sf `pwd`/git $HOME/.config/git
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+
+ln -sf $SCRIPT_DIR/.tmux.conf $HOME/.tmux.conf
+ln -sf $SCRIPT_DIR/wezterm/.wezterm.lua $HOME/.wezterm.lua
+ln -sf $SCRIPT_DIR/skhd $HOME/.config/skhd
+ln -sf $SCRIPT_DIR/yabai $HOME/.config/yabai
+ln -sf $SCRIPT_DIR/git $HOME/.config/git
 
 # terminfo for wezterm
 tempfile=$(mktemp) \
