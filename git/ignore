@@ -2,5 +2,8 @@ stubs
 typings
 pyrightconfig.json
 .python-version
+Taskfile.yaml
+.dmypy.json
+worktree
 
 # vim: ft=gitignore
