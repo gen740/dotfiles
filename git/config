@@ -1,0 +1,51 @@
+[user]
+	name = gen740
+	email = gen740.f@gmail.com
+
+[http]
+	sslVerify = false
+	postBuffer = 100M
+
+[push]
+	default = simple
+	recurseSubmodules = check
+
+[core]
+	editor = nvim
+	quotepath = false
+	compression = 0
+
+[alias]
+	ada = add -A
+	ca = commit -a
+	subup = submodule update --init --recursive
+	sgl = log --graph --oneline --decorate --all --pretty='format:%C(yellow)%h %C(reset)%s %C(red)%d %C(cyan)[%an]'
+	cleanup = clean -xffd -e .python-version -e .pyrightconfig.json
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[diff]
+	tool = nvimdiff
+
+[merge]
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+	cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+
+[mergetool "nvimdiff"]
+	cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+	keepBackup = false
+
+[safe]
+	directory = /opt/homebrew
+	directory = /opt/homebrew
+
+[help]
+	autocorrect = 20
+
+; vim:ft=gitconfig noet
