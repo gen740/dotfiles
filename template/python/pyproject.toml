@@ -1,0 +1,9 @@
+[tool.pyright] # more detail -> https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+include = ["template"]
+
+exclude = ["**/node_modules", "**/__pycache__"]
+
+stubPath = "./stubs"
+
+pythonVersion = "3.9"
+pythonPlatform = "Darwin"
