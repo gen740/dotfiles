@@ -93,7 +93,8 @@ whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
     || [ -d $HOME/go ]  && export PATH=$HOME/go/bin:$PATH
 [ -d /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
 [ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
-[ -d $HOME/.cargo/env ] && source $HOME/.cargo/env
+[ -d $HOME/.cargo/env ] && source $HOME/.cargo/env \
+    || [ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
 # [ -d /usr/local/opt/llvm/bin ] && export PATH="/usr/local/opt/llvm/bin:$PATH"
 [ -d /usr/local/opt/google-benchmark ] && export benchmark_DIR=/usr/local/opt/google-benchmark
 [ -d $HOME/vcpkg ]                     && export VCPKG_ROOT="$HOME/vcpkg"
