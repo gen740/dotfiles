@@ -7,6 +7,7 @@ if ! zgen saved; then
     zgen load romkatv/powerlevel10k powerlevel10k
     zgen load zdharma-continuum/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions
+    zgen load lukechilds/zsh-nvm
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -148,25 +149,6 @@ if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
         emcc "$@"
     }
 fi
-
-# nvm
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# export NVM_LAZY_LOAD=true
-# export NVM_AUTO_USE=true
-#
-# export PATH=/Users/fujimotogen/.config/nvm/versions/node/v18.14.0/bin:$PATH
-
-# zgen load lukechilds/zsh-nvm
-
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-# if whence dbus-launch > /dev/null ; then
-#     export MY_SESSION_BUS_SOCKET=/tmp/dbus/$USER.session.usock
-#     if [ ! -d $(dirname $MY_SESSION_BUS_SOCKET) ]; then
-#         mkdir $(dirname $MY_SESSION_BUS_SOCKET)
-#     fi
-#     eval `dbus-launch --sh-syntax`
-# fi
 
 typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''

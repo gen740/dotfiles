@@ -14,6 +14,7 @@
 	editor = nvim
 	quotepath = false
 	compression = 0
+	commentChar = ";"
 
 [alias]
 	ada = add -A
@@ -43,9 +44,11 @@
 
 [safe]
 	directory = /opt/homebrew
-	directory = /opt/homebrew
 
 [help]
 	autocorrect = 20
+
+[commit]
+	verbose = true
 
 ; vim:ft=gitconfig noet
