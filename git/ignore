@@ -6,4 +6,7 @@ Taskfile.yaml
 .dmypy.json
 worktree
 
+.DS_Store
+.cache
+
 # vim: ft=gitignore

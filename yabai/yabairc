@@ -1,31 +1,41 @@
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-# yabai -m config focus_follows_mouse autofocus
-# yabai -m config auto_balance on
+yabai -m config                             \
+    window_opacity              off         \
+    active_window_opacity       1.0         \
+    normal_window_opacity       0.8         \
+    window_shadow               off         \
+    window_border               off         \
+    window_placement            first_child \
+    top_padding                 0           \
+    bottom_padding              0           \
+    left_padding                0           \
+    right_padding               0           \
+    active_window_border_color  0xffffA500  \
+    normal_window_border_color  0xff444444  \
+    focus_follows_mouse         autofocus   \
+    auto_balance                on          \
+    layout                      float
 
-yabai -m config             \
-    window_opacity      off \
-    window_shadow       off \
-    window_border_width 0   \
-    window_border       off \
+yabai -m space 1        \
+    --label main        \
+    --layout float
 
-# yabai -m config active_window_opacity 1.0
-# yabai -m config normal_window_opacity 0.96
+yabai -m space 2        \
+    --label browser     \
+    --layout bsp
 
-yabai -m space 1 --label main
-yabai -m space 2 --label browser
-yabai -m space 3 --label sms
-yabai -m space 4 --label free
-yabai -m space 5 --label todo
+yabai -m space 3        \
+    --label sms         \
+    --layout bsp
 
-yabai -m config layout bsp
-yabai -m config --space 1 layout float
-yabai -m config --space 2 layout managed
-yabai -m config --space 3 layout managed
-yabai -m config --space 4 layout float
-yabai -m config --space 5 layout managed
-# yabai -m rule --add app="Brave Browser" opacity=1.0
+yabai -m space 4        \
+    --label free        \
+    --layout float
+
+yabai -m space 5        \
+    --label todo        \
+    --layout bsp
 
 # vim:set ft=bash
-
