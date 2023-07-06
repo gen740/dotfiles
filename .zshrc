@@ -16,7 +16,7 @@ fi
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
 if [ -e $HOME/.local/zsh ]; then
-    export FPATH="$FPATH:/Users/fujimotogen/.local/zsh"
+    export FPATH="$FPATH:$HOME/.local/zsh"
 fi
 
 ## 補完で小文字でも大文字にマッチさせる
@@ -26,7 +26,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 autoload -Uz compinit
-compinit
+compinit -u
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
@@ -71,11 +71,13 @@ export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
 
-[ -f ~/.dotfiles/zsh/custom_func.zsh ]  && source ~/.dotfiles/zsh/custom_func.zsh
-[ -f ~/.dotfiles/zsh/template.zsh ]     && source ~/.dotfiles/zsh/template.zsh
-[ -f ~/.fzf.zsh ]                       && source ~/.fzf.zsh
-[ -f ~/.zshrc_local ]                   && source ~/.zshrc_local
-[ -f ~/.zshrc ]                         && source ~/.zshrc
+[ -f ~/.dotfiles/zsh/custom_func.zsh ]           && source ~/.dotfiles/zsh/custom_func.zsh
+[ -f ~/.dotfiles/zsh/template.zsh ]              && source ~/.dotfiles/zsh/template.zsh
+[ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
+[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ]           && source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.zshrc_local ]                            && source ~/.zshrc_local
+[ -f ~/.zshrc ]                                  && source ~/.zshrc
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼

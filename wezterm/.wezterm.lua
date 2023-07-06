@@ -48,7 +48,7 @@ return {
   tab_bar_at_bottom = true,
   enable_tab_bar = false,
   color_scheme = 'nightfox',
-  default_cwd = '/Users/fujimotogen/home',
+  default_cwd = '$HOME/home',
   -- set_environment_variables = {
   --   TERM = 'wezterm',
   -- },
