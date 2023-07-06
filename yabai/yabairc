@@ -14,7 +14,7 @@ yabai -m config                             \
     right_padding               0           \
     active_window_border_color  0xffffA500  \
     normal_window_border_color  0xff444444  \
-    focus_follows_mouse         autofocus   \
+    focus_follows_mouse         off   \
     auto_balance                on          \
     layout                      float
 
@@ -38,4 +38,4 @@ yabai -m space 5        \
     --label todo        \
     --layout bsp
 
-# vim:set ft=bash
+# vim:ft=bash
