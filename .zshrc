@@ -39,6 +39,38 @@ setopt EXTENDED_HISTORY  # Record timestamp
 setopt AUTO_LIST         # Automatically list choices on an ambiguous completion.
 setopt SHARE_HISTORY     # Share History among ttys
 
+
+FZF_OPTS="--border=rounded --scroll-off=3 --no-mouse --prompt=󰍉\  --pointer=  --color='pointer:blue,border:gray,label:yellow'"
+alias fzf="fzf-tmux $FZF_OPTS"
+alias fzf-tmux="fzf-tmux $FZF_OPTS"
+export FZF_CTRL_T_OPTS=$FZF_OPTS
+export FZF_CTRL_R_OPTS=$FZF_OPTS
+
+h() {
+    dirname=`fd -c never . ~/Home/ -aHI --type d \
+        --exclude .git                           \
+        --exclude build                          \
+        --exclude _build                         \
+        --exclude .build                         \
+        --exclude mbed-os                        \
+        --exclude .cache                         \
+        --exclude node_modules                   \
+        --exclude cmake_build                    \
+        --exclude bin                            \
+        --exclude keyboards                      \
+        --exclude tests                          \
+        --exclude boost-for-raspi                \
+        --exclude typings                        \
+        --exclude external                       \
+        --exclude .deps                          \
+        | fzf-tmux`
+    if [[ $dirname == ""  ]]; then
+    else
+        pushd $dirname > /dev/null
+    fi
+    unset dirname
+}
+
 stty stop undef # c-s でフリーズしないようにする
 
 bindkey -e
@@ -71,7 +103,6 @@ export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
 
-[ -f ~/.dotfiles/zsh/custom_func.zsh ]           && source ~/.dotfiles/zsh/custom_func.zsh
 [ -f ~/.dotfiles/zsh/template.zsh ]              && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
 [ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
