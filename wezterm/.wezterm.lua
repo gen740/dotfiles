@@ -23,28 +23,6 @@ return {
     compose_cursor = 'gray',
   },
   font_size = 16.0,
-  -- background = {
-  --   {
-  --     source = {
-  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/7.jpeg',
-  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/8.jpeg',
-  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/10.jpeg',
-  --       File = '/Users/gen/Documents/Illusts/Pixiv_Following/AndyCHEN_3341779/わため 最高93437389_p0.jpg',
-  --     },
-  --     width = 'Cover',
-  --     height = 'Cover',
-  --     repeat_x = 'NoRepeat',
-  --     repeat_y = 'NoRepeat',
-  --     hsb = {
-  --       brightness = 0.016,
-  --       hue = 0.7,
-  --       saturation = 1.0,
-  --     },
-  --     attachment = 'Fixed',
-  --     horizontal_align = 'Center',
-  --     vertical_align = 'Middle',
-  --   },
-  -- },
   window_decorations = 'RESIZE', -- "NONE"
   tab_bar_at_bottom = true,
   enable_tab_bar = false,
