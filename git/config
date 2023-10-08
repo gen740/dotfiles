@@ -14,14 +14,13 @@
 	editor = nvim
 	quotepath = false
 	compression = 0
-	commentChar = ";"
+	commentChar = "#"
 
 [alias]
 	ada = add -A
-	ca = commit -a
 	subup = submodule update --init --recursive
-	sgl = log --graph --oneline --decorate --all --pretty='format:%C(yellow)%h %C(reset)%s %C(red)%d %C(cyan)[%an]'
-	cleanup = clean -xffd -e .python-version -e .pyrightconfig.json
+	prettylog = log --graph --oneline --decorate --all --date=short --pretty='format:%C(bold magenta)%h%C(reset) - %C(green)%ad%C(reset)%C(auto)%d%C(reset) %C(ul brightmagenta)%s%C(reset) %C(yellow)@%an%C(reset)'
+	prettystatus = status --short --untracked-files=all
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

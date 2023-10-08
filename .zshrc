@@ -39,12 +39,11 @@ setopt EXTENDED_HISTORY  # Record timestamp
 setopt AUTO_LIST         # Automatically list choices on an ambiguous completion.
 setopt SHARE_HISTORY     # Share History among ttys
 
-
-FZF_OPTS="--border=rounded --scroll-off=3 --no-mouse --prompt=󰍉\  --pointer=  --color='pointer:blue,border:gray,label:yellow'"
-alias fzf="fzf-tmux $FZF_OPTS"
-alias fzf-tmux="fzf-tmux $FZF_OPTS"
-export FZF_CTRL_T_OPTS=$FZF_OPTS
-export FZF_CTRL_R_OPTS=$FZF_OPTS
+export FZF_DEFAULT_OPTS="--border=none --scroll-off=3 --no-mouse --prompt=󰍉\  --pointer=  --color='pointer:blue,border:gray,label:yellow'"
+# alias fzf="fzf-tmux $FZF_OPTS"
+# alias fzf-tmux="fzf-tmux $FZF_OPTS"
+# export FZF_CTRL_T_OPTS=$FZF_OPTS
+# export FZF_CTRL_R_OPTS=$FZF_OPTS
 
 h() {
     dirname=`fd -c never . ~/Home/ -aHI --type d \
@@ -148,11 +147,12 @@ whence lsd > /dev/null && {
     alias ls='lsd'
 }
 whence nvim > /dev/null && { 
+    alias nvim='[[ $NVIM ]] && echo "cannot nest neovim" || nvim'
     alias v='nvim'
     alias vi='nvim'
+    [ -e $HOME/.config/nvim ] && alias nvconf="nvim $HOME/.config/nvim/init.lua -c 'cd $HOME/.config/nvim'"
 }
 
-[ -e $HOME/.config/nvim ] && alias nvconf="nvim $HOME/.config/nvim/init.lua -c 'cd $HOME/.config/nvim'"
 
 # if whence pyenv > /dev/null ; then
 if [ -e $HOME/.pyenv ]; then

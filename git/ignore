@@ -3,8 +3,10 @@ typings
 pyrightconfig.json
 .python-version
 Taskfile.yaml
+Taskfile.yml
 .dmypy.json
 worktree
+workspace
 
 .DS_Store
 .cache

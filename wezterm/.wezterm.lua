@@ -17,7 +17,7 @@ return {
   }),
   default_cursor_style = 'SteadyBlock',
   colors = {
-    background = 'rgb(18, 20, 22)',
+    background = 'rgb(17, 20, 24)',
     cursor_fg = 'black',
     cursor_bg = 'gray',
     compose_cursor = 'gray',
@@ -28,7 +28,8 @@ return {
   --     source = {
   --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/7.jpeg',
   --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/8.jpeg',
-  --       File = '/Users/fujimotogen/home/Shelf/WallPaper/out/10.jpeg',
+  --       -- File = '/Users/fujimotogen/home/Shelf/WallPaper/out/10.jpeg',
+  --       File = '/Users/gen/Documents/Illusts/Pixiv_Following/AndyCHEN_3341779/わため 最高93437389_p0.jpg',
   --     },
   --     width = 'Cover',
   --     height = 'Cover',
@@ -49,9 +50,7 @@ return {
   enable_tab_bar = false,
   color_scheme = 'nightfox',
   default_cwd = '$HOME/home',
-  -- set_environment_variables = {
-  --   TERM = 'wezterm',
-  -- },
+  term = "wezterm",
   hyperlink_rules = {},
   window_padding = {
     left = 24,
