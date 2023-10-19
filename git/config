@@ -15,6 +15,7 @@
 	quotepath = false
 	compression = 0
 	commentChar = "#"
+	pager = delta
 
 [alias]
 	ap = add -pA
@@ -28,14 +29,23 @@
 	process = git-lfs filter-process
 	required = true
 
-[diff]
-	tool = nvimdiff
+[interactive]
+	diffFilter = delta --color-only
 
-[merge]
-	tool = nvimdiff
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	line-numbers = true
+	side-by-side = true
+
+[diff]
+	colorMoved = default
 
 [difftool "nvimdiff"]
 	cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+
+[merge]
+	conflictstyle = diff3
 
 [mergetool "nvimdiff"]
 	cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""

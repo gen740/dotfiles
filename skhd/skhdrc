@@ -4,9 +4,13 @@
 # ctrl + shift + alt - p : yabai -m window --space 4
 # ctrl + shift + alt - y : yabai -m window --space 5
 
-ctrl + shift + alt - a : yabai -m window --space 1 # quate
-ctrl + shift + alt - o : yabai -m window --space 2 # comma
-ctrl + shift + alt - e : yabai -m window --space 3 # period
+# Meh   ctrl shift alt
+# Hyper ctrl shift alt gui
+# LCAG  ctrl shift     gui
+
+ctrl + shift + alt - a : yabai -m window --space 1
+ctrl + shift + alt - o : yabai -m window --space 2
+ctrl + shift + alt - e : yabai -m window --space 3
 ctrl + shift + alt - u : yabai -m window --space 4
 ctrl + shift + alt - i : yabai -m window --space 5
 
