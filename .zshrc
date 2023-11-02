@@ -7,7 +7,6 @@ if ! zgen saved; then
     zgen load romkatv/powerlevel10k powerlevel10k
     zgen load zdharma-continuum/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions
-    zgen load lukechilds/zsh-nvm
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -40,10 +39,6 @@ setopt AUTO_LIST         # Automatically list choices on an ambiguous completion
 setopt SHARE_HISTORY     # Share History among ttys
 
 export FZF_DEFAULT_OPTS="--border=none --scroll-off=3 --no-mouse --prompt=󰍉\  --pointer=  --color='pointer:blue,border:gray,label:yellow'"
-# alias fzf="fzf-tmux $FZF_OPTS"
-# alias fzf-tmux="fzf-tmux $FZF_OPTS"
-# export FZF_CTRL_T_OPTS=$FZF_OPTS
-# export FZF_CTRL_R_OPTS=$FZF_OPTS
 
 h() {
     dirname=`fd -c never . ~/Home/ -aHI --type d \
@@ -101,6 +96,7 @@ export PAGER=less
 export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
+# infocmp wezterm &> /dev/null && export TERM=wezterm
 
 [ -f ~/.dotfiles/zsh/template.zsh ]              && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
@@ -114,9 +110,6 @@ export OMP_NUM_THREADS=16
 # │ {{{                    « PATH and Alias »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-# [ -e /opt/homebrew ]    && export PATH=/opt/homebrew/bin:$PATH
-# [ -e $HOME/.local/homebrew ]    && export PATH=$HOME/.local/homebrew/bin:$PATH
-
 # Homebrew PATH
 export PATH="/usr/local/sbin:$PATH"
 
@@ -129,23 +122,17 @@ whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
 [ -d $HOME/.cargo/env ] && source $HOME/.cargo/env \
     || [ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
 # [ -d /usr/local/opt/llvm/bin ] && export PATH="/usr/local/opt/llvm/bin:$PATH"
-[ -d /usr/local/opt/google-benchmark ] && export benchmark_DIR=/usr/local/opt/google-benchmark
-[ -d $HOME/vcpkg ]                     && export VCPKG_ROOT="$HOME/vcpkg"
 [ -d /home/linuxbrew/.linuxbrew ]   && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ -d ~/.linuxbrew ]                 && eval "$(~/.linuxbrew/bin/brew shellenv)"
-[ -d /opt/gRPC ]                    && {
-    export PATH=/opt/gRPC/bin:$PATH
-    export CMAKE_PREFIX_PATH=/opt/gRPC/lib/cmake:$CMAKE_PREFIX_PATH
-}
 
 ## Aliases
 whence fdfind > /dev/null && alias fd=fdfind
-whence fd > /dev/null     && alias find='fd -HI .'
 whence lsd > /dev/null && {
     alias la='lsd -A'
     alias ll='lsd -Al'
     alias ls='lsd'
 }
+
 whence nvim > /dev/null && { 
     alias nvim='[[ $NVIM ]] && echo "cannot nest neovim" || nvim'
     alias v='nvim'
@@ -153,33 +140,56 @@ whence nvim > /dev/null && {
     [ -e $HOME/.config/nvim ] && alias nvconf="nvim $HOME/.config/nvim/init.lua -c 'cd $HOME/.config/nvim'"
 }
 
-
-# if whence pyenv > /dev/null ; then
-if [ -e $HOME/.pyenv ]; then
+export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
+if [ -e $PYENV_ROOT ]; then
     if [[ $OSTYPE =~ 'darwin*' ]]; then
-        # export PYTHON_CONFIGURE_OPTS="--enable-framework=~/.local/frameworks"
-        export PYTHON_CONFIGURE_OPTS="--enable-shared"
+        export PYTHON_CONFIGURE_OPTS="--enable-framework"
     else
         export PYTHON_CONFIGURE_OPTS="--enable-shared"
     fi
-    export PIPX_DEFAULT_PYTHON=~/.pyenv/versions/pipx/bin/python3
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    export PYENV_ROOT="$HOME/.pyenv"
-    ZSH_PYENV_LAZY_VIRTUALENV=true
-    zgen load davidparsson/zsh-pyenv-lazy
-    # eval "$(pyenv init -)"
-    # eval "$(pyenv virtualenv-init -)"
+    export PIPX_DEFAULT_PYTHON="$PYENV_ROOT/versions/pipx/bin/python3"
+
+    ## Lazy loading pyenv
+    _load_pyenv() {
+        unset -f _load_pyenv pyenv python python3 pip 
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    }
+    pyenv() {
+        _load_pyenv
+        pyenv $@
+    }
+    python() {
+        _load_pyenv
+        python $@
+    }
+    python3() {
+        _load_pyenv
+        python3 $@
+    }
+    pip() {
+        _load_pyenv
+        pip $@
+    }
 fi
 
-if [ -e $HOME/.local/tools/emsdk/emsdk_env.sh ]; then
-    emsactivate() {
-        $HOME/.local/tools/emsdk/emsdk activate latest > /dev/null &> /dev/null
-        source $HOME/.local/tools/emsdk/emsdk_env.sh > /dev/null &> /dev/null
+export NODENV_ROOT="$XDG_CONFIG_HOME/nodenv"
+if [ -e $NODENV_ROOT ]; then
+    _load_nodenv() {
+        unset -f _load_nodenv nodenv npm node
+        eval "$(nodenv init -)"
     }
-    emcc() {
-        unset -f emcc
-        emsactivate()
-        emcc "$@"
+    nodenv() {
+        _load_nodenv
+        nodenv $@
+    }
+    npm() {
+        _load_nodenv
+        npm $@
+    }
+    node() {
+        _load_nodenv
+        node $@
     }
 fi
 
