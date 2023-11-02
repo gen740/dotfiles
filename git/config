@@ -40,8 +40,10 @@
 
 [diff]
 	colorMoved = default
+	tool = nvimdiff
 
 [difftool "nvimdiff"]
+	prompt = true
 	cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 
 [merge]

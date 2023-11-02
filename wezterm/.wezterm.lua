@@ -22,7 +22,7 @@ return {
     cursor_bg = 'gray',
     compose_cursor = 'gray',
   },
-  font_size = 16.0,
+  font_size = 14.0,
   window_decorations = 'RESIZE', -- "NONE"
   tab_bar_at_bottom = true,
   enable_tab_bar = false,
