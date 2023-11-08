@@ -96,7 +96,6 @@ export PAGER=less
 export OPENBLAS_NUM_THREADS=16
 export GOTO_NUM_THREADS=16
 export OMP_NUM_THREADS=16
-# infocmp wezterm &> /dev/null && export TERM=wezterm
 
 [ -f ~/.dotfiles/zsh/template.zsh ]              && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
@@ -200,11 +199,8 @@ typeset -g POWERLEVEL9K_HOME_ICON=''
 typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
 typeset -g POWERLEVEL9K_FOLDER_ICON=''
 typeset -g POWERLEVEL9K_ETC_ICON=''
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='N' # ''
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V' # ''
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
-typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL="  "
+typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=" "
+typeset -g POWERLEVEL9K_STATUS_ERROR=true
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
 
 
