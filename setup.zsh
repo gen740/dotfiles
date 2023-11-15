@@ -13,6 +13,7 @@ ln -sf $SCRIPT_DIR/wezterm/.wezterm.lua $HOME/.wezterm.lua
 ln -sf $SCRIPT_DIR/skhd $HOME/.config/skhd
 ln -sf $SCRIPT_DIR/yabai $HOME/.config/yabai
 ln -sf $SCRIPT_DIR/git $HOME/.config/git
+ln -sf $SCRIPT_DIR/lazygit $HOME/.config/lazygit
 
 # terminfo for wezterm
 tempfile=$(mktemp) \
