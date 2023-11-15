@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
+gui:
+  border: "single"
+  nerdFontsVersion: "3"
+  showBottomLine: false
+keybinding:
+  universal:
+    quit-alt1: <disabled>

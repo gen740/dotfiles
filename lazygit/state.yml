@@ -6,5 +6,6 @@ startuppopupversion: 5
 customcommandshistory:
 - "66"
 - qa!
-hidecommandlog: false
+hidecommandlog: true
 ignorewhitespaceindiffview: false
+diffcontextsize: 3
