@@ -17,7 +17,7 @@ return {
   }),
   default_cursor_style = 'SteadyBlock',
   colors = {
-    background = 'rgb(17, 20, 24)',
+    background = 'rgb(14, 16, 20)',
     cursor_fg = 'black',
     cursor_bg = 'gray',
     compose_cursor = 'gray',

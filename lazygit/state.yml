@@ -1,0 +1,10 @@
+lastupdatecheck: 0
+recentrepos:
+- /Users/gen/.dotfiles
+- /Users/gen/.config/nvim
+startuppopupversion: 5
+customcommandshistory:
+- "66"
+- qa!
+hidecommandlog: false
+ignorewhitespaceindiffview: false

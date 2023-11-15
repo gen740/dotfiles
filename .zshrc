@@ -93,9 +93,9 @@ export HOMEBREW_NO_ENV_HINT=1
 export MANPAGER="nvim +Man!"
 export PAGER=less
 
-export OPENBLAS_NUM_THREADS=16
-export GOTO_NUM_THREADS=16
-export OMP_NUM_THREADS=16
+export OPENBLAS_NUM_THREADS=8
+export GOTO_NUM_THREADS=8
+export OMP_NUM_THREADS=8
 
 [ -f ~/.dotfiles/zsh/template.zsh ]              && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
@@ -150,7 +150,7 @@ if [ -e $PYENV_ROOT ]; then
 
     ## Lazy loading pyenv
     _load_pyenv() {
-        unset -f _load_pyenv pyenv python python3 pip 
+        unset -f _load_pyenv pyenv python python3 ipython ipython3 pip 
         eval "$(pyenv init -)"
         eval "$(pyenv virtualenv-init -)"
     }
@@ -161,6 +161,14 @@ if [ -e $PYENV_ROOT ]; then
     python() {
         _load_pyenv
         python $@
+    }
+    ipython() {
+        _load_pyenv
+        ipython $@
+    }
+    ipython3() {
+        _load_pyenv
+        ipython3 $@
     }
     python3() {
         _load_pyenv
