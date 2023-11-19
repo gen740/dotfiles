@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  cmake:
+    cmds:
+      - cmake -B build -S . -GNinja
+    env:
+      CC: /usr/local/opt/llvm/bin/clang
+      CXX: /usr/local/opt/llvm/bin/clang++
+  compile:
+    cmds:
+      - cmake --build build
+  execute:
+    cmds:
+      - ./build/main
+    silent: true
