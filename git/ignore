@@ -3,8 +3,6 @@ typings
 pyrightconfig.json
 .python-version
 .node-version
-Taskfile.yaml
-Taskfile.yml
 .dmypy.json
 worktree
 workspace
