@@ -8,6 +8,7 @@ namespace fs = std::filesystem;
 auto main(int argc, char *argv[]) -> int {
   if (argc < 2) {
     std::cerr << "Please pass the argument\n";
+    return 1;
   }
   if (std::strcmp(argv[1], "git_branch") == 0) {
     return GitBranchZshStatus();
