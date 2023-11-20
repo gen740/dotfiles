@@ -10,42 +10,10 @@ auto main(int argc, char *argv[]) -> int {
     std::cerr << "Please pass the argument\n";
   }
   if (std::strcmp(argv[1], "git_branch") == 0) {
-    auto git_branch = GitBranch();
-    switch (git_branch.kind) {
-    case GitHeadKind::Branch:
-      std::print(" ({})", git_branch.name);
-      return 0;
-    case GitHeadKind::Tag:
-      std::print(" (#{})", git_branch.name);
-      return 0;
-    case GitHeadKind::Hash:
-      std::print(" (@{})", git_branch.name);
-      return 0;
-    case GitHeadKind::None:
-      return 0;
-    case GitHeadKind::Invalid:
-      std::print(" invalid");
-      return 0;
-    }
+    return GitBranchZshStatus();
   }
   if (std::strcmp(argv[1], "git_branch_nvim") == 0) {
-    auto git_branch = GitBranch();
-    switch (git_branch.kind) {
-    case GitHeadKind::Branch:
-      std::print(" {}", git_branch.name);
-      return 0;
-    case GitHeadKind::Tag:
-      std::print("#{}", git_branch.name);
-      return 0;
-    case GitHeadKind::Hash:
-      std::print("@{}", git_branch.name);
-      return 0;
-    case GitHeadKind::None:
-      return 0;
-    case GitHeadKind::Invalid:
-      std::print("invalid");
-      return 0;
-    }
+    return GitBranchNvimStatus();
   }
   if (std::strcmp(argv[1], "pyenv_version") == 0) {
     auto pyenv_version = PyenvVersion();
