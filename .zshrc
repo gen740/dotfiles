@@ -3,11 +3,8 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 setopt PROMPT_SUBST
 
-export PROMPT=' %F{blue}%~%f%B$(~/.dotfiles/zsh_tools/build/zsh_status git_branch)%b '
-# PROMPT=$'\e[31mYourPromptText\e[0m'
-# export RPROMPT='$(echo "\033[38;2;128;128;128m")$(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
-export RPROMPT=' %F{#999999}$(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
-# echo -e "**\033[38;2;255;0;0m**red text\033[0;00m"
+export PROMPT=' %F{blue}%~%f%B$(zsh_status git_branch)%b '
+export RPROMPT=' %F{#999999}$(zsh_status pyenv_version)'
 
 if [ -e $HOME/.local/zsh ]; then
     export FPATH="$FPATH:$HOME/.local/zsh"
