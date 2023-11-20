@@ -75,3 +75,43 @@ export auto GitBranch() -> GitHead {
   // Invalid .git
   return {.name = "", .kind = GitHeadKind::Invalid};
 }
+
+export auto GitBranchZshStatus() -> int {
+  auto git_branch = GitBranch();
+  switch (git_branch.kind) {
+  case GitHeadKind::Branch:
+    std::print(" ({})", git_branch.name);
+    return 0;
+  case GitHeadKind::Tag:
+    std::print(" (#{})", git_branch.name);
+    return 0;
+  case GitHeadKind::Hash:
+    std::print(" (@{})", git_branch.name);
+    return 0;
+  case GitHeadKind::None:
+    return 0;
+  case GitHeadKind::Invalid:
+    std::print(" invalid");
+    return 0;
+  }
+}
+
+export auto GitBranchNvimStatus() -> int {
+  auto git_branch = GitBranch();
+  switch (git_branch.kind) {
+  case GitHeadKind::Branch:
+    std::print(" {}", git_branch.name);
+    return 0;
+  case GitHeadKind::Tag:
+    std::print("#{}", git_branch.name);
+    return 0;
+  case GitHeadKind::Hash:
+    std::print("@{}", git_branch.name);
+    return 0;
+  case GitHeadKind::None:
+    return 0;
+  case GitHeadKind::Invalid:
+    std::print("invalid");
+    return 0;
+  }
+}
