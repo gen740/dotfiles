@@ -23,6 +23,9 @@ auto main(int argc, char *argv[]) -> int {
       return 0;
     case GitHeadKind::None:
       return 0;
+    case GitHeadKind::Invalid:
+      std::print(" invalid");
+      return 0;
     }
   }
   if (std::strcmp(argv[1], "git_branch_nvim") == 0) {
@@ -38,6 +41,9 @@ auto main(int argc, char *argv[]) -> int {
       std::print("@{}", git_branch.name);
       return 0;
     case GitHeadKind::None:
+      return 0;
+    case GitHeadKind::Invalid:
+      std::print("invalid");
       return 0;
     }
   }

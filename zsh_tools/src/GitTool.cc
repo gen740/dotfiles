@@ -7,62 +7,71 @@ export module GitTool;
 
 namespace fs = std::filesystem;
 
-export enum class GitHeadKind : int { Tag, Branch, Hash, None };
+export enum class GitHeadKind : int { Tag, Branch, Hash, None, Invalid };
 
 export struct GitHead {
   std::string name;
   GitHeadKind kind;
 };
 
-export auto GitBranch() -> GitHead {
+/*!
+ * Determine GihHead Type according to content of HEAD file
+ *
+ *   - Branch
+ *   - Tag
+ *   - Hash
+ *
+ * @return GitHead
+ */
+auto DetermineGitHead(const fs::path &git_dir, const std::string &content)
+    -> GitHead {
   const std::regex head_regex("refs/heads/(.+)");
-  const std::regex git_dir_regex("gitdir: (.+)");
   std::smatch matches;
 
-  auto root = FindRoot(".git");
-  if (!root.has_value()) {
+  if (std::regex_search(content, matches, head_regex)) {
+    return {.name = std::format("{}", matches[1].str()),
+            .kind = GitHeadKind::Branch};
+  }
+  for (const auto &tag : fs::directory_iterator(git_dir / "refs" / "tags")) {
+    if (GetFileOneLineContent(tag) == content) {
+      return {.name = std::format("{}", tag.path().filename().string()),
+              .kind = GitHeadKind::Tag};
+    }
+  }
+  return {.name = std::format("{}", content.substr(0, 8)),
+          .kind = GitHeadKind::Hash};
+}
+
+/*!
+ *  Get the git branch
+ *
+ *  @return GitHead
+ */
+export auto GitBranch() -> GitHead {
+  const auto dot_git = FindRoot(".git");
+
+  // Not inside the git repository
+  if (!dot_git.has_value()) {
     return {.name = "", .kind = GitHeadKind::None};
   }
 
-  if (fs::is_directory(root.value())) {
-    auto content = GetFileOneLineContent(root.value() / "HEAD");
-    if (std::regex_search(content, matches, head_regex)) {
-      return {.name = std::format("{}", matches[1].str()),
-              .kind = GitHeadKind::Branch};
-    }
-    for (const auto &tag :
-         fs::directory_iterator(root.value() / "refs" / "tags")) {
-      if (GetFileOneLineContent(tag) == content) {
-        return {.name = std::format("{}", tag.path().filename().string()),
-                .kind = GitHeadKind::Tag};
-      }
-    }
-
-    return {.name = std::format("{}", content.substr(0, 8)),
-            .kind = GitHeadKind::Hash};
+  // if .git is directory
+  if (fs::is_directory(dot_git.value())) {
+    auto content = GetFileOneLineContent(dot_git.value() / "HEAD");
+    return DetermineGitHead(dot_git.value(), content);
   }
 
-  auto content = GetFileOneLineContent(root.value());
+  auto content = GetFileOneLineContent(dot_git.value());
+  const std::regex git_dir_regex("gitdir: (.+)");
+  std::smatch matches;
+
+  // if .git is `gitdir: path/to/dir`
   if (std::regex_search(content, matches, git_dir_regex)) {
-    auto root_dir = root.value().parent_path() / fs::path(matches[1]);
-    auto ref_file = root_dir / "HEAD";
-    auto content = GetFileOneLineContent(ref_file);
-
-    if (std::regex_search(content, matches, head_regex)) {
-      return {.name = std::format("{}", matches[1].str()),
-              .kind = GitHeadKind::Branch};
-    }
-
-    for (const auto &tag : fs::directory_iterator(root_dir / "refs" / "tags")) {
-      if (GetFileOneLineContent(tag) == content) {
-        return {.name = std::format("#{}", tag.path().filename().string()),
-                .kind = GitHeadKind::Tag};
-      }
-    }
-
-    return {.name = std::format("{}", content.substr(0, 8)),
-            .kind = GitHeadKind::Hash};
+    const auto git_dir = dot_git.value().parent_path() / fs::path(matches[1]);
+    auto content = GetFileOneLineContent(git_dir / "HEAD");
+    return DetermineGitHead(git_dir, content);
   }
 
-  return {.name = "", .kind = GitHeadKind::None};
+  // Invalid .git
+  return {.name = "", .kind = GitHeadKind::Invalid};
 }
