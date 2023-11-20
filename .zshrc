@@ -3,8 +3,11 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 setopt PROMPT_SUBST
 
-export PROMPT=' %F{blue}%~%f$(~/.dotfiles/zsh_tools/build/zsh_status git_branch) '
-export RPROMPT=' $(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
+export PROMPT=' %F{blue}%~%f%B$(~/.dotfiles/zsh_tools/build/zsh_status git_branch)%b '
+# PROMPT=$'\e[31mYourPromptText\e[0m'
+# export RPROMPT='$(echo "\033[38;2;128;128;128m")$(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
+export RPROMPT=' %F{#999999}$(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
+# echo -e "**\033[38;2;255;0;0m**red text\033[0;00m"
 
 if [ -e $HOME/.local/zsh ]; then
     export FPATH="$FPATH:$HOME/.local/zsh"
@@ -130,6 +133,7 @@ whence nvim > /dev/null && {
 }
 
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if [ -e $PYENV_ROOT ]; then
     if [[ $OSTYPE =~ 'darwin*' ]]; then
         export PYTHON_CONFIGURE_OPTS="--enable-framework"
