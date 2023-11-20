@@ -33,7 +33,7 @@ setopt SHARE_HISTORY     # Share History among ttys
 export FZF_DEFAULT_OPTS="--border=none --scroll-off=3 --no-mouse --prompt=󰍉\  --pointer=  --color='pointer:blue,border:gray,label:yellow'"
 
 h() {
-    dirname=`fd -c never . ~/Home/ -aHI --type d \
+    dirname=`fd -c never . ~/home/ -aHI --type d \
         --exclude .git                           \
         --exclude build                          \
         --exclude _build                         \
@@ -89,7 +89,6 @@ export OPENBLAS_NUM_THREADS=8
 export GOTO_NUM_THREADS=8
 export OMP_NUM_THREADS=8
 
-[ -f ~/.dotfiles/zsh/template.zsh ]              && source ~/.dotfiles/zsh/template.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
 [ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ]           && source /usr/share/fzf/key-bindings.zsh
@@ -112,7 +111,6 @@ whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
 [ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 [ -d $HOME/.cargo/env ] && source $HOME/.cargo/env \
     || [ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
-# [ -d /usr/local/opt/llvm/bin ] && export PATH="/usr/local/opt/llvm/bin:$PATH"
 [ -d /home/linuxbrew/.linuxbrew ]   && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ -d ~/.linuxbrew ]                 && eval "$(~/.linuxbrew/bin/brew shellenv)"
 
