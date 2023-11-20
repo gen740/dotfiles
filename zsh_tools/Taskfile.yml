@@ -8,7 +8,7 @@ vars:
 tasks:
   cmake:
     cmds:
-      - cmake -B build -S . -GNinja
+      - cmake -B build -S . -GNinja -DCMAKE_INSTALL_PREFIX=$HOME/.local
     env:
       CC: /usr/local/opt/llvm/bin/clang
       CXX: /usr/local/opt/llvm/bin/clang++
