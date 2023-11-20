@@ -30,3 +30,4 @@ target_sources(get_state PUBLIC FILE_SET CXX_MODULES FILES ${LIBRARY_SOURCES}
 
 add_executable(zsh_status main.cc)
 target_link_libraries(zsh_status get_state)
+install(TARGETS zsh_status DESTINATION bin)

@@ -20,6 +20,7 @@ module;
 #include <shared_mutex>
 #include <streambuf>
 #include <thread>
+#include <utility>
 #include <vector>
 
 export module std_module;
@@ -211,9 +212,9 @@ using ::std::filesystem::current_path;
 using ::std::filesystem::directory_iterator;
 using ::std::filesystem::end;
 using ::std::filesystem::is_directory;
+using ::std::filesystem::is_symlink;
 using ::std::filesystem::path;
 using ::std::filesystem::read_symlink;
-using ::std::filesystem::is_symlink;
 
 } // namespace filesystem
 
@@ -257,5 +258,9 @@ using ::std::optional;
 using ::std::regex;
 using ::std::regex_search;
 using ::std::smatch;
+
+// utility
+using ::std::make_pair;
+using ::std::pair;
 
 } // namespace std

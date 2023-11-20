@@ -7,29 +7,39 @@ export module GitTool;
 
 namespace fs = std::filesystem;
 
-export auto GitBranch() -> std::optional<std::string> {
+export enum class GitHeadKind : int { Tag, Branch, Hash, None };
+
+export struct GitHead {
+  std::string name;
+  GitHeadKind kind;
+};
+
+export auto GitBranch() -> GitHead {
   const std::regex head_regex("refs/heads/(.+)");
   const std::regex git_dir_regex("gitdir: (.+)");
   std::smatch matches;
 
   auto root = FindRoot(".git");
   if (!root.has_value()) {
-    return std::nullopt;
+    return {.name = "", .kind = GitHeadKind::None};
   }
 
   if (fs::is_directory(root.value())) {
     auto content = GetFileOneLineContent(root.value() / "HEAD");
     if (std::regex_search(content, matches, head_regex)) {
-      return std::format("{}", matches[1].str());
+      return {.name = std::format("{}", matches[1].str()),
+              .kind = GitHeadKind::Branch};
     }
     for (const auto &tag :
          fs::directory_iterator(root.value() / "refs" / "tags")) {
       if (GetFileOneLineContent(tag) == content) {
-        return std::format("#{}", tag.path().filename().string());
+        return {.name = std::format("{}", tag.path().filename().string()),
+                .kind = GitHeadKind::Tag};
       }
     }
 
-    return std::format("@{}", content.substr(0, 8));
+    return {.name = std::format("{}", content.substr(0, 8)),
+            .kind = GitHeadKind::Hash};
   }
 
   auto content = GetFileOneLineContent(root.value());
@@ -39,17 +49,20 @@ export auto GitBranch() -> std::optional<std::string> {
     auto content = GetFileOneLineContent(ref_file);
 
     if (std::regex_search(content, matches, head_regex)) {
-      return std::format("{}", matches[1].str());
+      return {.name = std::format("{}", matches[1].str()),
+              .kind = GitHeadKind::Branch};
     }
 
     for (const auto &tag : fs::directory_iterator(root_dir / "refs" / "tags")) {
       if (GetFileOneLineContent(tag) == content) {
-        return std::format("#{}", tag.path().filename().string());
+        return {.name = std::format("#{}", tag.path().filename().string()),
+                .kind = GitHeadKind::Tag};
       }
     }
 
-    return std::format("@{}", content.substr(0, 8));
+    return {.name = std::format("{}", content.substr(0, 8)),
+            .kind = GitHeadKind::Hash};
   }
 
-  return std::nullopt;
+  return {.name = "", .kind = GitHeadKind::None};
 }
