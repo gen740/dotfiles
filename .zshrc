@@ -3,14 +3,13 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 setopt PROMPT_SUBST
 
-export PROMPT=' %F{blue}%~%f%B$(zsh_status git_branch)%b '
-export RPROMPT='%F{#999999}$(zsh_status pyenv_version)%f'
+export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '
+export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f'
 
 if [ -e $HOME/.local/zsh ]; then
     export FPATH="$FPATH:$HOME/.local/zsh"
 fi
 
-## 補完で小文字でも大文字にマッチさせる
 export LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -30,7 +29,7 @@ setopt EXTENDED_HISTORY  # Record timestamp
 setopt AUTO_LIST         # Automatically list choices on an ambiguous completion.
 setopt SHARE_HISTORY     # Share History among ttys
 
-export FZF_DEFAULT_OPTS="--border=none --scroll-off=3 --no-mouse --prompt=󰍉\  --pointer=  --color='pointer:blue,border:gray,label:yellow'"
+export FZF_DEFAULT_OPTS="--border=none --height=$(($(tput line) * 2 / 5)) --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
 
 h() {
     dirname=`fd -c never . ~/home/ -aHI --type d \
@@ -49,7 +48,7 @@ h() {
         --exclude typings                        \
         --exclude external                       \
         --exclude .deps                          \
-        | fzf-tmux`
+        | fzf`
     if [[ $dirname == ""  ]]; then
     else
         pushd $dirname > /dev/null
