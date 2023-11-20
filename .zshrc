@@ -12,11 +12,6 @@ setopt PROMPT_SUBST
 export PROMPT=' %F{blue}%~%f$(~/.dotfiles/zsh_tools/build/zsh_status git_branch) '
 export RPROMPT=' $(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
-
 if [ -e $HOME/.local/zsh ]; then
     export FPATH="$FPATH:$HOME/.local/zsh"
 fi
@@ -202,18 +197,6 @@ if [ -e $NODENV_ROOT ]; then
         node $@
     }
 fi
-
-typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=37
-typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
-typeset -g POWERLEVEL9K_FOLDER_ICON=''
-typeset -g POWERLEVEL9K_HOME_ICON=''
-typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
-typeset -g POWERLEVEL9K_FOLDER_ICON=''
-typeset -g POWERLEVEL9K_ETC_ICON=''
-typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=" "
-typeset -g POWERLEVEL9K_STATUS_ERROR=true
-typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=30
-
 
 if whence tmux > /dev/null ; then
     if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
