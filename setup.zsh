@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
-if ! whence zgen > /dev/null; then
-  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-fi
-
 echo "export ZDOTDIR=${HOME}/.dotfiles" >> ~/.zshenv
-
 
 SCRIPT_DIR=$(cd $(dirname $0);pwd)
 

@@ -1,12 +1,6 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 # │ {{{                   « Zinit and Pluigns »                           │
 # ┼───────────────────────────────────────────────────────────────────────┼
-source "${HOME}/.zgen/zgen.zsh"
-
-if ! zgen saved; then
-    zgen load zsh-users/zsh-completions
-fi
-
 setopt PROMPT_SUBST
 
 export PROMPT=' %F{blue}%~%f$(~/.dotfiles/zsh_tools/build/zsh_status git_branch) '
