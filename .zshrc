@@ -4,7 +4,7 @@
 setopt PROMPT_SUBST
 
 export PROMPT=' %F{blue}%~%f%B$(zsh_status git_branch)%b '
-export RPROMPT=' %F{#999999}$(zsh_status pyenv_version)'
+export RPROMPT='%F{#999999}$(zsh_status pyenv_version)%f'
 
 if [ -e $HOME/.local/zsh ]; then
     export FPATH="$FPATH:$HOME/.local/zsh"
