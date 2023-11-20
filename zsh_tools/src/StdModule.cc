@@ -4,20 +4,25 @@ module;
 #include <algorithm>
 #include <atomic>
 #include <cmath>
+#include <cstdlib>
 #include <cstring>
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <memory>
 #include <mutex>
+#include <optional>
+#include <print>
 #include <ranges>
+#include <regex>
 #include <shared_mutex>
 #include <streambuf>
 #include <thread>
 #include <vector>
 
-export module std_modules;
+export module std_module;
 
 export namespace std {
 
@@ -121,9 +126,16 @@ using ::std::tan;
 
 // cstring
 using ::std::memset;
+using ::std::strcmp;
+using ::std::strncmp;
+
+// cstdlib
+using ::std::getenv;
 
 // string
+using ::std::getline;
 using ::std::string;
+using ::std::to_string;
 
 // thread
 namespace this_thread {
@@ -157,6 +169,13 @@ using ::std::defaultfloat;
 using ::std::fixed;
 using ::std::setprecision;
 
+// format
+using ::std::format;
+
+// print
+using ::std::print;
+using ::std::println;
+
 // memory
 using ::std::make_unique;
 using ::std::unique_ptr;
@@ -188,9 +207,13 @@ using ::std::atomic_uint8_t;
 namespace filesystem {
 
 using ::std::filesystem::begin;
+using ::std::filesystem::current_path;
 using ::std::filesystem::directory_iterator;
 using ::std::filesystem::end;
+using ::std::filesystem::is_directory;
 using ::std::filesystem::path;
+using ::std::filesystem::read_symlink;
+using ::std::filesystem::is_symlink;
 
 } // namespace filesystem
 
@@ -224,5 +247,15 @@ using ::std::end;
 using ::std::less;
 
 namespace views = ranges::views;
+
+// optional
+using ::std::nullopt;
+using ::std::nullopt_t;
+using ::std::optional;
+
+// regex
+using ::std::regex;
+using ::std::regex_search;
+using ::std::smatch;
 
 } // namespace std

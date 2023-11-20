@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(example CXX)
+project(get_state CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 23)
@@ -19,14 +19,14 @@ message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 set(CMAKE_CXX_FLAGS
     "-Wall -Wextra -Werror -Wnon-virtual-dtor -Wfloat-equal -Winline")
 
-add_library(example)
+add_library(get_state)
 
 file(GLOB LIBRARY_SOURCES ${CMAKE_CURRENT_LIST_DIR}/src/*.cc
      ${CMAKE_CURRENT_LIST_DIR}/src/**/*.cc)
 file(GLOB LIBRARY_MODULE_SOURCES ${CMAKE_CURRENT_LIST_DIR}/src/*.ccm
      ${CMAKE_CURRENT_LIST_DIR}/src/**/*.ccm)
-target_sources(example PUBLIC FILE_SET CXX_MODULES FILES ${LIBRARY_SOURCES}
-                              ${LIBRARY_MODULE_SOURCES})
+target_sources(get_state PUBLIC FILE_SET CXX_MODULES FILES ${LIBRARY_SOURCES}
+                                ${LIBRARY_MODULE_SOURCES})
 
-add_executable(main main.cc)
-target_link_libraries(main example)
+add_executable(zsh_status main.cc)
+target_link_libraries(zsh_status get_state)
