@@ -4,10 +4,13 @@
 source "${HOME}/.zgen/zgen.zsh"
 
 if ! zgen saved; then
-    zgen load romkatv/powerlevel10k powerlevel10k
-    zgen load zdharma-continuum/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions
 fi
+
+setopt PROMPT_SUBST
+
+export PROMPT=' %F{blue}%~%f$(~/.dotfiles/zsh_tools/build/zsh_status git_branch) '
+export RPROMPT=' $(~/.dotfiles/zsh_tools/build/zsh_status pyenv_version)'
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
