@@ -129,6 +129,8 @@ whence nvim > /dev/null && {
     [ -e $HOME/.config/nvim ] && alias nvconf="nvim $HOME/.config/nvim/init.lua -c 'cd $HOME/.config/nvim'"
 }
 
+alias gs='git ps'
+
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if [ -e $PYENV_ROOT ]; then
