@@ -29,7 +29,7 @@ export auto GitBranch() -> std::optional<std::string> {
       }
     }
 
-    return std::format("@{}, ", content.substr(0, 8));
+    return std::format("@{}", content.substr(0, 8));
   }
 
   auto content = GetFileOneLineContent(root.value());
