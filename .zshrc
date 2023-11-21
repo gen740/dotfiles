@@ -32,23 +32,7 @@ setopt SHARE_HISTORY     # Share History among ttys
 export FZF_DEFAULT_OPTS="--border=none --height=$(($(tput line) * 2 / 5)) --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
 
 h() {
-    dirname=`fd -c never . ~/home/ -aHI --type d \
-        --exclude .git                           \
-        --exclude build                          \
-        --exclude _build                         \
-        --exclude .build                         \
-        --exclude mbed-os                        \
-        --exclude .cache                         \
-        --exclude node_modules                   \
-        --exclude cmake_build                    \
-        --exclude bin                            \
-        --exclude keyboards                      \
-        --exclude tests                          \
-        --exclude boost-for-raspi                \
-        --exclude typings                        \
-        --exclude external                       \
-        --exclude .deps                          \
-        | fzf`
+    dirname=`fd -c never . ~/home/ -aH --type d | fzf`
     if [[ $dirname == ""  ]]; then
     else
         pushd $dirname > /dev/null
