@@ -23,15 +23,11 @@ compinit -u
 # │ {{{                        « Options »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-setopt HIST_IGNORE_DUPS  # Duplicated commands is ignored
-setopt HIST_IGNORE_SPACE # Command which start with whitespace is ignored
-setopt EXTENDED_HISTORY  # Record timestamp
-setopt AUTO_LIST         # Automatically list choices on an ambiguous completion.
-setopt SHARE_HISTORY     # Share History among ttys
+setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
 export FZF_DEFAULT_OPTS="--border=none --height=$(($(tput line) * 2 / 5)) --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
 
-h() {
+function h() {
     dirname=`fd -c never . ~/home/ -aH --type d | fzf`
     if [[ $dirname == ""  ]]; then
     else
@@ -39,6 +35,10 @@ h() {
     fi
     unset dirname
 }
+
+typeset -g COMMAND_STATUS=0
+
+
 
 stty stop undef # c-s でフリーズしないようにする
 
@@ -53,12 +53,9 @@ export REPORTTIME=30
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export GIT_EDITOR=nvim
-export HISTORY_IGNORE="ls|l|s|la|ll|sl|cd *|cd|h|history|exit|popd|pushd|t|v|vi|vim|nvim|v *|vi *|vim *|nvim *|tmux|r"
-export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=en_US.UTF-8
 export LESSCHARSET=utf-8
 export MANWIDTH=100
-export SAVEHIST=100000 # 履歴ファイルに保存される履歴の件数
 export VISUAL='nvim'
 export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ENV_HINT=1
@@ -68,6 +65,7 @@ export OPENBLAS_NUM_THREADS=8
 export GOTO_NUM_THREADS=8
 export OMP_NUM_THREADS=8
 
+[ -f ~/.dotfiles/zsh_history_config.zsh ]        && source ~/.dotfiles/zsh_history_config.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
 [ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ]           && source /usr/share/fzf/key-bindings.zsh
