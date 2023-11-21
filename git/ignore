@@ -1,13 +1,20 @@
+# python
 stubs
 typings
 pyrightconfig.json
-.python-version
-.node-version
 .dmypy.json
-worktree
-workspace
 
 .DS_Store
+
+# artifacts
 .cache
+.build
+build
+.deps
+
+# Env tools
+.python-version
+.node-version
+.envrc
 
 # vim: ft=gitignore
