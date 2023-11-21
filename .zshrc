@@ -44,30 +44,26 @@ stty stop undef # c-s でフリーズしないようにする
 
 bindkey -e
 
-export WORDCHARS='[]~!$%'
-export REPORTTIME=30
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
 
-export BAT_THEME="gruvbox-dark"
+export WORDCHARS='!$%'
+export REPORTTIME=30
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export GIT_EDITOR=nvim
-export HISTFILE=${HOME}/.dotfiles/zsh/.zsh_history # 履歴ファイルの保存先
-export HISTORY_IGNORE="ls|l|s|la|ll|cd *|cd|hcd|fcd|fvi|history|exit|popd|pushd|t|v|vi|vim|nvim|v *|vi *|vim *|nvim *|tmux|r"
+export HISTORY_IGNORE="ls|l|s|la|ll|sl|cd *|cd|h|history|exit|popd|pushd|t|v|vi|vim|nvim|v *|vi *|vim *|nvim *|tmux|r"
 export HISTSIZE=5000 # メモリに保存される履歴の件数
 export LANG=en_US.UTF-8
 export LESSCHARSET=utf-8
 export MANWIDTH=100
 export SAVEHIST=100000 # 履歴ファイルに保存される履歴の件数
 export VISUAL='nvim'
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
 export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ENV_HINT=1
-
 export MANPAGER="nvim +Man!"
-export PAGER=less
-
+export PAGER="nvim +Man!"
 export OPENBLAS_NUM_THREADS=8
 export GOTO_NUM_THREADS=8
 export OMP_NUM_THREADS=8
@@ -115,6 +111,7 @@ whence nvim > /dev/null && {
 }
 
 alias gs='git ps'
+
 whence tmux > /dev/null && [[ -z $TMUX && -z $NVIM ]] && (tmux attach || tmux new -s Main)
 
 # }}}
