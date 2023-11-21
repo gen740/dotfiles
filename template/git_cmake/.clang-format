@@ -1,8 +1,0 @@
-BasedOnStyle: Google
-ColumnLimit: 100
-IncludeBlocks: Preserve
-IndentPPDirectives: AfterHash
-IndentWidth: 2
-MacroBlockBegin: ^[A-Z_]+_(BEGIN|START)
-MacroBlockEnd: ^[A-Z_]+_END
-UseTab: Never
