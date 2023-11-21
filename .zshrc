@@ -114,6 +114,8 @@ whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
 [ -d /home/linuxbrew/.linuxbrew ]   && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ -d ~/.linuxbrew ]                 && eval "$(~/.linuxbrew/bin/brew shellenv)"
 
+whence direnv > /dev/null && eval "$(direnv hook zsh)"
+
 ## Aliases
 whence fdfind > /dev/null && alias fd=fdfind
 whence lsd > /dev/null && {
