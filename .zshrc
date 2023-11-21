@@ -128,17 +128,10 @@ whence nvim > /dev/null && {
     alias nvim='[[ $NVIM ]] && echo "cannot nest neovim" || nvim'
     alias v='nvim'
     alias vi='nvim'
-    [ -e $HOME/.config/nvim ] && alias nvconf="nvim $HOME/.config/nvim/init.lua -c 'cd $HOME/.config/nvim'"
 }
 
 alias gs='git ps'
-
-
-if whence tmux > /dev/null ; then
-    if [[ -z $TMUX && -z $NVIM ]]; then # Start tmux on Login
-        tmux attach || tmux new -s Main
-    fi
-fi
+whence tmux > /dev/null && [[ -z $TMUX && -z $NVIM ]] && (tmux attach || tmux new -s Main)
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
