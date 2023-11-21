@@ -1,7 +1,0 @@
-BasedOnStyle: Google
-ColumnLimit: 100
-DerivePointerAlignment: false
-IncludeBlocks: Preserve
-IndentPPDirectives: AfterHash
-IndentWidth: 2
-UseTab: Never
