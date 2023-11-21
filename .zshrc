@@ -26,6 +26,7 @@ compinit -u
 setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
 export FZF_DEFAULT_OPTS="--border=none --height=$(($(tput line) * 2 / 5)) --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
     dirname=`fd -c never . ~/home/ -aH --type d | fzf`
@@ -35,10 +36,6 @@ function h() {
     fi
     unset dirname
 }
-
-typeset -g COMMAND_STATUS=0
-
-
 
 stty stop undef # c-s でフリーズしないようにする
 
@@ -51,7 +48,6 @@ export XDG_DATA_HOME=$HOME/.local/share
 export WORDCHARS='!$%'
 export REPORTTIME=30
 export EDITOR='nvim'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export GIT_EDITOR=nvim
 export LANG=en_US.UTF-8
 export LESSCHARSET=utf-8
@@ -60,7 +56,7 @@ export VISUAL='nvim'
 export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ENV_HINT=1
 export MANPAGER="nvim +Man!"
-export PAGER="nvim +Man!"
+export PAGER=less
 export OPENBLAS_NUM_THREADS=8
 export GOTO_NUM_THREADS=8
 export OMP_NUM_THREADS=8
@@ -79,8 +75,6 @@ export OMP_NUM_THREADS=8
 # ┼───────────────────────────────────────────────────────────────────────┼
 
 # Homebrew PATH
-export PATH="/usr/local/sbin:$PATH"
-
 whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
 
 [ -d /usr/local/go ]    && export PATH=/usr/local/go/bin:$PATH  \
