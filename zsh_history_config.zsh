@@ -9,6 +9,7 @@ setopt SHARE_HISTORY         # Share History among ttys
 HISTORY_IGNORE_=(
     "ls"
     "ls *"
+    "lsd"
     "l"
     "l *"
     "s"
@@ -21,6 +22,7 @@ HISTORY_IGNORE_=(
     "cd"
     "cd *"
     "cd"
+    "echo"
     "h"
     "history"
     "exit"
