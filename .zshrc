@@ -66,7 +66,6 @@ export OMP_NUM_THREADS=8
 [ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ]           && source /usr/share/fzf/key-bindings.zsh
 [ -f ~/.zshrc_local ]                            && source ~/.zshrc_local
-[ -f ~/.zshrc ]                                  && source ~/.zshrc
 [ -f ~/.dotfiles/lazy_load.zsh ]                 && source ~/.dotfiles/lazy_load.zsh
 
 # }}}
@@ -74,17 +73,11 @@ export OMP_NUM_THREADS=8
 # │ {{{                    « PATH and Alias »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
 
-# Homebrew PATH
-whence deno > /dev/null   && export PATH="$HOME/.deno/bin:$PATH"
+whence deno > /dev/null           && export PATH="$HOME/.deno/bin:$PATH"
 
-[ -d /usr/local/go ]    && export PATH=/usr/local/go/bin:$PATH  \
-    || [ -d $HOME/go ]  && export PATH=$HOME/go/bin:$PATH
-[ -d /usr/local/mysql ] && export PATH=$PATH:/usr/local/mysql/bin
-[ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
-[ -d $HOME/.cargo/env ] && source $HOME/.cargo/env \
-    || [ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
-[ -d /home/linuxbrew/.linuxbrew ]   && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-[ -d ~/.linuxbrew ]                 && eval "$(~/.linuxbrew/bin/brew shellenv)"
+[ -d $HOME/.local/bin ]           && export PATH="$HOME/.local/bin:$PATH"
+[ -d $HOME/.cargo/env ]           && source $HOME/.cargo/env \
+    || [ -d $HOME/.cargo/bin ]    && export PATH=$HOME/.cargo/bin:$PATH
 
 whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
