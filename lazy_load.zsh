@@ -2,6 +2,7 @@
 
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PATH="${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 if [ -e $PYENV_ROOT ]; then
     if [[ $OSTYPE =~ 'darwin*' ]]; then
         export PYTHON_CONFIGURE_OPTS="--enable-framework"
@@ -43,6 +44,7 @@ if [ -e $PYENV_ROOT ]; then
 fi
 
 export NODENV_ROOT="$XDG_CONFIG_HOME/nodenv"
+export PATH="${NODENV_ROOT}/shims:${PATH}"
 if [ -e $NODENV_ROOT ]; then
     _load_nodenv() {
         unset -f _load_nodenv nodenv npm node
