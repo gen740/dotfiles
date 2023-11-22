@@ -14,7 +14,7 @@ tasks:
       CXX: /usr/local/opt/llvm/bin/clang++
   compile:
     cmds:
-      - cmake --build build
+      - cmake --build build --target install
   execute:
     cmds:
       - ./build/main
