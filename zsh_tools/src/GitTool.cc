@@ -32,11 +32,15 @@ auto DetermineGitHead(const fs::path &git_dir, const std::string &content)
     return {.name = std::format("{}", matches[1].str()),
             .kind = GitHeadKind::Branch};
   }
-  for (const auto &tag : fs::directory_iterator(git_dir / "refs" / "tags")) {
-    if (GetFileOneLineContent(tag) == content) {
-      return {.name = std::format("{}", tag.path().filename().string()),
-              .kind = GitHeadKind::Tag};
+  try {
+    for (const auto &tag : fs::directory_iterator(git_dir / "refs" / "tags")) {
+      if (GetFileOneLineContent(tag) == content) {
+        return {.name = std::format("{}", tag.path().filename().string()),
+                .kind = GitHeadKind::Tag};
+      }
     }
+  } catch (fs::filesystem_error e) {
+    return {.name = "", .kind = GitHeadKind::Invalid};
   }
   return {.name = std::format("{}", content.substr(0, 8)),
           .kind = GitHeadKind::Hash};
