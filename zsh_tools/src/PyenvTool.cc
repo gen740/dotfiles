@@ -9,14 +9,21 @@ namespace fs = std::filesystem;
 
 auto SearchPythonVersion(const fs::path &pyenv_root, const std::string &name)
     -> std::optional<std::string> {
-
   auto versions_file = pyenv_root / "versions";
-  for (const auto &version : fs::directory_iterator(versions_file)) {
-    if (version.path().filename() == name) {
-      if (fs::is_symlink(version)) {
-        return fs::read_symlink(version).parent_path().parent_path().filename();
+  try {
+    for (const auto &version : fs::directory_iterator(versions_file)) {
+      if (version.path().filename() == name) {
+        if (fs::is_symlink(version)) {
+          return fs::read_symlink(version)
+              .parent_path()
+              .parent_path()
+              .filename();
+        }
       }
     }
+  } catch (fs::filesystem_error e) {
+    // File not found
+    return std::nullopt;
   }
   return std::nullopt;
 }
