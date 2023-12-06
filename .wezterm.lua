@@ -29,7 +29,6 @@ return {
   color_scheme = 'nightfox',
   default_cwd = '$HOME/home',
   term = "wezterm",
-  hyperlink_rules = {},
   window_padding = {
     left = 24,
     right = 24,
@@ -40,4 +39,5 @@ return {
     { key = '^', mods = 'CTRL|SHIFT', action = wezterm.action({ SendString = '\u{1e}' }) },
     { key = 'q', mods = 'CTRL', action = wezterm.action({ SendString = '\u{11}' }) },
   },
+  use_ime = true,
 }
