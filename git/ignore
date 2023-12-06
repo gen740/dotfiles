@@ -11,6 +11,7 @@ pyrightconfig.json
 .build
 build
 .deps
+.ruff_cache
 
 # Env tools
 .python-version
