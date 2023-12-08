@@ -1,0 +1,23 @@
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -Werror
+    - -std=c++23
+    - -nostdinc
+    - -nostdinc++
+    - -isystem/Users/gen/.local/bin/../include/c++/v1
+    - -isystem/Users/gen/.local/lib/clang/18/include
+    - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/include
+
+Diagnostics:
+  UnusedIncludes: Strict
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+
+Hover:
+  ShowAKA: true
+# vim:ft=yaml
