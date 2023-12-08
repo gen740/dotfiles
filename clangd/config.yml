@@ -1,0 +1,17 @@
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -Werr
+    - -std=c++23
+
+Diagnostics:
+  UnusedIncludes: Strict
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+
+Hover:
+  ShowAKA: true

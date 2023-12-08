@@ -31,6 +31,7 @@ linkconfig yabai
 linkconfig git
 linkconfig lazygit
 linkconfig yamlfmt
+linkconfig clangd
 
 unset SCRIPT_DIR
 unset -f link
