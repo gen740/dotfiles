@@ -48,8 +48,9 @@
 
 [merge]
 	conflictstyle = diff3
+	tool = nvimdiff
 
-[mergetool "nvimdiff"]
+[merge.tool]
 	cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
 	keepBackup = false
 
@@ -62,4 +63,3 @@
 [commit]
 	verbose = true
 
-; vim:ft=gitconfig noet
