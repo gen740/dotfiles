@@ -6,8 +6,8 @@ CompileFlags:
     - -std=c++23
     - -nostdinc
     - -nostdinc++
-    - -isystem/Users/gen/.local/bin/../include/c++/v1
-    - -isystem/Users/gen/.local/lib/clang/18/include
+    - -isystem/usr/local/opt/llvm/bin/../include/c++/v1
+    - -isystem/usr/local/Cellar/llvm/17.0.6/lib/clang/17/include
     - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/include
 
 Diagnostics:
