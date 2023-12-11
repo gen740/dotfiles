@@ -9,9 +9,6 @@ end)
 return {
   font = wezterm.font_with_fallback {
     {
-      family = 'BigBlueTermPlus Nerd Font',
-    },
-    {
       family = 'HackGen Console NF',
     },
   },
@@ -23,7 +20,7 @@ return {
     compose_cursor = 'gray',
   },
   font_size = 14.0,
-  window_decorations = 'RESIZE', -- "NONE"
+  window_decorations = 'RESIZE',
   tab_bar_at_bottom = true,
   enable_tab_bar = false,
   color_scheme = 'nightfox',
