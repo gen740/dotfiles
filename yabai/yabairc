@@ -18,26 +18,6 @@ yabai -m config                             \
     auto_balance                on          \
     layout                      float
 
-yabai -m space 1        \
-    --label main        \
-    --layout float
-
-yabai -m space 2        \
-    --label browser     \
-    --layout bsp
-
-yabai -m space 3        \
-    --label sms         \
-    --layout bsp
-
-yabai -m space 4        \
-    --label free        \
-    --layout float
-
-yabai -m space 5        \
-    --label todo        \
-    --layout bsp
-
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^システム設定$" manage=off

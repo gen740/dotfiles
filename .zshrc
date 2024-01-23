@@ -53,13 +53,13 @@ export LANG=en_US.UTF-8
 export LESSCHARSET=utf-8
 export MANWIDTH=100
 export VISUAL='nvim'
-export HOMEBREW_VERBOSE=1
-export HOMEBREW_NO_ENV_HINT=1
+# export HOMEBREW_NO_ENV_HINT=1
 export MANPAGER="nvim +Man!"
 export PAGER=less
-export OPENBLAS_NUM_THREADS=8
-export GOTO_NUM_THREADS=8
-export OMP_NUM_THREADS=8
+export OPENBLAS_NUM_THREADS=16
+export OMP_NUM_THREADS=16
+
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 [ -f ~/.dotfiles/zsh_history_config.zsh ]        && source ~/.dotfiles/zsh_history_config.zsh
 [ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh

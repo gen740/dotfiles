@@ -15,7 +15,6 @@
 	quotepath = false
 	compression = 0
 	commentChar = "#"
-	pager = delta
 
 [alias]
 	ap = add -pA
@@ -28,15 +27,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
-[interactive]
-	diffFilter = delta --color-only
-
-[delta]
-	navigate = true    # use n and N to move between diff sections
-	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-	line-numbers = true
-	side-by-side = true
 
 [diff]
 	colorMoved = default
