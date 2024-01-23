@@ -1,4 +1,10 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
+
+## verbose
+if [ "$1" = "-v" ]; then
+  set -x
+fi
+
 echo "export ZDOTDIR=${HOME}/.dotfiles" >> ~/.zshenv
 
 SCRIPT_DIR=$(cd $(dirname $0);pwd)
