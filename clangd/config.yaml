@@ -1,23 +1,23 @@
-CompileFlags:
-  Add:
-    - -Wall
-    - -Wextra
-    - -Werror
-    - -std=c++23
-    - -nostdinc
-    - -nostdinc++
-    - -isystem/usr/local/opt/llvm/bin/../include/c++/v1
-    - -isystem/usr/local/Cellar/llvm/17.0.6/lib/clang/17/include
-    - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/include
-
-Diagnostics:
-  UnusedIncludes: Strict
-
-InlayHints:
-  Enabled: true
-  ParameterNames: true
-  DeducedTypes: true
-
-Hover:
-  ShowAKA: true
+# CompileFlags:
+#   Add:
+#     - -Wall
+#     - -Wextra
+#     - -Werror
+#     - -std=c++23
+#     - -nostdinc
+#     - -nostdinc++
+#     - -isystem/usr/local/opt/llvm/bin/../include/c++/v1
+#     - -isystem/usr/local/Cellar/llvm/17.0.6/lib/clang/17/include
+#     - -isystem/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/include
+#
+# Diagnostics:
+#   UnusedIncludes: Strict
+#
+# InlayHints:
+#   Enabled: true
+#   ParameterNames: true
+#   DeducedTypes: true
+#
+# Hover:
+#   ShowAKA: true
 # vim:ft=yaml

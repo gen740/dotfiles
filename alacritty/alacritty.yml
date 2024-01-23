@@ -1,0 +1,12 @@
+window:
+  decorations: none
+  startup_mode: Maximized
+
+colors:
+  primary:
+    background: '#081014'
+
+font:
+  normal:
+    family: HackGen Console NF
+  size: 14

@@ -32,6 +32,7 @@ linkconfig git
 linkconfig lazygit
 linkconfig yamlfmt
 linkconfig clangd
+linkconfig alacritty
 
 unset SCRIPT_DIR
 unset -f link
