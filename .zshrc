@@ -29,7 +29,7 @@ compinit -u
 
 setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
-export FZF_DEFAULT_OPTS="--border=none --height=$(($(tput line) * 2 / 5)) --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
+export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
