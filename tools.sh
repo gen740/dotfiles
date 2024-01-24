@@ -9,17 +9,22 @@ tools=(
   "fzf"
   "gh"
   "glab"
+  "lazygit"
+  "git-delta"
+
   "jq"
   "lsd"
-  "neovim"
+  # "neovim"
   "pre-commit"
   "ripgrep"
   "go-task"
-  "git-delta"
   "nvm"
   "prettier"
 
   "qmk/qmk/qmk"
+
+  # node
+  "nodenv"
 
   # python tools
   "pyenv"
@@ -27,16 +32,10 @@ tools=(
   "pyright"
 
   # build tools
-  "cmake --HEAD"
+  "cmake"
   "llvm"
   "clang-format"
   "ninja"
-
-  # C++ libraries
-  "googletest"
-  "google-benchmark"
-  "grpc"
-  "protobuf"
 
   # language servers
   "lua-language-server"
