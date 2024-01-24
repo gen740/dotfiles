@@ -53,11 +53,20 @@ export LANG=en_US.UTF-8
 export LESSCHARSET=utf-8
 export MANWIDTH=100
 export VISUAL='nvim'
-# export HOMEBREW_NO_ENV_HINT=1
 export MANPAGER="nvim +Man!"
 export PAGER=less
 export OPENBLAS_NUM_THREADS=16
 export OMP_NUM_THREADS=16
+
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export GOPATH=$XDG_DATA_HOME/go
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+export MPLCONFIGDIR=$XDG_CACHE_HOME/matplotlib
+export IPYTHONDIR=$XDG_CACHE_HOME/ipython
+export JUPYTER_CONFIG_DIR=$XDG_CACHE_HOME/jupyter
+
+export PYTHON_HISTORY=$XDG_DATA_HOME/python/history
+export ROOT_HIST=0
 
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
@@ -76,8 +85,8 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 whence deno > /dev/null           && export PATH="$HOME/.deno/bin:$PATH"
 
 [ -d $HOME/.local/bin ]           && export PATH="$HOME/.local/bin:$PATH"
-[ -d $HOME/.cargo/env ]           && source $HOME/.cargo/env \
-    || [ -d $HOME/.cargo/bin ]    && export PATH=$HOME/.cargo/bin:$PATH
+[ -d $CARGO_HOME/env ]           && source $CARGO_HOME/env \
+    || [ -d $CARGO_HOME/bin ]    && export PATH=$CARGO_HOME/bin:$PATH
 
 whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
