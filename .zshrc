@@ -3,10 +3,10 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 setopt PROMPT_SUBST
 
-whence zsh_status > /dev/null 							 \
-  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '     \
+whence zsh_status > /dev/null                                                       \
+  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '        \
   || export PROMPT=' %F{blue}%~%f '
-whence zsh_status > /dev/null 							 \
+whence zsh_status > /dev/null                                                    \
   && export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f' \
   || export RPROMPT='%(?..%F{red}%?%f)'
 
