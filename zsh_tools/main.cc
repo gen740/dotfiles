@@ -19,7 +19,7 @@ auto main(int argc, char *argv[]) -> int {
   if (std::strcmp(argv[1], "pyenv_version") == 0) {
     auto pyenv_version = PyenvVersion();
     if (pyenv_version.has_value()) {
-      std::print(" {}", pyenv_version.value());
+      std::print(" {}", pyenv_version.value());
       return 0;
     }
     return 0;
