@@ -4,6 +4,7 @@ tools=(
   # Utilities
   "tmux"
   "tokei"
+  "direnv"
   "pipx"
   "fd"
   "fzf"
@@ -47,6 +48,7 @@ tools=(
   "stylua"
   "texlab"
   "texlive"
+  "biber"
   "swift-format"
 
   # yabai
