@@ -17,7 +17,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 
 set(CMAKE_CXX_FLAGS
-    "-Wall -Wextra -Werror -Wnon-virtual-dtor -Wfloat-equal -Winline")
+  "-Wall -Wextra -Werror -Wnon-virtual-dtor -Wfloat-equal -Winline -stdlib=libc++")
 
 add_library(get_state)
 
