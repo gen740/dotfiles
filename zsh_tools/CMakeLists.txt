@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.28)
 
 project(get_state CXX)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 23)
 
 # Setting Build Type
@@ -17,7 +16,9 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 
 set(CMAKE_CXX_FLAGS
-  "-Wall -Wextra -Werror -Wnon-virtual-dtor -Wfloat-equal -Winline -stdlib=libc++")
+  "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -Wnon-virtual-dtor -Wfloat-equal -Winline -Wno-deprecated-declarations")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=always")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++") # Force to use libc++
 
 add_library(get_state)
 
