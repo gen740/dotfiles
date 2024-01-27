@@ -5,7 +5,7 @@ if [ "$1" = "-v" ]; then
   set -x
 fi
 
-echo "export ZDOTDIR=${HOME}/.dotfiles" >> ~/.zshenv
+grep -qxF 'export ZDOTDIR=$HOME/.dotfiles' ~/.zshenv || echo 'export ZDOTDIR=$HOME/.dotfiles' >> ~/.zshenv
 
 SCRIPT_DIR=$(cd $(dirname $0);pwd)
 
