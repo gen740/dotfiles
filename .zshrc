@@ -110,7 +110,7 @@ whence nvim > /dev/null && {
 
 alias gs='git ps'
 
-if [ $1 != "--no-tmux" ]; then
+if [ "$1" != "--no-tmux" ]; then
     whence tmux > /dev/null && [[ -z $TMUX && -z $NVIM ]] && (tmux attach || tmux new -s Main)
 fi
 

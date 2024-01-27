@@ -12,6 +12,7 @@ tools=(
   "glab"
   "lazygit"
   "git-delta"
+  "rust"
 
   "jq"
   "lsd"
