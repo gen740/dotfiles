@@ -13,6 +13,9 @@ tools=(
   "lazygit"
   "git-delta"
   "rust"
+  "wget"
+  "git"
+  "curl"
 
   "jq"
   "lsd"
