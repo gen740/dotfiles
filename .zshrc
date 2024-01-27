@@ -32,7 +32,10 @@ export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --p
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
-    dirname=`fd -c never . ~/home/ -aH --type d | fzf`
+    [ -e $HOME/home ]                                           \
+        && dirname=`fd -c never . ~/home/ -aH --type d | fzf`   \
+        || dirname=`fd -c never . ~/ -aH --type d | fzf`
+
     if [[ $dirname == ""  ]]; then
     else
         pushd $dirname > /dev/null
