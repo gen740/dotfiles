@@ -3,13 +3,6 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
 setopt PROMPT_SUBST
 
-whence zsh_status > /dev/null                                                       \
-  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '        \
-  || export PROMPT=' %F{blue}%~%f '
-whence zsh_status > /dev/null                                                    \
-  && export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f' \
-  || export RPROMPT='%(?..%F{red}%?%f)'
-
 [ -e $HOME/.local/zsh ] && export FPATH="$FPATH:$HOME/.local/zsh"
 [ -e $HOME/.dotfiles/zsh ] && export FPATH="$FPATH:$HOME/.dotfiles/zsh"
 
@@ -89,7 +82,6 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 # ┼───────────────────────────────────────────────────────────────────────┼
 
 whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
-
 [ -d $HOME/.local/bin ]             && export PATH="$HOME/.local/bin:$PATH"
 [ -d $CARGO_HOME/env ]              && source $CARGO_HOME/env \
     || [ -d $CARGO_HOME/bin ]       && export PATH=$CARGO_HOME/bin:$PATH
@@ -112,6 +104,19 @@ whence nvim > /dev/null && {
 }
 
 alias gs='git ps'
+
+# }}}
+# ┼───────────────────────────────────────────────────────────────────────┼
+# │ {{{                    « PROMPT setting »                             │
+# ┼───────────────────────────────────────────────────────────────────────┼
+
+whence zsh_status > /dev/null                                                       \
+  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '        \
+  || export PROMPT=' %F{blue}%~%f '
+whence zsh_status > /dev/null                                                    \
+  && export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f' \
+  || export RPROMPT='%(?..%F{red}%?%f)'
+
 
 if [ "$1" != "--no-tmux" ]; then
     whence tmux > /dev/null && [[ -z $TMUX && -z $NVIM ]] && (tmux attach || tmux new -s Main)
