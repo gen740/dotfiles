@@ -23,7 +23,6 @@ tools=(
   "pre-commit"
   "ripgrep"
   "go-task"
-  "nvm"
   "prettier"
 
   "qmk/qmk/qmk"
