@@ -91,6 +91,7 @@ whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
 [ -d /home/linuxbrew/.linuxbrew ] \
     && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" \
     && export LIBRARY_PATH=$LIBRARY_PATH:/home/linuxbrew/.linuxbrew/lib \
+    && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/linuxbrew/.linuxbrew/lib
 
 
 whence direnv > /dev/null && eval "$(direnv hook zsh)"
@@ -133,7 +134,7 @@ docker_login() {
         -v $HOME/.config/github-copilot:/home/gen740/.config/github-copilot \
         -v $HOME/.config/gh:/home/gen740/.config/gh                         \
         -v $HOME/home:/home/gen740/home                                     \
-        -w /home/gen740 gen740/ubuntu-22.04 /bin/zsh
+        -w /home/gen740 gen740/ubuntu-22.04-linuxbrew /bin/zsh
 }
 
 # }}}
