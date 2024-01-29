@@ -87,6 +87,9 @@ whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
     || [ -d $CARGO_HOME/bin ]       && export PATH=$CARGO_HOME/bin:$PATH
 [ -d /usr/local/go ]                && export PATH=/usr/local/go/bin:$PATH
 
+# load linuxbrew
+[ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
 ## Aliases
@@ -121,6 +124,14 @@ whence zsh_status > /dev/null                                                   
 if [ "$1" != "--no-tmux" ]; then
     whence tmux > /dev/null && [[ -z $TMUX && -z $NVIM ]] && (tmux attach || tmux new -s Main)
 fi
+
+docker_login() {
+    docker run -it --rm                                                     \
+        -v $HOME/.config/github-copilot:/home/gen740/.config/github-copilot \
+        -v $HOME/.config/gh:/home/gen740/.config/gh                         \
+        -v $HOME/home:/home/gen740/home                                     \
+        -w /home/gen740 gen740/ubuntu-22.04 /bin/zsh
+}
 
 # }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
