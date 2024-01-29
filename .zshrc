@@ -88,7 +88,10 @@ whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
 [ -d /usr/local/go ]                && export PATH=/usr/local/go/bin:$PATH
 
 # load linuxbrew
-[ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -d /home/linuxbrew/.linuxbrew ] \
+    && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" \
+    && export LIBRARY_PATH=$LIBRARY_PATH:/home/linuxbrew/.linuxbrew/lib \
+
 
 whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
