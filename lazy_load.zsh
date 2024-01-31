@@ -14,7 +14,7 @@ if [ -e $PYENV_ROOT ]; then
 
     ## Lazy loading pyenv
     _load_pyenv() {
-        unset -f _load_pyenv pyenv python python3 ipython ipython3 pip 
+        unset -f _load_pyenv pyenv python python3 ipython ipython3 pip
         eval "$(pyenv init -)"
         eval "$(pyenv virtualenv-init -)"
     }

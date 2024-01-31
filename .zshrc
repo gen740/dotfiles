@@ -21,7 +21,7 @@ compinit -u
 
 setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
-export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\  --color='pointer:blue,border:gray,label:yellow'"
+export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\  "
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
@@ -129,11 +129,18 @@ if [ "$1" != "--no-tmux" ]; then
 fi
 
 docker_login() {
+    if [[ "$1" == "brew" ]]; then
+        target="gen740/ubuntu-22.04-linuxbrew"
+    else
+        target="gen740/ubuntu-22.04"
+    fi
+
     docker run -it --rm                                                     \
         -v $HOME/.config/github-copilot:/home/gen740/.config/github-copilot \
         -v $HOME/.config/gh:/home/gen740/.config/gh                         \
         -v $HOME/home:/home/gen740/home                                     \
-        -w /home/gen740 gen740/ubuntu-22.04 /bin/zsh
+        -w /home/gen740 ${target} /bin/zsh
+    unset target
 }
 
 # }}}
