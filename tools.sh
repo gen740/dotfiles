@@ -29,6 +29,7 @@ tools=(
 
   # node
   "nodenv"
+  "biome"
 
   # python tools
   "pyenv"
@@ -91,6 +92,6 @@ function show_progress {
 }
 
 for (( i = 0; i < ${#tools[@]}; i++ )); do
-  brew install -q ${tools[$i]}
+  brew install -q --force ${tools[$i]}
   show_progress $(($i+1)) ${#tools[@]}
 done
