@@ -92,11 +92,6 @@ whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
 ## Aliases
 whence fdfind > /dev/null && alias fd=fdfind
-whence ls > /dev/null && {
-    alias la='ls --color -A'
-    alias ll='ls --color -Al'
-    alias ls='ls --color'
-}
 
 whence nvim > /dev/null && {
     alias nvim='[[ $NVIM ]] && echo "cannot nest neovim" || nvim'
@@ -104,6 +99,7 @@ whence nvim > /dev/null && {
     alias vi='nvim'
 }
 
+alias ls='ls --color'
 alias gs='git ps'
 
 # ┼───────────────────────────────────────────────────────────────────────┼
