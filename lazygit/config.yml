@@ -3,6 +3,6 @@ gui:
   border: "single"
   nerdFontsVersion: "3"
   showBottomLine: false
-keybinding:
-  universal:
-    quit-alt1: <disabled>
+# keybinding:
+#   universal:
+#     quit-alt1: <disabled>

@@ -1,5 +1,5 @@
 # ┼───────────────────────────────────────────────────────────────────────┼
-# │ {{{                   « Zinit and Pluigns »                           │
+# │                       « Zinit and Pluigns »                           │
 # ┼───────────────────────────────────────────────────────────────────────┼
 setopt PROMPT_SUBST
 
@@ -14,11 +14,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit -u
 
-# }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
-# │ {{{                        « Options »                                │
+# │                            « Options »                                │
 # ┼───────────────────────────────────────────────────────────────────────┼
-
 setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
 export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\  "
@@ -66,7 +64,6 @@ export JUPYTER_CONFIG_DIR=$XDG_CACHE_HOME/jupyter
 
 export PYTHON_HISTORY=$XDG_DATA_HOME/python/history
 export ROOT_HIST=0
-
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 [ -f ~/.dotfiles/zsh_history_config.zsh ]        && source ~/.dotfiles/zsh_history_config.zsh
@@ -76,11 +73,9 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 [ -f ~/.zshrc_local ]                            && source ~/.zshrc_local
 [ -f ~/.dotfiles/lazy_load.zsh ]                 && source ~/.dotfiles/lazy_load.zsh
 
-# }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
-# │ {{{                    « PATH and Alias »                             │
+# │                        « PATH and Alias »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
-
 whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
 [ -d $HOME/.local/bin ]             && export PATH="$HOME/.local/bin:$PATH"
 [ -d $CARGO_HOME/env ]              && source $CARGO_HOME/env \
@@ -97,10 +92,10 @@ whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
 ## Aliases
 whence fdfind > /dev/null && alias fd=fdfind
-whence lsd > /dev/null && {
-    alias la='lsd -A'
-    alias ll='lsd -Al'
-    alias ls='lsd'
+whence ls > /dev/null && {
+    alias la='ls --color -A'
+    alias ll='ls --color -Al'
+    alias ls='ls --color'
 }
 
 whence nvim > /dev/null && {
@@ -111,11 +106,9 @@ whence nvim > /dev/null && {
 
 alias gs='git ps'
 
-# }}}
 # ┼───────────────────────────────────────────────────────────────────────┼
-# │ {{{                    « PROMPT setting »                             │
+# │                        « PROMPT setting »                             │
 # ┼───────────────────────────────────────────────────────────────────────┼
-
 whence zsh_status > /dev/null                                                       \
   && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '        \
   || export PROMPT=' %F{blue}%~%f '
@@ -142,7 +135,4 @@ docker_login() {
         -w /home/gen740 ${target} /bin/zsh
     unset target
 }
-
-# }}}
-# ┼───────────────────────────────────────────────────────────────────────┼
 # vim:foldmethod=marker:
