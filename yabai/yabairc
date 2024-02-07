@@ -6,15 +6,12 @@ yabai -m config                             \
     active_window_opacity       1.0         \
     normal_window_opacity       1.0         \
     window_shadow               off         \
-    window_border               off         \
     window_placement            first_child \
     top_padding                 0           \
     bottom_padding              0           \
     left_padding                0           \
     right_padding               0           \
-    active_window_border_color  0xffffA500  \
-    normal_window_border_color  0xff444444  \
-    focus_follows_mouse         off   \
+    focus_follows_mouse         off         \
     auto_balance                on          \
     layout                      float
 
