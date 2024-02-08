@@ -1,6 +1,6 @@
-# ┼───────────────────────────────────────────────────────────────────────┼
-# │                       « Zinit and Pluigns »                           │
-# ┼───────────────────────────────────────────────────────────────────────┼
+#──────────────────────────────────────────────────────────────────────────────
+#                            Zinit and Pluigns
+#──────────────────────────────────────────────────────────────────────────────
 setopt PROMPT_SUBST
 
 [ -e $HOME/.local/zsh ] && export FPATH="$FPATH:$HOME/.local/zsh"
@@ -14,9 +14,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit -u
 
-# ┼───────────────────────────────────────────────────────────────────────┼
-# │                            « Options »                                │
-# ┼───────────────────────────────────────────────────────────────────────┼
+#──────────────────────────────────────────────────────────────────────────────
+#                                   Options
+#──────────────────────────────────────────────────────────────────────────────
 setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
 export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\  "
@@ -73,9 +73,9 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 [ -f ~/.zshrc_local ]                            && source ~/.zshrc_local
 [ -f ~/.dotfiles/lazy_load.zsh ]                 && source ~/.dotfiles/lazy_load.zsh
 
-# ┼───────────────────────────────────────────────────────────────────────┼
-# │                        « PATH and Alias »                             │
-# ┼───────────────────────────────────────────────────────────────────────┼
+#──────────────────────────────────────────────────────────────────────────────
+#                               PATH and Alias
+#──────────────────────────────────────────────────────────────────────────────
 whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
 [ -d $HOME/.local/bin ]             && export PATH="$HOME/.local/bin:$PATH"
 [ -d $CARGO_HOME/env ]              && source $CARGO_HOME/env \
@@ -102,9 +102,9 @@ whence nvim > /dev/null && {
 alias ls='ls --color'
 alias gs='git ps'
 
-# ┼───────────────────────────────────────────────────────────────────────┼
-# │                        « PROMPT setting »                             │
-# ┼───────────────────────────────────────────────────────────────────────┼
+#──────────────────────────────────────────────────────────────────────────────
+#                               PROMPT setting
+#──────────────────────────────────────────────────────────────────────────────
 whence zsh_status > /dev/null                                                       \
   && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '        \
   || export PROMPT=' %F{blue}%~%f '
