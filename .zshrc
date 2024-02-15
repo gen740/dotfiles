@@ -43,7 +43,8 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
 export WORDCHARS='!$%'
-export REPORTTIME=30
+export REPORTTIME=10
+export TIMEFMT='[%J] %*E %*U %*S CPU: %P Memory: %M KB'
 export EDITOR='nvim'
 export GIT_EDITOR=nvim
 export LANG=en_US.UTF-8
@@ -94,7 +95,6 @@ whence direnv > /dev/null && eval "$(direnv hook zsh)"
 whence fdfind > /dev/null && alias fd=fdfind
 
 whence nvim > /dev/null && {
-    alias nvim='[[ $NVIM ]] && echo "cannot nest neovim" || nvim'
     alias v='nvim'
     alias vi='nvim'
 }
@@ -131,4 +131,5 @@ docker_login() {
         -w /home/gen740 ${target} /bin/zsh
     unset target
 }
+
 # vim:foldmethod=marker:
