@@ -35,6 +35,7 @@ tools=(
   "pyenv"
   "pyenv-virtualenv"
   "pyright"
+  "rye"
 
   # build tools
   "cmake"
