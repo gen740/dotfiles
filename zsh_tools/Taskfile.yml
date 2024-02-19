@@ -3,19 +3,18 @@
 version: '3'
 
 vars:
-  GREETING: Hello, World!
+  BUILD_DIR: build
+
 
 tasks:
   cmake:
     cmds:
-      - cmake -B build -S . -GNinja -DCMAKE_INSTALL_PREFIX=$HOME/.local
-    env:
-      CC: /usr/local/opt/llvm/bin/clang
-      CXX: /usr/local/opt/llvm/bin/clang++
-  compile:
+      - cmake -B {{.BUILD_DIR}} -S . -GNinja
+    sources:
+      - ./CMakeLists.txt
+    generates:
+      - ./{{.BUILD_DIR}}/CMakeCache.txt
+  build:
     cmds:
+      - task: cmake
       - cmake --build build --target install
-  execute:
-    cmds:
-      - ./build/main
-    silent: true

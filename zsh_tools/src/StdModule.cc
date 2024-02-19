@@ -216,6 +216,7 @@ using ::std::filesystem::is_symlink;
 using ::std::filesystem::path;
 using ::std::filesystem::read_symlink;
 using ::std::filesystem::filesystem_error;
+using ::std::filesystem::exists;
 
 } // namespace filesystem
 

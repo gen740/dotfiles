@@ -2,6 +2,7 @@ import std_module;
 import PathTool;
 import GitTool;
 import PyenvTool;
+import VenvTool;
 
 namespace fs = std::filesystem;
 
@@ -23,6 +24,13 @@ auto main(int argc, char *argv[]) -> int {
       return 0;
     }
     return 0;
+  }
+  if (std::strcmp(argv[1], "venv_version") == 0) {
+    auto venv_version = GetVenvVersion();
+    if (venv_version.has_value()) {
+      std::print("({})", venv_version.value());
+      return 0;
+    }
   }
   return 1;
 }
