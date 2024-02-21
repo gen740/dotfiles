@@ -24,8 +24,8 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
     [ -e $HOME/home ]                                           \
-        && dirname=`fd -c never . ~/home/ -aH --type d | fzf`   \
-        || dirname=`fd -c never . ~/ -aH --type d | fzf`
+        && dirname=`fd -c never . $HOME/home/ -aH --type d | fzf`   \
+        || dirname=`fd -c never . $HOME/ -aH --type d | fzf`
 
     if [[ $dirname == ""  ]]; then
     else
@@ -68,12 +68,12 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export ROOT_HIST=0
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
-[ -f ~/.dotfiles/zsh_history_config.zsh ]        && source ~/.dotfiles/zsh_history_config.zsh
-[ -f ~/.fzf.zsh ]                                && source ~/.fzf.zsh
-[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ]           && source /usr/share/fzf/key-bindings.zsh
-[ -f ~/.zshrc_local ]                            && source ~/.zshrc_local
-[ -f ~/.dotfiles/lazy_load.zsh ]                 && source ~/.dotfiles/lazy_load.zsh
+[ -f $HOME/.dotfiles/zsh_history_config.zsh ]       && source $HOME/.dotfiles/zsh_history_config.zsh
+[ -f $HOME/.fzf.zsh ]                               && source $HOME/.fzf.zsh
+[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]    && source /usr/local/opt/fzf/shell/key-bindings.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ]              && source /usr/share/fzf/key-bindings.zsh
+[ -f $HOME/.zshrc_local ]                           && source $HOME/.zshrc_local
+[ -f $HOME/.dotfiles/lazy_load.zsh ]                && source $HOME/.dotfiles/lazy_load.zsh
 
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
