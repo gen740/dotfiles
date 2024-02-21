@@ -107,7 +107,7 @@ alias gs='git ps'
 #                               PROMPT setting
 #──────────────────────────────────────────────────────────────────────────────
 whence zsh_status > /dev/null                                                       \
-  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f '        \
+  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f%F{magenta}%B$(zsh_status venv_version)%b%f '        \
   || export PROMPT=' %F{blue}%~%f '
 whence zsh_status > /dev/null                                                    \
   && export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f' \
