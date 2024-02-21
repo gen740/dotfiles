@@ -74,6 +74,7 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 [ -f /usr/share/fzf/key-bindings.zsh ]              && source /usr/share/fzf/key-bindings.zsh
 [ -f $HOME/.zshrc_local ]                           && source $HOME/.zshrc_local
 [ -f $HOME/.dotfiles/lazy_load.zsh ]                && source $HOME/.dotfiles/lazy_load.zsh
+[ -f $HOME/.rye/env ]                               && source $HOME/.rye/env
 
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
