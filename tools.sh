@@ -32,10 +32,11 @@ tools=(
   "biome"
 
   # python tools
-  "pyenv"
-  "pyenv-virtualenv"
+  "ruff"
+  "ruff-lsp"
   "pyright"
   "rye"
+  "uv"
 
   # build tools
   "cmake"

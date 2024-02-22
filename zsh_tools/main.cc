@@ -28,7 +28,7 @@ auto main(int argc, char *argv[]) -> int {
   if (std::strcmp(argv[1], "venv_version") == 0) {
     auto venv_version = GetVenvVersion();
     if (venv_version.has_value()) {
-      std::print("({})", venv_version.value());
+      std::print(" ({})", venv_version.value());
       return 0;
     }
   }
