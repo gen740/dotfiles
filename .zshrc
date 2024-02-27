@@ -135,3 +135,4 @@ docker_login() {
 }
 
 # vim:foldmethod=marker:
+. "$HOME/.cargo/env"
