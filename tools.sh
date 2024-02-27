@@ -13,12 +13,15 @@ tools=(
   "lazygit"
   "git-delta"
   "rust"
+  "rust-analyzer"
+  "rustfmt"
   "wget"
   "git"
   "curl"
 
   "jq"
   "lsd"
+
   # "neovim"
   "pre-commit"
   "ripgrep"

@@ -11,17 +11,7 @@ local window_padding = 32
 return {
   font = wezterm.font_with_fallback {
     {
-      family = 'MonaspiceRn Nerd Font', --- ===
-      harfbuzz_features = {
-        'ss01=0',
-        'ss02=1',
-        'ss03=1',
-        'ss04=1',
-        'ss05=1',
-        'ss06=1',
-        'ss07=1',
-        'ss08=1',
-      },
+      family = 'MonaspiceRn Nerd Font',
     },
     {
       family = 'HanziPen SC', -- 日本語
