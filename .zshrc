@@ -79,6 +79,7 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
 #──────────────────────────────────────────────────────────────────────────────
+[ -d /opt/homebrew/bin ]            && export PATH=/opt/homebrew/bin:$PATH
 whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
 [ -d $HOME/.local/bin ]             && export PATH="$HOME/.local/bin:$PATH"
 [ -d $CARGO_HOME/env ]              && source $CARGO_HOME/env \
