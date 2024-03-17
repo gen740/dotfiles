@@ -4,6 +4,7 @@
 setopt PROMPT_SUBST
 
 [ -e $HOME/.local/zsh ] && export FPATH="$FPATH:$HOME/.local/zsh"
+[ -e /opt/homebrew/share/zsh/site-functions ] && export FPATH="$FPATH:/opt/homebrew/share/zsh/site-functions"
 [ -e $HOME/.dotfiles/zsh ] && export FPATH="$FPATH:$HOME/.dotfiles/zsh"
 
 export LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
