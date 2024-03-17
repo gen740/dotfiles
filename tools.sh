@@ -61,8 +61,8 @@ tools=(
   "swift-format"
 
   # yabai
-  "koekeishiya/formulae/skhd"
-  "koekeishiya/formulae/yabai"
+  "koekeishiya/formulae/skhd --HEAD"
+  "koekeishiya/formulae/yabai --HEAD"
 
   # cask
   "--cask docker"
