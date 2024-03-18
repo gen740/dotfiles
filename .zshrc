@@ -1,5 +1,10 @@
+# Reset the PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+[ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
+[ -d /opt/homebrew/bin ]                  && export PATH=/opt/homebrew/bin:$PATH
+
 #──────────────────────────────────────────────────────────────────────────────
-#                            Zinit and Pluigns
+#                            completion settings
 #──────────────────────────────────────────────────────────────────────────────
 setopt PROMPT_SUBST
 
@@ -14,18 +19,17 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 autoload -Uz compinit
 compinit -u
+setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
 
 #──────────────────────────────────────────────────────────────────────────────
 #                                   Options
 #──────────────────────────────────────────────────────────────────────────────
-setopt AUTO_LIST             # Automatically list choices on an ambiguous completion.
-
 export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\  "
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
-    [ -e $HOME/home ]                                           \
-        && dirname=`fd -c never . $HOME/home/ -aH --type d | fzf`   \
+    [ -e $HOME/home ]                                             \
+        && dirname=`fd -c never . $HOME/home/ -aH --type d | fzf` \
         || dirname=`fd -c never . $HOME/ -aH --type d | fzf`
 
     if [[ $dirname == ""  ]]; then
@@ -35,7 +39,7 @@ function h() {
     unset dirname
 }
 
-stty stop undef # c-s でフリーズしないようにする
+stty stop undef # do not stop the terminal with C-s
 
 bindkey -e
 
@@ -45,7 +49,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 export WORDCHARS='!$%'
 export REPORTTIME=10
-export TIMEFMT='[%J] %*E %*U %*S CPU: %P Memory: %M KB'
+export TIMEFMT='%*E %*U %*S CPU: %P Memory: %M KB # %J'
 export EDITOR='nvim'
 export GIT_EDITOR=nvim
 export LANG=en_US.UTF-8
@@ -54,8 +58,6 @@ export MANWIDTH=100
 export VISUAL='nvim'
 export MANPAGER="nvim +Man!"
 export PAGER=less
-export OPENBLAS_NUM_THREADS=16
-export OMP_NUM_THREADS=16
 
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export GOPATH=$XDG_DATA_HOME/go
@@ -69,23 +71,19 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export ROOT_HIST=0
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
-[ -f $HOME/.dotfiles/zsh_history_config.zsh ]       && source $HOME/.dotfiles/zsh_history_config.zsh
-[ -f $HOME/.fzf.zsh ]                               && source $HOME/.fzf.zsh
-[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]    && source /usr/local/opt/fzf/shell/key-bindings.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ]              && source /usr/share/fzf/key-bindings.zsh
-[ -f $HOME/.zshrc_local ]                           && source $HOME/.zshrc_local
-[ -f $HOME/.dotfiles/lazy_load.zsh ]                && source $HOME/.dotfiles/lazy_load.zsh
-[ -f $HOME/.rye/env ]                               && source $HOME/.rye/env
-
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
 #──────────────────────────────────────────────────────────────────────────────
-[ -d /opt/homebrew/bin ]            && export PATH=/opt/homebrew/bin:$PATH
-whence deno > /dev/null             && export PATH="$HOME/.deno/bin:$PATH"
-[ -d $HOME/.local/bin ]             && export PATH="$HOME/.local/bin:$PATH"
-[ -d $CARGO_HOME/env ]              && source $CARGO_HOME/env \
-    || [ -d $CARGO_HOME/bin ]       && export PATH=$CARGO_HOME/bin:$PATH
-[ -d /usr/local/go ]                && export PATH=/usr/local/go/bin:$PATH
+[ -f $HOME/.dotfiles/zsh_history_config.zsh ]       && source $HOME/.dotfiles/zsh_history_config.zsh
+whence fzf > /dev/null                              && eval "$(fzf --zsh)"
+[ -f $HOME/.zshrc_local ]                           && source $HOME/.zshrc_local
+[ -f $HOME/.dotfiles/lazy_load.zsh ]                && source $HOME/.dotfiles/lazy_load.zsh
+[ -f $HOME/.rye/env ]                               && source $HOME/.rye/env
+whence deno > /dev/null                             && export PATH="$HOME/.deno/bin:$PATH"
+[ -d $HOME/.local/bin ]                             && export PATH="$HOME/.local/bin:$PATH"
+[ -d $CARGO_HOME/env ]                              && source $CARGO_HOME/env \
+    || [ -d $CARGO_HOME/bin ]                       && export PATH=$CARGO_HOME/bin:$PATH
+[ -d /usr/local/go ]                                && export PATH=/usr/local/go/bin:$PATH
 
 # load linuxbrew
 [ -d /home/linuxbrew/.linuxbrew ] \
@@ -109,8 +107,8 @@ alias gs='git ps'
 #──────────────────────────────────────────────────────────────────────────────
 #                               PROMPT setting
 #──────────────────────────────────────────────────────────────────────────────
-whence zsh_status > /dev/null                                                       \
-  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f%F{magenta}%B$(zsh_status venv_version)%b%f '        \
+whence zsh_status > /dev/null                                                                                           \
+  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f%F{magenta}%B$(zsh_status venv_version)%b%f ' \
   || export PROMPT=' %F{blue}%~%f '
 whence zsh_status > /dev/null                                                    \
   && export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f' \
@@ -135,5 +133,3 @@ docker_login() {
         -w /home/gen740 ${target} /bin/zsh
     unset target
 }
-
-# vim:foldmethod=marker:
