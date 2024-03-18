@@ -6,7 +6,7 @@ wezterm.on('gui-startup', function()
   window:gui_window():maximize()
 end)
 
-local window_padding = 32
+local window_padding = 16
 
 return {
   font = wezterm.font_with_fallback {
@@ -19,7 +19,7 @@ return {
     },
   },
   color_scheme = 'Tokyo Night',
-  font_size = 14.5,
+  font_size = 13,
   window_decorations = 'RESIZE | MACOS_FORCE_DISABLE_SHADOW',
   tab_bar_at_bottom = true,
   enable_tab_bar = false,
