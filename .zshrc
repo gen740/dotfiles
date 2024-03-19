@@ -74,22 +74,22 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
 #──────────────────────────────────────────────────────────────────────────────
-[ -f $HOME/.dotfiles/zsh_history_config.zsh ]       && source $HOME/.dotfiles/zsh_history_config.zsh
-whence fzf > /dev/null                              && eval "$(fzf --zsh)"
-[ -f $HOME/.zshrc_local ]                           && source $HOME/.zshrc_local
-[ -f $HOME/.dotfiles/lazy_load.zsh ]                && source $HOME/.dotfiles/lazy_load.zsh
-[ -f $HOME/.rye/env ]                               && source $HOME/.rye/env
-whence deno > /dev/null                             && export PATH="$HOME/.deno/bin:$PATH"
-[ -d $HOME/.local/bin ]                             && export PATH="$HOME/.local/bin:$PATH"
-[ -d $CARGO_HOME/env ]                              && source $CARGO_HOME/env \
-    || [ -d $CARGO_HOME/bin ]                       && export PATH=$CARGO_HOME/bin:$PATH
-[ -d /usr/local/go ]                                && export PATH=/usr/local/go/bin:$PATH
+[ -f $HOME/.dotfiles/zsh_history_config.zsh ] && source $HOME/.dotfiles/zsh_history_config.zsh
+whence fzf > /dev/null                        && eval "$(fzf --zsh)"
+[ -f $HOME/.zshrc_local ]                     && source $HOME/.zshrc_local
+[ -f $HOME/.dotfiles/lazy_load.zsh ]          && source $HOME/.dotfiles/lazy_load.zsh
+[ -f $HOME/.rye/env ]                         && source $HOME/.rye/env
+whence deno > /dev/null                       && export PATH="$HOME/.deno/bin:$PATH"
+[ -d $HOME/.local/bin ]                       && export PATH="$HOME/.local/bin:$PATH"
+[ -d $CARGO_HOME/env ]                        && source $CARGO_HOME/env \
+    || [ -d $CARGO_HOME/bin ]                 && export PATH=$CARGO_HOME/bin:$PATH
+[ -d /usr/local/go ]                          && export PATH=/usr/local/go/bin:$PATH
 
 # load linuxbrew
 [ -d /home/linuxbrew/.linuxbrew ] \
     && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" \
-    && export LIBRARY_PATH=$LIBRARY_PATH:/home/linuxbrew/.linuxbrew/lib \
-    && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/linuxbrew/.linuxbrew/lib
+    && export LIBRARY_PATH=${LIBRARY_PATH:+$LIBRARY_PATH:}/home/linuxbrew/.linuxbrew/lib \
+    && export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/home/linuxbrew/.linuxbrew/lib
 
 whence direnv > /dev/null && eval "$(direnv hook zsh)"
 
