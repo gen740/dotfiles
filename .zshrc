@@ -78,12 +78,13 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 whence fzf > /dev/null                        && eval "$(fzf --zsh)"
 [ -f $HOME/.zshrc_local ]                     && source $HOME/.zshrc_local
 [ -f $HOME/.dotfiles/lazy_load.zsh ]          && source $HOME/.dotfiles/lazy_load.zsh
-[ -f $HOME/.rye/env ]                         && source $HOME/.rye/env
 whence deno > /dev/null                       && export PATH="$HOME/.deno/bin:$PATH"
 [ -d $HOME/.local/bin ]                       && export PATH="$HOME/.local/bin:$PATH"
 [ -d $CARGO_HOME/env ]                        && source $CARGO_HOME/env \
     || [ -d $CARGO_HOME/bin ]                 && export PATH=$CARGO_HOME/bin:$PATH
 [ -d /usr/local/go ]                          && export PATH=/usr/local/go/bin:$PATH
+[ -d $HOME/.volta ]                            && export VOLTA_HOME="$HOME/.volta" && export PATH="$VOLTA_HOME/bin:$PATH"
+
 
 # load linuxbrew
 [ -d /home/linuxbrew/.linuxbrew ] \
