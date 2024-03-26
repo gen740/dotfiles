@@ -11,11 +11,17 @@ local window_padding = 16
 return {
   font = wezterm.font_with_fallback {
     {
-      family = 'MonaspiceRn Nerd Font',
+      family = 'FiraCode Nerd Font',
+      -- family = 'HackGen Console NF' &&
     },
     {
-      family = 'HanziPen SC', -- 日本語
-      scale = 1.1,
+      family = 'HackGen Console NF', -- 日本語
+      -- sample:
+      -- あのイーハトーヴォのすきとおった風、
+      -- 夏でも底に冷たさをもつ青いそら、
+      -- うつくしい森で飾られたモリーオ市、
+      -- 郊外のぎらぎらひかる草の波。
+      scale = 1.0,
     },
   },
   color_scheme = 'Tokyo Night',
@@ -26,6 +32,7 @@ return {
   term = 'wezterm',
   ime_preedit_rendering = 'System',
   macos_forward_to_ime_modifier_mask = 'CTRL|SHIFT',
+  harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
   window_padding = {
     left = window_padding,
     right = window_padding,
