@@ -1,0 +1,17 @@
+import = [
+  "~/.config/alacritty/theme.toml",
+  "~/.config/alacritty/keybindings.toml",
+]
+
+[font]
+size = 13
+
+[font.normal]
+# family = "HackGen Console NF"
+family = "FiraCode Nerd Font"
+
+[window]
+decorations = "none"
+startup_mode = "Maximized"
+padding.x = 8
+padding.y = 8
