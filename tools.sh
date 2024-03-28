@@ -3,7 +3,10 @@
 tools=(
   # Utilities
   "tmux"
-  "tokei"
+  "wget"
+  "git"
+  "curl"
+
   "direnv"
   "pipx"
   "fd"
@@ -12,40 +15,35 @@ tools=(
   "glab"
   "lazygit"
   "git-lfs"
-  "rust"
+  "rustup-init"
   "rust-analyzer"
   "rustfmt"
-  "wget"
-  "git"
-  "curl"
 
   "jq"
   "lsd"
 
   # "neovim"
-  "pre-commit"
+  # "pre-commit"
   "ripgrep"
   "go-task"
-  "prettier"
 
   "qmk/qmk/qmk"
 
   # node
-  "nodenv"
+  "volta"
   "biome"
 
   # python tools
   "ruff"
   "ruff-lsp"
   "pyright"
-  "rye"
-  "uv"
+  "hatch"
 
   # build tools
   "cmake"
   "llvm"
-  "clang-format"
   "ninja"
+  "clang-format"
 
   # language servers
   "lua-language-server"
@@ -53,7 +51,6 @@ tools=(
   "vscode-langservers-extracted"
   "yaml-language-server"
   "gopls"
-  "taplo"
   "stylua"
   "texlab"
   "texlive"
@@ -61,13 +58,20 @@ tools=(
   "swift-format"
 
   # yabai
-  "koekeishiya/formulae/skhd --HEAD"
-  "koekeishiya/formulae/yabai --HEAD"
+  "koekeishiya/formulae/skhd"
+  "koekeishiya/formulae/yabai"
 
   # cask
   "--cask docker"
   "--cask skim"
-)
+  "--cask notion"
+  "--cask notion-calendar"
+  "--cask raycast"
+  "--cask xquartz"
+  "--cask istat-menus"
+  "--cask slack"
+
+) # ltspice
 
 bar_size=40
 bar_char_done="#"
