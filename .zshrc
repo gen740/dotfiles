@@ -29,14 +29,16 @@ export FZF_DEFAULT_OPTS="--border=none --height=24 --scroll-off=3 --no-mouse --p
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
-    [ -e $HOME/home ]                                             \
-        && dirname=`fd -c never . $HOME/home/ -aH --type d | fzf` \
-        || dirname=`fd -c never . $HOME/ -aH --type d | fzf`
+    if [ -e $HOME/home ]; then
+        dirname=`fd -c never . $HOME/home/ -aH --type d | fzf`
+    else
+        dirname=`fd -c never . $HOME/ -aH --type d | fzf`
+    fi
 
     if [[ $dirname == ""  ]]; then
-    else
-        pushd $dirname > /dev/null
+        return 1
     fi
+    pushd $dirname > /dev/null
     unset dirname
 }
 
