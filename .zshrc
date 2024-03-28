@@ -1,6 +1,6 @@
 # Reset the PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-[ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
+# [ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
 [ -d /opt/homebrew/bin ]                  && export PATH=/opt/homebrew/bin:$PATH
 
 #──────────────────────────────────────────────────────────────────────────────
