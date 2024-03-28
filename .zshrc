@@ -104,6 +104,7 @@ whence nvim > /dev/null && {
 
 alias ls='ls --color'
 alias gs='git ps'
+alias dr='direnv reload'
 
 #──────────────────────────────────────────────────────────────────────────────
 #                               PROMPT setting
