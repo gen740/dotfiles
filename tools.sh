@@ -11,7 +11,7 @@ tools=(
   "gh"
   "glab"
   "lazygit"
-  "git-delta"
+  "git-lfs"
   "rust"
   "rust-analyzer"
   "rustfmt"
