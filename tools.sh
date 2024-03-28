@@ -20,7 +20,6 @@ tools=(
   "rustfmt"
 
   "jq"
-  "lsd"
 
   # "neovim"
   # "pre-commit"
