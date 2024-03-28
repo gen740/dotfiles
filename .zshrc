@@ -12,10 +12,11 @@ setopt PROMPT_SUBST
 [ -e /opt/homebrew/share/zsh/site-functions ] && export FPATH="$FPATH:/opt/homebrew/share/zsh/site-functions"
 [ -e $HOME/.dotfiles/zsh ] && export FPATH="$FPATH:$HOME/.dotfiles/zsh"
 
-export LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
+export LS_COLORS='di=1;31:ln=37:so=32:pi=33:ex=31:bd=1;35;40:cd=1;35;43:su=1;30;41:sg=1;30;43:tw=1;30;42:ow=1;30;44'
+export LSCOLORS='Bxhxcxdxbxegedabagacad'
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 autoload -Uz compinit
 compinit -u
@@ -102,7 +103,7 @@ whence nvim > /dev/null && {
     alias vi='nvim'
 }
 
-alias ls='ls --color'
+alias ls='ls --color -F'
 alias gs='git ps'
 alias dr='direnv reload'
 
