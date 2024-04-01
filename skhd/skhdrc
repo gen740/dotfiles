@@ -21,6 +21,7 @@ ctrl + shift + alt - m : yabai -m space --layout managed
 ctrl + shift + alt - s : yabai -m space --layout stack
 ctrl + shift + alt - f : yabai -m space --layout float
 
+# ctrl + shift + alt - f : yabai -m window --toggle float
 ctrl + shift + alt - f : yabai -m window --toggle float
 
 ctrl + shift + alt - h : yabai -m window --swap west
@@ -41,18 +42,8 @@ cmd + ctrl + shift + alt - n : yabai -m window --focus east
 cmd + ctrl + shift + alt - c : yabai -m window --focus north
 cmd + ctrl + shift + alt - w : yabai -m window --focus south
 
+cmd + ctrl + shift + alt - f : yabai -m window --grid 1:1:0:0:1:1
 cmd + ctrl + shift + alt - r : yabai -m window --resize bottom_right:50:0
 cmd + ctrl + shift + alt - g : yabai -m window --resize bottom_right:-50:0
 cmd + ctrl + shift + alt - p : yabai -m window --resize top_left:50:0
 cmd + ctrl + shift + alt - z : yabai -m window --resize top_left:-50:0
-
-
-# cmd + ctrl + alt - h : open /Applications/WezTerm.app
-# cmd + ctrl + alt - n : open /Applications/Safari.app
-# cmd + ctrl + alt - c : open /Applications/Slack.app
-# cmd + ctrl + alt - w : open /System/Applications/Reminders.app
-
-cmd + ctrl + alt - a : open /Applications/WezTerm.app
-cmd + ctrl + alt - e : open /Applications/Safari.app
-cmd + ctrl + alt - s : open /Applications/Slack.app
-cmd + ctrl + alt - t : open /System/Applications/Reminders.app
