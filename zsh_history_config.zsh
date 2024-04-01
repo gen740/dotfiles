@@ -46,11 +46,11 @@ HISTORY_IGNORE_=(
     "rm *"
 )
 
-function zshaddhistory() {
-    local words=(${(z)1})
-    local cmd=$words[1]
-    whence $cmd > /dev/null && return 0 || return 1
-}
+# function zshaddhistory() {
+#     local words=(${(z)1})
+#     local cmd=$words[1]
+#     whence $cmd > /dev/null && return 0 || return 1
+# }
 
 export HISTORY_IGNORE=$(IFS="|";echo "${HISTORY_IGNORE_[*]}")
 
