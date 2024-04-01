@@ -16,8 +16,6 @@ tools=(
   "lazygit"
   "git-lfs"
   "rustup-init"
-  "rust-analyzer"
-  "rustfmt"
 
   "jq"
 
