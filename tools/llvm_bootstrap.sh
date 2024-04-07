@@ -35,13 +35,13 @@ cmake -S llvm -B $1 -GNinja                                                     
     -D LIBCXX_USE_COMPILER_RT=ON                                                                             \
     -D LLVM_BUILD_EXTERNAL_COMPILER_RT=ON                                                                    \
     -D LLVM_ENABLE_LTO=Thin                                                                                  \
-    -D LLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;mlir;polly"                                    \
+    -D LLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;mlir;polly;flang"                              \
     -D LLVM_ENABLE_RUNTIMES="libcxx;libunwind;libcxxabi;openmp;pstl;compiler-rt"                             \
     -D LLVM_ENABLE_Z3_SOLVER=ON                                                                              \
     -D LLVM_INCLUDE_DOCS=OFF                                                                                 \
     -D LLVM_INCLUDE_TESTS=OFF                                                                                \
-    -D LLVM_PARALLEL_COMPILE_JOBS=5                                                                          \
-    -D LLVM_PARALLEL_LINK_JOBS=3                                                                             \
+    -D LLVM_PARALLEL_COMPILE_JOBS=9                                                                          \
+    -D LLVM_PARALLEL_LINK_JOBS=5                                                                             \
     -D LLVM_POLLY_LINK_INTO_TOOLS=ON                                                                         \
     -Wno-dev
 
