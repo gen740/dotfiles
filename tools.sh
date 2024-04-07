@@ -29,6 +29,7 @@ tools=(
   # node
   "volta"
   "biome"
+  "deno"
 
   # python tools
   "ruff"
@@ -47,7 +48,9 @@ tools=(
   "typescript-language-server"
   "vscode-langservers-extracted"
   "yaml-language-server"
+  "yamlfmt"
   "gopls"
+  "taplo"
   "stylua"
   "texlab"
   "texlive"

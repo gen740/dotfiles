@@ -1,5 +1,8 @@
 # Reset the PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/Users/fujimotogen/.nix-profile/bin:/nix/var/nix/profiles/default/bin${PATH:+:}$PATH
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+
 [ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
 [ -d /opt/homebrew/bin ]                  && export PATH=/opt/homebrew/bin:$PATH
 
@@ -65,6 +68,7 @@ export PAGER=less
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export GOPATH=$XDG_DATA_HOME/go
 export CARGO_HOME=$HOME/.cargo
+export MODULAR_HOME=$HOME/.modular
 export MPLCONFIGDIR=$XDG_CACHE_HOME/matplotlib
 export IPYTHONDIR=$XDG_CACHE_HOME/ipython
 export JUPYTER_CONFIG_DIR=$XDG_CACHE_HOME/jupyter
@@ -77,17 +81,17 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
 #──────────────────────────────────────────────────────────────────────────────
-[ -f $HOME/.dotfiles/zsh_history_config.zsh ] && source $HOME/.dotfiles/zsh_history_config.zsh
-whence fzf > /dev/null                        && eval "$(fzf --zsh)"
-[ -f $HOME/.zshrc_local ]                     && source $HOME/.zshrc_local
-[ -f $HOME/.dotfiles/lazy_load.zsh ]          && source $HOME/.dotfiles/lazy_load.zsh
-whence deno > /dev/null                       && export PATH="$HOME/.deno/bin:$PATH"
-[ -d $HOME/.local/bin ]                       && export PATH="$HOME/.local/bin:$PATH"
-[ -d $CARGO_HOME/env ]                        && source $CARGO_HOME/env \
-    || [ -d $CARGO_HOME/bin ]                 && export PATH=$CARGO_HOME/bin:$PATH
-[ -d /usr/local/go ]                          && export PATH=/usr/local/go/bin:$PATH
-[ -d $HOME/.volta ]                            && export VOLTA_HOME="$HOME/.volta" && export PATH="$VOLTA_HOME/bin:$PATH"
-
+[ -f $HOME/.dotfiles/zsh_history_config.zsh ]           && source $HOME/.dotfiles/zsh_history_config.zsh
+whence fzf > /dev/null                                  && eval "$(fzf --zsh)"
+[ -f $HOME/.zshrc_local ]                               && source $HOME/.zshrc_local
+[ -f $HOME/.dotfiles/lazy_load.zsh ]                    && source $HOME/.dotfiles/lazy_load.zsh
+whence deno > /dev/null                                 && export PATH="$HOME/.deno/bin:$PATH"
+[ -d $HOME/.local/bin ]                                 && export PATH="$HOME/.local/bin:$PATH"
+[ -d $CARGO_HOME/env ]                                  && source $CARGO_HOME/env \
+    || [ -d $CARGO_HOME/bin ]                           && export PATH=$CARGO_HOME/bin:$PATH
+[ -d /usr/local/go ]                                    && export PATH=/usr/local/go/bin:$PATH
+[ -d $HOME/.volta ]                                     && export VOLTA_HOME="$HOME/.volta" && export PATH="$VOLTA_HOME/bin:$PATH"
+[ -d $HOME/.modular/pkg/packages.modular.com_mojo/bin ] && export PATH="/Users/fujimotogen/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 # load linuxbrew
 [ -d /home/linuxbrew/.linuxbrew ] \
@@ -107,7 +111,7 @@ whence nvim > /dev/null && {
 
 alias ls='ls --color -F'
 alias gs='git ps'
-alias dr='direnv reload'
+alias dr='direnv allow'
 
 #──────────────────────────────────────────────────────────────────────────────
 #                               PROMPT setting
@@ -138,3 +142,6 @@ docker_login() {
         -w /home/gen740 ${target} /bin/zsh
     unset target
 }
+
+# Created by `userpath` on 2024-04-02 09:19:53
+export PATH="$PATH:/Users/fujimotogen/Library/Application Support/hatch/pythons/3.12/python/bin"
