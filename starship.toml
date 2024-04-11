@@ -1,0 +1,21 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+format = " $directory$git_branch$git_state$git_status$python"
+right_format = "$git_metrics"
+
+[git_branch]
+format = '[\($symbol$branch(:$remote_branch)\)]($style) '
+symbol = ""
+style = "green"
+
+[git_metrics]
+disabled = false
+
+[directory]
+style = "blue bold"
+
+
+[python]
+format = "[${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
