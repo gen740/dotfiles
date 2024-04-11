@@ -39,6 +39,7 @@ linkconfig lazygit
 linkconfig yamlfmt
 linkconfig clangd
 linkconfig alacritty
+linkconfig starship.toml
 
 unset SCRIPT_DIR
 unset -f link

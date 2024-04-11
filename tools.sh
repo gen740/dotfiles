@@ -1,11 +1,14 @@
 #!/bin/bash
 
+set -e
+
 tools=(
   # Utilities
   "tmux"
   "wget"
   "git"
   "curl"
+  "starship"
 
   "direnv"
   "pipx"
@@ -14,13 +17,10 @@ tools=(
   "gh"
   "glab"
   "lazygit"
-  "git-lfs"
   "rustup-init"
 
   "jq"
 
-  # "neovim"
-  # "pre-commit"
   "ripgrep"
   "go-task"
 
@@ -41,7 +41,6 @@ tools=(
   "cmake"
   "llvm"
   "ninja"
-  "clang-format"
 
   # language servers
   "lua-language-server"
@@ -52,8 +51,6 @@ tools=(
   "gopls"
   "taplo"
   "stylua"
-  "texlab"
-  "texlive"
   "biber"
   "swift-format"
 
@@ -62,15 +59,16 @@ tools=(
   "koekeishiya/formulae/yabai"
 
   # cask
-  "--cask docker"
-  "--cask skim"
-  "--cask notion"
-  "--cask notion-calendar"
-  "--cask raycast"
-  "--cask xquartz"
-  "--cask istat-menus"
-  "--cask slack"
-
+  "--cask --force alacritty"
+  "--cask --force docker"
+  "--cask --force google-drive"
+  "--cask --force istat-menus"
+  "--cask --force notion"
+  "--cask --force notion-calendar"
+  "--cask --force raycast"
+  "--cask --force skim"
+  "--cask --force slack"
+  "--cask --force xquartz"
 ) # ltspice
 
 bar_size=40

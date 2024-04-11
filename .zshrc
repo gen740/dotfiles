@@ -1,4 +1,6 @@
 # Reset the PATH
+eval "$(starship init zsh)"
+
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/Users/fujimotogen/.nix-profile/bin:/nix/var/nix/profiles/default/bin${PATH:+:}$PATH
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
@@ -9,7 +11,6 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 #──────────────────────────────────────────────────────────────────────────────
 #                            completion settings
 #──────────────────────────────────────────────────────────────────────────────
-setopt PROMPT_SUBST
 
 [ -e $HOME/.local/zsh ] && export FPATH="$FPATH:$HOME/.local/zsh"
 [ -e /opt/homebrew/share/zsh/site-functions ] && export FPATH="$FPATH:/opt/homebrew/share/zsh/site-functions"
@@ -74,7 +75,6 @@ export IPYTHONDIR=$XDG_CACHE_HOME/ipython
 export JUPYTER_CONFIG_DIR=$XDG_CACHE_HOME/jupyter
 
 export PYTHON_HISTORY=$XDG_DATA_HOME/python/history
-export VIRTUAL_ENV_DISABLE_PROMPT=1
 export ROOT_HIST=0
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
@@ -112,17 +112,6 @@ whence nvim > /dev/null && {
 alias ls='ls --color -F'
 alias gs='git ps'
 alias dr='direnv allow'
-
-#──────────────────────────────────────────────────────────────────────────────
-#                               PROMPT setting
-#──────────────────────────────────────────────────────────────────────────────
-whence zsh_status > /dev/null                                                                                           \
-  && export PROMPT=' %F{blue}%~%f%F{#839e6c}%B$(zsh_status git_branch)%b%f%F{magenta}%B$(zsh_status venv_version)%b%f ' \
-  || export PROMPT=' %F{blue}%~%f '
-whence zsh_status > /dev/null                                                    \
-  && export RPROMPT='%(?..%F{red}%?%f) %F{#999999}$(zsh_status pyenv_version)%f' \
-  || export RPROMPT='%(?..%F{red}%?%f)'
-
 
 if [ "$1" != "--no-tmux" ]; then
     whence tmux > /dev/null && [[ -z $TMUX && -z $NVIM ]] && (tmux attach || tmux new -s Main)
