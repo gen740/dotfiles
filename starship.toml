@@ -4,6 +4,7 @@
 add_newline = false
 format = " $directory$git_branch$git_state$git_status$python"
 right_format = "$git_metrics"
+command_timeout = 300
 
 [git_branch]
 format = '[\($symbol$branch(:$remote_branch)\)]($style) '

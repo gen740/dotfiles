@@ -32,7 +32,6 @@ function() linkconfig() {
 
 link .tmux.conf
 link .wezterm.lua
-linkconfig skhd
 linkconfig yabai
 linkconfig git
 linkconfig lazygit

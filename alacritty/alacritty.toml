@@ -4,7 +4,7 @@ import = [
 ]
 
 [font]
-size = 14.5
+size = 14
 
 [font.normal]
 # family = "HackGen Console NF"
@@ -12,6 +12,5 @@ family = "FiraCode Nerd Font"
 
 [window]
 decorations = "none"
-startup_mode = "Maximized"
 padding.x = 8
 padding.y = 8
