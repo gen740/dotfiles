@@ -1,12 +1,12 @@
 # Reset the PATH
-eval "$(starship init zsh)"
-
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/Users/fujimotogen/.nix-profile/bin:/nix/var/nix/profiles/default/bin${PATH:+:}$PATH
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 [ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
 [ -d /opt/homebrew/bin ]                  && export PATH=/opt/homebrew/bin:$PATH
+
+eval "$(starship init zsh)"
 
 #──────────────────────────────────────────────────────────────────────────────
 #                            completion settings
@@ -69,7 +69,6 @@ export PAGER=less
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export GOPATH=$XDG_DATA_HOME/go
 export CARGO_HOME=$HOME/.cargo
-export MODULAR_HOME=$HOME/.modular
 export MPLCONFIGDIR=$XDG_CACHE_HOME/matplotlib
 export IPYTHONDIR=$XDG_CACHE_HOME/ipython
 export JUPYTER_CONFIG_DIR=$XDG_CACHE_HOME/jupyter
@@ -91,7 +90,6 @@ whence deno > /dev/null                                 && export PATH="$HOME/.d
     || [ -d $CARGO_HOME/bin ]                           && export PATH=$CARGO_HOME/bin:$PATH
 [ -d /usr/local/go ]                                    && export PATH=/usr/local/go/bin:$PATH
 [ -d $HOME/.volta ]                                     && export VOLTA_HOME="$HOME/.volta" && export PATH="$VOLTA_HOME/bin:$PATH"
-[ -d $HOME/.modular/pkg/packages.modular.com_mojo/bin ] && export PATH="/Users/fujimotogen/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 # load linuxbrew
 [ -d /home/linuxbrew/.linuxbrew ] \
