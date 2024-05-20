@@ -127,3 +127,13 @@ mods = "Alt"
 chars = "\u001Bz"
 key = "Z"
 mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B]"
+key = "]"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B["
+key = "["
+mods = "Alt"
