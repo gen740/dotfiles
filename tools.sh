@@ -55,14 +55,12 @@ tools=(
   "swift-format"
 
   # yabai
-  "koekeishiya/formulae/skhd"
   "koekeishiya/formulae/yabai"
 
   # cask
   "--cask --force alacritty"
   "--cask --force docker"
   "--cask --force google-drive"
-  "--cask --force istat-menus"
   "--cask --force notion"
   "--cask --force notion-calendar"
   "--cask --force raycast"
@@ -99,6 +97,6 @@ function show_progress {
 }
 
 for (( i = 0; i < ${#tools[@]}; i++ )); do
-  brew install -q --force ${tools[$i]}
+  brew install --force ${tools[$i]}
   show_progress $(($i+1)) ${#tools[@]}
 done
