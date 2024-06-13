@@ -80,10 +80,10 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 #──────────────────────────────────────────────────────────────────────────────
 #                               PATH and Alias
 #──────────────────────────────────────────────────────────────────────────────
-[ -f $HOME/.dotfiles/zsh_history_config.zsh ]           && source $HOME/.dotfiles/zsh_history_config.zsh
 whence fzf > /dev/null                                  && eval "$(fzf --zsh)"
-[ -f $HOME/.zshrc_local ]                               && source $HOME/.zshrc_local
 whence deno > /dev/null                                 && export PATH="$HOME/.deno/bin:$PATH"
+[ -f $HOME/.dotfiles/zsh_history_config.zsh ]           && source $HOME/.dotfiles/zsh_history_config.zsh
+[ -f $HOME/.zshrc_local ]                               && source $HOME/.zshrc_local
 [ -d $HOME/.local/bin ]                                 && export PATH="$HOME/.local/bin:$PATH"
 [ -d $CARGO_HOME/env ]                                  && source $CARGO_HOME/env \
     || [ -d $CARGO_HOME/bin ]                           && export PATH=$CARGO_HOME/bin:$PATH
