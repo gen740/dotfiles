@@ -39,18 +39,12 @@ HISTORY_IGNORE_=(
     "nvim"
     "tmux"
     "r"
+    "dr"
     "git switch"
     "git add *"
     "pytest"
     "open ."
-    "rm *"
 )
-
-# function zshaddhistory() {
-#     local words=(${(z)1})
-#     local cmd=$words[1]
-#     whence $cmd > /dev/null && return 0 || return 1
-# }
 
 export HISTORY_IGNORE=$(IFS="|";echo "${HISTORY_IGNORE_[*]}")
 
