@@ -129,6 +129,3 @@ docker_login() {
         -w /home/gen740 ${target} /bin/zsh
     unset target
 }
-
-# Created by `userpath` on 2024-04-02 09:19:53
-export PATH="$PATH:/Users/fujimotogen/Library/Application Support/hatch/pythons/3.12/python/bin"
