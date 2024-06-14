@@ -6,6 +6,10 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 [ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
 [ -d /opt/homebrew/bin ]                  && export PATH=/opt/homebrew/bin:$PATH
 
+export CARGO_HOME=$HOME/.cargo
+[ -d $CARGO_HOME/env ]                                  && source $CARGO_HOME/env \
+    || [ -d $CARGO_HOME/bin ]                           && export PATH=$CARGO_HOME/bin:$PATH
+
 eval "$(starship init zsh)"
 
 #──────────────────────────────────────────────────────────────────────────────
@@ -68,7 +72,6 @@ export PAGER=less
 
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export GOPATH=$XDG_DATA_HOME/go
-export CARGO_HOME=$HOME/.cargo
 export MPLCONFIGDIR=$XDG_CACHE_HOME/matplotlib
 export IPYTHONDIR=$XDG_CACHE_HOME/ipython
 export JUPYTER_CONFIG_DIR=$XDG_CACHE_HOME/jupyter
@@ -85,8 +88,6 @@ whence deno > /dev/null                                 && export PATH="$HOME/.d
 [ -f $HOME/.dotfiles/zsh_history_config.zsh ]           && source $HOME/.dotfiles/zsh_history_config.zsh
 [ -f $HOME/.zshrc_local ]                               && source $HOME/.zshrc_local
 [ -d $HOME/.local/bin ]                                 && export PATH="$HOME/.local/bin:$PATH"
-[ -d $CARGO_HOME/env ]                                  && source $CARGO_HOME/env \
-    || [ -d $CARGO_HOME/bin ]                           && export PATH=$CARGO_HOME/bin:$PATH
 [ -d /usr/local/go ]                                    && export PATH=/usr/local/go/bin:$PATH
 [ -d $HOME/.volta ]                                     && export VOLTA_HOME="$HOME/.volta" && export PATH="$VOLTA_HOME/bin:$PATH"
 
