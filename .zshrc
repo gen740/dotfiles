@@ -89,7 +89,6 @@ whence deno > /dev/null                                 && export PATH="$HOME/.d
 [ -f $HOME/.zshrc_local ]                               && source $HOME/.zshrc_local
 [ -d $HOME/.local/bin ]                                 && export PATH="$HOME/.local/bin:$PATH"
 [ -d /usr/local/go ]                                    && export PATH=/usr/local/go/bin:$PATH
-[ -d $HOME/.volta ]                                     && export VOLTA_HOME="$HOME/.volta" && export PATH="$VOLTA_HOME/bin:$PATH"
 
 # load linuxbrew
 [ -d /home/linuxbrew/.linuxbrew ] \
@@ -129,3 +128,5 @@ docker_login() {
         -w /home/gen740 ${target} /bin/zsh
     unset target
 }
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
