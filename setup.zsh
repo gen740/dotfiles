@@ -36,7 +36,6 @@ linkconfig yabai
 linkconfig git
 linkconfig lazygit
 linkconfig yamlfmt
-linkconfig clangd
 linkconfig alacritty
 linkconfig starship.toml
 
