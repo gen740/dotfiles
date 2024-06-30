@@ -1,6 +1,5 @@
 # Reset the PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=/Users/fujimotogen/.nix-profile/bin:/nix/var/nix/profiles/default/bin${PATH:+:}$PATH
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 [ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
@@ -38,9 +37,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 function h() {
     if [ -e $HOME/home ]; then
-        dirname=`fd -c never . $HOME/home/ -aH --type d | fzf`
+        dirname=`fd -c never -E .git . $HOME/home/ -aH --type d | fzf`
     else
-        dirname=`fd -c never . $HOME/ -aH --type d | fzf`
+        dirname=`fd -c never -E .git . $HOME/ -aH --type d | fzf`
     fi
 
     if [[ $dirname == ""  ]]; then
@@ -130,3 +129,6 @@ docker_login() {
 }
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Created by `userpath` on 2024-06-25 10:52:13
+export PATH="$PATH:/Users/gen/Library/Application Support/hatch/pythons/3.8/python/bin"

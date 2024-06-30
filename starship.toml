@@ -1,8 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
-format = " $directory$git_branch$git_state$git_status$python"
+add_newline = true
+format = "[┃](blue) $directory$git_branch$git_state$git_status$python$direnv\n[┃](blue) "
 right_format = "$git_metrics"
 command_timeout = 300
 
@@ -15,6 +15,7 @@ style = "green"
 disabled = false
 
 [directory]
+truncation_length = 5
 style = "blue bold"
 
 
