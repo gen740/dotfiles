@@ -18,6 +18,5 @@ disabled = false
 truncation_length = 5
 style = "blue bold"
 
-
 [python]
 format = "[${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
