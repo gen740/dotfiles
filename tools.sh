@@ -61,11 +61,8 @@ tools=(
   "--cask --force alacritty"
   "--cask --force docker"
   "--cask --force google-drive"
-  "--cask --force notion"
-  "--cask --force notion-calendar"
   "--cask --force raycast"
   "--cask --force skim"
-  "--cask --force slack"
   "--cask --force xquartz"
 ) # ltspice
 

@@ -12,5 +12,6 @@ family = "FiraCode Nerd Font"
 
 [window]
 decorations = "none"
+option_as_alt = "Both"
 padding.x = 8
 padding.y = 8
