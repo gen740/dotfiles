@@ -20,7 +20,7 @@ eval "$(starship init zsh)"
 [ -e $HOME/.dotfiles/zsh ] && export FPATH="$FPATH:$HOME/.dotfiles/zsh"
 
 export LS_COLORS='di=1;31:ln=37:so=32:pi=33:ex=31:bd=1;35;40:cd=1;35;43:su=1;30;41:sg=1;30;43:tw=1;30;42:ow=1;30;44'
-export LSCOLORS='Bxhxcxdxbxegedabagacad'
+export LSCOLORS='Bxhxcxdxbxexexaxaxaxax'
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -129,6 +129,3 @@ docker_login() {
 }
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-
-# Created by `userpath` on 2024-06-25 10:52:13
-export PATH="$PATH:/Users/gen/Library/Application Support/hatch/pythons/3.8/python/bin"
