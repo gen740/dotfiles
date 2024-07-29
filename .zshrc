@@ -49,6 +49,10 @@ function h() {
     unset dirname
 }
 
+function nix-search() {
+    nix search nixpkgs "$1" 2> /dev/null | sed -r 's/\x1B\[[0-9;]*[mG]//g' | grep "^* " | fzf
+}
+
 stty stop undef # do not stop the terminal with C-s
 
 bindkey -e
