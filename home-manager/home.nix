@@ -72,15 +72,35 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.fd.enable = true;
-  programs.fzf.enable = true;
-  programs.gh.enable = true;
-  programs.home-manager.enable = true;
-  programs.neovim.enable = true;
-  programs.ripgrep.enable = true;
-  programs.starship.enable = true;
 
   programs = {
+    fd = {
+      enable = true;
+    };
+
+    fzf = {
+      enable = true;
+    };
+
+    gh = {
+      enable = true;
+    };
+
+    home-manager = {
+      enable = true;
+    };
+
+    neovim = {
+      enable = true;
+    };
+
+    ripgrep = {
+      enable = true;
+    };
+
+    starship = {
+      enable = true;
+    };
 
     tmux = {
       enable = true;
@@ -181,11 +201,8 @@
 
     direnv = {
       enable = true;
-      enableBashIntegration = true; # see note on other shells below
+      enableZshIntegration = true; # see note on other shells below
       nix-direnv.enable = true;
     };
-
-    bash.enable = true; # see note on other shells below
   };
-
 }
