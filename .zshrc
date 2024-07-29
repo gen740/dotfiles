@@ -1,6 +1,6 @@
 # Reset the PATH
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+# export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+# export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 [ -d /usr/local/bin ]                     && export PATH=/usr/local/bin:$PATH
 [ -d /opt/homebrew/bin ]                  && export PATH=/opt/homebrew/bin:$PATH
@@ -9,7 +9,7 @@ export CARGO_HOME=$HOME/.cargo
 [ -d $CARGO_HOME/env ]                                  && source $CARGO_HOME/env \
     || [ -d $CARGO_HOME/bin ]                           && export PATH=$CARGO_HOME/bin:$PATH
 
-eval "$(starship init zsh)"
+whence starship > /dev/null                                 && eval "$(starship init zsh)"
 
 #──────────────────────────────────────────────────────────────────────────────
 #                            completion settings
