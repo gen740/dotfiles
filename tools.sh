@@ -9,33 +9,35 @@ tools=(
   "git"
   "curl"
   "starship"
+  "macos-trash"
 
   "direnv"
-  "pipx"
+  "neovim"
+  # "pipx"
   "fd"
   "fzf"
   "gh"
   "glab"
   "lazygit"
-  "rustup-init"
+  # "rustup-init"
 
   "jq"
 
   "ripgrep"
-  "go-task"
+  # "go-task"
 
-  "qmk/qmk/qmk"
+  # "qmk/qmk/qmk"
 
   # node
-  "volta"
-  "biome"
-  "deno"
+  # "volta"
+  # "biome"
+  # "deno"
 
   # python tools
-  "ruff"
-  "ruff-lsp"
-  "pyright"
-  "hatch"
+  # "ruff"
+  # "ruff-lsp"
+  # "pyright"
+  # "hatch"
 
   # build tools
   "cmake"
@@ -43,19 +45,19 @@ tools=(
   "ninja"
 
   # language servers
-  "lua-language-server"
-  "typescript-language-server"
-  "vscode-langservers-extracted"
-  "yaml-language-server"
-  "yamlfmt"
-  "gopls"
-  "taplo"
-  "stylua"
-  "biber"
-  "swift-format"
+  # "lua-language-server"
+  # "typescript-language-server"
+  # "vscode-langservers-extracted"
+  # "yaml-language-server"
+  # "yamlfmt"
+  # "gopls"
+  # "taplo"
+  # "stylua"
+  # "biber"
+  # "swift-format"
 
   # yabai
-  "koekeishiya/formulae/yabai"
+  # "koekeishiya/formulae/yabai"
 
   # cask
   "--cask --force alacritty"
