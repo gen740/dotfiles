@@ -20,7 +20,7 @@ function() linkconfig() {
   ln -sf $SCRIPT_DIR/$1 $HOME/.config/$1
 }
 
-linkconfig home_manager
+linkconfig nix-darwin
 linkconfig alacritty
 linkconfig starship.toml
 
