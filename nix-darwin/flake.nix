@@ -28,7 +28,7 @@
 
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
-          programs.zsh.enable = true;  # default shell on catalina
+          programs.zsh.enable = true;
 
           nix = {
             package = pkgs.nixFlakes;
