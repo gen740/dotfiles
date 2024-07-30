@@ -18,7 +18,7 @@
         dr = "direnv allow";
       };
       programs = {
-        fd.enable = true;
+        home-manager.enable = true;
         alacritty = {
           enable = true;
           settings = {
@@ -39,16 +39,18 @@
 
           };
         };
-        fzf.enable = true;
-        gh.enable = true;
-        home-manager.enable = true;
-        neovim.enable = true;
-        ripgrep.enable = true;
-        starship = import ./starship-conf.nix;
-        jq.enable = true;
-        tmux = import ./tmux-conf.nix;
-        git = import ./git-conf.nix;
-        zsh = import ./zsh-conf.nix;
+        fzf = {
+          enable = true;
+          defaultCommand = "fd --type f --hidden --follow --exclude .git";
+          defaultOptions = [
+            "--border=none"
+            "--height=24"
+            "--scroll-off=3"
+            "--no-mouse"
+            "--prompt=\ "
+            "--pointer=\ "
+          ];
+        };
         lazygit = {
           enable = true;
           settings = {
@@ -64,6 +66,10 @@
           enableZshIntegration = true; # see note on other shells below
           nix-direnv.enable = true;
         };
+        starship = import ./starship-conf.nix;
+        tmux = import ./tmux-conf.nix;
+        git = import ./git-conf.nix;
+        zsh = import ./zsh-conf.nix;
       };
     };
 }

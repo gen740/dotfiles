@@ -19,11 +19,17 @@
         { pkgs, ... }:
         {
           environment.systemPackages = [
-            pkgs.vscode-langservers-extracted
+            pkgs.btop
+            pkgs.fd
+            pkgs.taplo-lsp
+            pkgs.gh
+            pkgs.jq
+            pkgs.neovim
             pkgs.nixd
             pkgs.nixfmt-rfc-style
-            pkgs.btop
+            pkgs.ripgrep
             pkgs.trash-cli
+            pkgs.vscode-langservers-extracted
           ];
 
           # Auto upgrade nix package and the daemon service.

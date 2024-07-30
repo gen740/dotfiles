@@ -36,8 +36,6 @@
   '';
   sessionVariables = {
     LSCOLORS = "Bxhxcxdxbxexexaxaxaxax";
-    FZF_DEFAULT_OPTS = "--border=none --height=24 --scroll-off=3 --no-mouse --prompt=\  --pointer=\ ";
-    FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow --exclude .git";
     WORDCHARS = "!$%";
     REPORTTIME = 10;
     TIMEFMT = "%*E %*U %*S CPU: %P Memory: %M KB # %J";
