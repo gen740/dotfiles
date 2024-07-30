@@ -26,5 +26,4 @@
       format = "[\${pyenv_prefix}(\${version} )(\\($virtualenv\\) )]($style)";
     };
   };
-
 }
