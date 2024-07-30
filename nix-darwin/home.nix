@@ -19,12 +19,32 @@
       };
       programs = {
         fd.enable = true;
+        alacritty = {
+          enable = true;
+          settings = {
+            import = [
+              "~/.dotfiles/alacritty/theme.toml"
+              "~/.dotfiles/alacritty/keybindings.toml"
+            ];
+            font.size = 14;
+            font.normal.family = "FiraCode Nerd Font";
+            window = {
+              decorations = "none";
+              option_as_alt = "Both";
+              padding = {
+                x = 10;
+                y = 10;
+              };
+            };
+
+          };
+        };
         fzf.enable = true;
         gh.enable = true;
         home-manager.enable = true;
         neovim.enable = true;
         ripgrep.enable = true;
-        starship.enable = true;
+        starship = import ./starship-conf.nix;
         jq.enable = true;
         tmux = import ./tmux-conf.nix;
         git = import ./git-conf.nix;

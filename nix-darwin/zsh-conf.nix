@@ -65,4 +65,5 @@
     ignoreSpace = true;
     ignorePatterns = [ "rm *" ];
   };
+  syntaxHighlighting.enable = true;
 }
