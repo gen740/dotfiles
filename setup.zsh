@@ -21,7 +21,6 @@ function() linkconfig() {
 }
 
 linkconfig nix-darwin
-linkconfig alacritty
 linkconfig starship.toml
 
 unset SCRIPT_DIR
