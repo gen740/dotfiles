@@ -21,6 +21,7 @@
           environment.systemPackages = [
             pkgs.coreutils
 
+            pkgs.zsh-completions
             pkgs.btop
             pkgs.fd
             pkgs.gh
@@ -55,11 +56,12 @@
     in
     {
       darwinConfigurations.gen740 = nix-darwin.lib.darwinSystem {
-        modules = [
-          configuration
-          home-manager.darwinModules.home-manager
-          (import ./home.nix)
-        ];
+        modules =
+          [ configuration ]
+          ++ [
+            home-manager.darwinModules.home-manager
+            (import ./home.nix)
+          ];
       };
       darwinPackages = self.darwinConfigurations.gen740.pkgs;
     };
