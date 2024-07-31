@@ -3,7 +3,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -23,7 +23,7 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -40,18 +40,18 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
+    "nixpkgs": {
       "locked": {
-        "lastModified": 1722141560,
-        "narHash": "sha256-Ul3rIdesWaiW56PS/Ak3UlJdkwBrD4UcagCmXZR9Z7Y=",
+        "lastModified": 1717179513,
+        "narHash": "sha256-vboIEwIQojofItm2xGCdZCzW96U85l9nDW3ifMuAIdM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "038fb464fcfa79b4f08131b07f2d8c9a6bcc4160",
+        "rev": "63dacb46bf939521bdc93981b4cbb7ecb58427a0",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -60,7 +60,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
