@@ -19,16 +19,19 @@
         { pkgs, ... }:
         {
           environment.systemPackages = [
+            pkgs.coreutils
+
             pkgs.btop
             pkgs.fd
-            pkgs.taplo-lsp
             pkgs.gh
             pkgs.jq
             pkgs.neovim
-            pkgs.nixd
-            pkgs.nixfmt-rfc-style
             pkgs.ripgrep
             pkgs.trash-cli
+
+            pkgs.nixd
+            pkgs.nixfmt-rfc-style
+            pkgs.taplo-lsp
             pkgs.vscode-langservers-extracted
           ];
 
@@ -44,8 +47,9 @@
             };
           };
 
-          system.configurationRevision = self.rev or self.dirtyRev or null;
+          system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
           system.stateVersion = 4;
+
           nixpkgs.hostPlatform = "aarch64-darwin";
         };
     in

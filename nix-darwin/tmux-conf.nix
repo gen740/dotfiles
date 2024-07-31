@@ -10,7 +10,7 @@
     set-option -g status-justify "centre"
     set-option -g status-left-length 40
     set-option -g status-right-length 40
-    set-option -g status-interval 10
+    set-option -g status-interval 1
 
     TMUX_STATUS_FG=#cdcecf
     TMUX_STATUS_DARKFG=#71839b
@@ -21,11 +21,11 @@
 
     set-option -g status-style bg=default
 
-    set -g status-left "\
-     #[fg=$TMUX_STATUS_BLUE,bold,underscore]#S#[fg=$TMUX_STATUS_GREEN,nobold,nounderscore]  "
+    set -g status-left "#[fg=$TMUX_STATUS_BLUE,bold,underscore]#S#[fg=$TMUX_STATUS_GREEN,nobold,nounderscore]       "
     set -g window-status-format " #[fg=$TMUX_STATUS_BG,bold]#I #[fg=$TMUX_STATUS_BG,nobold]#W"
     set -g window-status-current-format " #[fg=$TMUX_STATUS_BLUE,bold,underscore]#I #[fg=$TMUX_STATUS_BLUE,nobold]#W"
-    set -g status-right ""
+    set -g status-right "#[fg=$TMUX_STATUS_BLUE,bold,underscore]%m/%d %H:%M:%S"
+
 
     set-option -g status-position bottom
     set -g pane-border-style fg=color236

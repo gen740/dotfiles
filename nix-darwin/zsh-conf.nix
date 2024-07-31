@@ -1,6 +1,9 @@
 {
   initExtraBeforeCompInit = ''
     export FPATH="$FPATH:$HOME/.dotfiles/zsh"
+    eval $(dircolors -b)
+    zstyle ':completion:*:default' list-colors ${"\${(s.:.)LS_COLORS}"}
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
     setopt AUTO_LIST # Automatically list choices on an ambiguous completion.
   '';
   initExtra = ''
@@ -19,7 +22,11 @@
     }
 
     function nix-search() {
-        nix search nixpkgs "$1" 2> /dev/null | sed -r 's/\x1B\[[0-9;]*[mG]//g' | grep "^* " | fzf
+        nix search nixpkgs "$1" 2> /dev/null  |
+          sed -r 's/\x1B\[[0-9;]*[mG]//g'     |
+          grep "^* "                          |
+          grep $1                             |
+          fzf
     }
 
     function darwin-reload() {
@@ -35,7 +42,6 @@
     fi
   '';
   sessionVariables = {
-    LSCOLORS = "Bxhxcxdxbxexexaxaxaxax";
     WORDCHARS = "!$%";
     REPORTTIME = 10;
     TIMEFMT = "%*E %*U %*S CPU: %P Memory: %M KB # %J";
@@ -63,5 +69,5 @@
     ignoreSpace = true;
     ignorePatterns = [ "rm *" ];
   };
-  syntaxHighlighting.enable = true;
+  # syntaxHighlighting.enable = true;
 }
