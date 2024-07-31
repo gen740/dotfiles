@@ -1,6 +1,5 @@
 {
   initExtraBeforeCompInit = ''
-    export FPATH="$FPATH:$HOME/.dotfiles/zsh"
     eval $(dircolors -b)
     zstyle ':completion:*:default' list-colors ${"\${(s.:.)LS_COLORS}"}
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -69,5 +68,6 @@
     ignoreSpace = true;
     ignorePatterns = [ "rm *" ];
   };
-  # syntaxHighlighting.enable = true;
+  enableCompletion = true;
+  syntaxHighlighting.enable = true;
 }
