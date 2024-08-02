@@ -3,7 +3,7 @@
   escapeTime = 0;
   baseIndex = 1;
   prefix = "C-s";
-  mouse = false;
+  mouse = true;
   shell = "/bin/zsh";
   historyLimit = 10000;
   extraConfig = ''
