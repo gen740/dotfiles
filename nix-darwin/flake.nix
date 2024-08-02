@@ -91,13 +91,20 @@
             home-manager.darwinModules.home-manager
             (
 
-              { ... }:
+              { config, pkgs, ... }:
               {
                 users.users.gen = {
                   name = "gen";
                   home = "/Users/gen";
                 };
-                home-manager.users.gen = (import ./home.nix);
+                home-manager.users.gen = (
+                  import ./home.nix {
+                    config = config;
+                    pkgs = pkgs;
+                    name = "gen";
+                    home = "/Users/gen";
+                  }
+                );
               }
             )
           ];
