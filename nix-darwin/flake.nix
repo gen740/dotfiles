@@ -26,6 +26,8 @@
             pkgs.fd
             pkgs.gh
             pkgs.jq
+            pkgs.curl
+            pkgs.wget
             pkgs.neovim
             pkgs.ripgrep
             pkgs.trash-cli
@@ -40,10 +42,14 @@
             pkgs.zoom-us
             pkgs.slack
 
+            pkgs.nodejs
+
             pkgs.jetbrains.pycharm-professional
             pkgs.jetbrains.clion
             pkgs.jetbrains.dataspell
           ];
+
+          fonts.packages = [ pkgs.fira-code-nerdfont ];
 
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
@@ -56,8 +62,9 @@
               "notion"
               "notion-calendar"
 
+              "docker"
               "minecraft"
-              "steam"
+              "xquartz"
             ];
             caskArgs.appdir = "/Applications/Homebrew Apps";
           };
@@ -69,10 +76,6 @@
               extra-platforms = "aarch64-darwin";
             };
           };
-
-          system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
-          # system.defaults.universalaccess.reduceMotion = true;
-          # system.defaults.universalaccess.reduceTransparency = true;
 
           system.stateVersion = 4;
 
@@ -86,7 +89,17 @@
           [ configuration ]
           ++ [
             home-manager.darwinModules.home-manager
-            (import ./home.nix)
+            (
+
+              { ... }:
+              {
+                users.users.gen = {
+                  name = "gen";
+                  home = "/Users/gen";
+                };
+                home-manager.users.gen = (import ./home.nix);
+              }
+            )
           ];
       };
       darwinPackages = self.darwinConfigurations.gen740.pkgs;
