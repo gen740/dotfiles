@@ -1,7 +1,13 @@
-{ config, pkgs, ... }:
 {
-  # home.username = "gen";
-  # home.homeDirectory = "/Users/gen";
+  config,
+  pkgs,
+  name,
+  home,
+  ...
+}:
+{
+  home.username = name;
+  home.homeDirectory = home;
   home.stateVersion = "24.05";
   home.shellAliases = {
     v = "nvim";
