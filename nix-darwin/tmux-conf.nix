@@ -1,10 +1,11 @@
+{ shell }:
 {
   enable = true;
   escapeTime = 0;
   baseIndex = 1;
   prefix = "C-s";
   mouse = true;
-  shell = "/bin/zsh";
+  shell = shell;
   historyLimit = 10000;
   extraConfig = ''
     set-option -g status-justify "centre"

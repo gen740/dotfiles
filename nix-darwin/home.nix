@@ -18,15 +18,12 @@
   };
 
   home.packages = [
-    pkgs.coreutils
-
+    pkgs.zsh
     pkgs.zsh-completions
     pkgs.btop
     pkgs.fd
     pkgs.gh
     pkgs.jq
-    pkgs.curl
-    pkgs.wget
     pkgs.neovim
     pkgs.ripgrep
     pkgs.trash-cli
@@ -36,16 +33,8 @@
     pkgs.taplo-lsp
     pkgs.vscode-langservers-extracted
 
-    pkgs.raycast
-    pkgs.skimpdf
-    pkgs.zoom-us
-    pkgs.slack
-
     pkgs.nodejs
 
-    pkgs.jetbrains.pycharm-professional
-    pkgs.jetbrains.clion
-    pkgs.jetbrains.dataspell
   ];
   programs = {
     home-manager.enable = true;
@@ -97,7 +86,7 @@
       nix-direnv.enable = true;
     };
     starship = import ./starship-conf.nix;
-    tmux = import ./tmux-conf.nix;
+    tmux = import ./tmux-conf.nix { shell = pkgs.zsh.outPath + "/bin/zsh"; };
     git = import ./git-conf.nix;
     zsh = import ./zsh-conf.nix;
   };
