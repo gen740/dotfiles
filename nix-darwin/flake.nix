@@ -18,6 +18,21 @@
       configuration =
         { pkgs, ... }:
         {
+          environment.systemPackages = [
+            pkgs.coreutils
+            pkgs.curl
+            pkgs.wget
+
+            pkgs.raycast
+            pkgs.skimpdf
+            pkgs.zoom-us
+            pkgs.slack
+
+            pkgs.jetbrains.pycharm-professional
+            pkgs.jetbrains.clion
+            pkgs.jetbrains.dataspell
+          ];
+
           fonts.packages = [ pkgs.fira-code-nerdfont ];
 
           # Auto upgrade nix package and the daemon service.
