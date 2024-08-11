@@ -34,7 +34,6 @@
     pkgs.vscode-langservers-extracted
 
     pkgs.nodejs
-
   ];
   programs = {
     home-manager.enable = true;

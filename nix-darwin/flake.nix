@@ -27,6 +27,7 @@
             pkgs.skimpdf
             pkgs.zoom-us
             pkgs.slack
+            pkgs.discord
 
             pkgs.jetbrains.pycharm-professional
             pkgs.jetbrains.clion
@@ -41,12 +42,14 @@
           homebrew = {
             enable = true;
             casks = [
+              "google-chrome"
               "google-drive"
               "onedrive"
               "notion"
               "notion-calendar"
 
               "docker"
+              "saoimageds9"
               "minecraft"
               "xquartz"
             ];
@@ -58,6 +61,7 @@
             settings = {
               experimental-features = "nix-command flakes";
               extra-platforms = "aarch64-darwin";
+              sandbox = true;
             };
           };
 

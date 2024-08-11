@@ -47,6 +47,7 @@
     EDITOR = "nvim";
     GIT_EDITOR = "nvim";
     LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
     LESSCHARSET = "utf-8";
     MANWIDTH = 100;
     VISUAL = "nvim";
