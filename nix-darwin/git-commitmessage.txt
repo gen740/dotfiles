@@ -1,0 +1,15 @@
+type(scope): description
+
+body (optional)
+# Types:
+# feat:     A new feature
+# fix:      A bug fix
+# docs:     Documentation only changes
+# style:    Code style changes (formatting, missing semi-colons, etc.)
+# refactor: Code changes that neither fixes a bug nor adds a feature
+# perf:     Performance improvements
+# test:     Adding or updating tests
+# chore:    Changes to the build process or auxiliary tools
+# build:    Changes that affect the build system or external dependencies
+# ci:       Changes to CI configuration files and scripts
+# revert:   Reverts a previous commit
