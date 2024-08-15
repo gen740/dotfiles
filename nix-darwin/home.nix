@@ -32,6 +32,7 @@
     pkgs.nixfmt-rfc-style
     pkgs.taplo-lsp
     pkgs.vscode-langservers-extracted
+    pkgs.bash-language-server
 
     pkgs.nodejs
   ];

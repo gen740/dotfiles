@@ -22,16 +22,6 @@
             pkgs.coreutils
             pkgs.curl
             pkgs.wget
-
-            pkgs.raycast
-            pkgs.skimpdf
-            pkgs.zoom-us
-            pkgs.slack
-            pkgs.discord
-
-            pkgs.jetbrains.pycharm-professional
-            pkgs.jetbrains.clion
-            pkgs.jetbrains.dataspell
           ];
 
           fonts.packages = [ pkgs.fira-code-nerdfont ];
@@ -48,8 +38,12 @@
               "notion"
               "notion-calendar"
 
+              "raycast"
+              "slack"
+              "discord"
+              "zoom"
+              "skim"
               "docker"
-              "saoimageds9"
               "minecraft"
               "xquartz"
             ];
