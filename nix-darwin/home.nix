@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   name,
   home,
@@ -16,25 +15,23 @@
     gs = "git ps";
     dr = "direnv allow";
   };
-
-  home.packages = [
-    pkgs.zsh
-    pkgs.zsh-completions
-    pkgs.btop
-    pkgs.fd
-    pkgs.gh
-    pkgs.jq
-    pkgs.neovim
-    pkgs.ripgrep
-    pkgs.trash-cli
-
-    pkgs.nixd
-    pkgs.nixfmt-rfc-style
-    pkgs.taplo-lsp
-    pkgs.vscode-langservers-extracted
-    pkgs.bash-language-server
-
-    pkgs.nodejs
+  home.packages = with pkgs; [
+    zsh
+    zsh-completions
+    btop
+    fd
+    ripgrep
+    gh
+    glab
+    jq
+    neovim
+    trash-cli
+    nixd
+    nixfmt-rfc-style
+    taplo-lsp
+    vscode-langservers-extracted
+    bash-language-server
+    nodejs
   ];
   programs = {
     home-manager.enable = true;
@@ -55,7 +52,6 @@
             y = 10;
           };
         };
-
       };
     };
     fzf = {

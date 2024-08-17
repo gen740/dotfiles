@@ -15,7 +15,7 @@
       home-manager,
     }:
     let
-      configuration =
+      nix-darwin-config =
         { pkgs, ... }:
         {
           environment.systemPackages = [
@@ -23,10 +23,7 @@
             pkgs.curl
             pkgs.wget
           ];
-
           fonts.packages = [ pkgs.fira-code-nerdfont ];
-
-          # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
           programs.zsh.enable = true;
           homebrew = {
@@ -37,7 +34,6 @@
               "onedrive"
               "notion"
               "notion-calendar"
-
               "raycast"
               "slack"
               "discord"
@@ -49,47 +45,41 @@
             ];
             caskArgs.appdir = "/Applications/Homebrew Apps";
           };
-
           nix = {
-            package = pkgs.nixFlakes;
+            package = pkgs.nix;
             settings = {
               experimental-features = "nix-command flakes";
               extra-platforms = "aarch64-darwin";
               sandbox = true;
             };
           };
-
           system.stateVersion = 4;
-
           nixpkgs.hostPlatform = "aarch64-darwin";
           nixpkgs.config.allowUnfree = true;
+        };
+      home-manager-config =
+        { pkgs, ... }:
+        {
+          users.users.gen = {
+            name = "gen";
+            home = "/Users/gen";
+          };
+          home-manager.users.gen = (
+            import ./home.nix {
+              pkgs = pkgs;
+              name = "gen";
+              home = "/Users/gen";
+            }
+          );
         };
     in
     {
       darwinConfigurations.gen740 = nix-darwin.lib.darwinSystem {
-        modules =
-          [ configuration ]
-          ++ [
-            home-manager.darwinModules.home-manager
-            (
-
-              { config, pkgs, ... }:
-              {
-                users.users.gen = {
-                  name = "gen";
-                  home = "/Users/gen";
-                };
-                home-manager.users.gen = (
-                  import ./home.nix {
-                    config = config;
-                    pkgs = pkgs;
-                    name = "gen";
-                    home = "/Users/gen";
-                  }
-                );
-              }
-            )
-          ];
+        modules = [
+          nix-darwin-config
+          home-manager.darwinModules.home-manager
+          home-manager-config
+        ];
       };
       darwinPackages = self.darwinConfigurations.gen740.pkgs;
     };
