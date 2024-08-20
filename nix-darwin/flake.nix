@@ -22,6 +22,10 @@
             pkgs.coreutils
             pkgs.curl
             pkgs.wget
+            pkgs.raycast
+            pkgs.slack
+            pkgs.skimpdf
+            pkgs.karabiner-elements
           ];
           fonts.packages = [ pkgs.fira-code-nerdfont ];
           services.nix-daemon.enable = true;
@@ -29,18 +33,11 @@
           homebrew = {
             enable = true;
             casks = [
-              "google-chrome"
-              "google-drive"
-              "onedrive"
+              # "google-chrome"
               "notion"
               "notion-calendar"
-              "raycast"
-              "slack"
-              "discord"
-              "zoom"
-              "skim"
-              "docker"
-              "minecraft"
+              # "skim"
+              # "minecraft"
               "xquartz"
             ];
             caskArgs.appdir = "/Applications/Homebrew Apps";
@@ -50,7 +47,7 @@
             settings = {
               experimental-features = "nix-command flakes";
               extra-platforms = "aarch64-darwin";
-              sandbox = true;
+              # sandbox = true;
             };
           };
           system.stateVersion = 4;
