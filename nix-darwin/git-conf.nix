@@ -4,10 +4,10 @@
   userEmail = "54583542+gen740@users.noreply.github.com";
   ignores = [
     ".DS_Store"
-    "flake.nix"
-    "flake.lock"
-    ".envrc"
     ".direnv"
+    ".task"
+    "venv"
+    ".venv"
   ];
   aliases = {
     subup = "submodule update --init --recursive";
