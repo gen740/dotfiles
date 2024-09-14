@@ -9,10 +9,7 @@
   home.homeDirectory = home;
   home.stateVersion = "24.05";
   home.shellAliases = {
-    v = "nvim";
-    vi = "nvim";
     ls = "ls --color -F";
-    gs = "git ps";
     dr = "direnv allow";
   };
   home.packages = with pkgs; [
@@ -24,7 +21,6 @@
     gh
     glab
     jq
-    neovim
     trash-cli
     nixd
     nixfmt-rfc-style
@@ -35,6 +31,7 @@
   ];
   programs = {
     home-manager.enable = true;
+
     alacritty = {
       enable = true;
       settings = {
@@ -85,5 +82,6 @@
     tmux = import ./tmux-conf.nix { shell = pkgs.zsh.outPath + "/bin/zsh"; };
     git = import ./git-conf.nix;
     zsh = import ./zsh-conf.nix;
+    neovim = import ./neovim.nix { inherit pkgs; };
   };
 }
