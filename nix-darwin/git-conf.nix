@@ -39,7 +39,7 @@
     };
     commit = {
       verbose = true;
-      template = builtins.toString ./git-commitmessage.txt;
+      template = "~/.dotfiles/git/git-commitmessage.txt";
     };
   };
 }

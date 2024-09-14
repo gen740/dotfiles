@@ -25,7 +25,8 @@
             pkgs.raycast
             pkgs.slack
             pkgs.skimpdf
-            pkgs.karabiner-elements
+            pkgs.discord
+            pkgs.iterm2
           ];
           fonts.packages = [ pkgs.fira-code-nerdfont ];
           services.nix-daemon.enable = true;
@@ -34,11 +35,13 @@
             enable = true;
             casks = [
               # "google-chrome"
-              "notion"
-              "notion-calendar"
-              # "skim"
-              # "minecraft"
+              # "notion"
+              "wezterm"
+              "warp"
+              "karabiner-elements"
+              "minecraft"
               "xquartz"
+              "steam"
             ];
             caskArgs.appdir = "/Applications/Homebrew Apps";
           };
