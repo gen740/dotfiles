@@ -28,6 +28,7 @@
     vscode-langservers-extracted
     bash-language-server
     nodejs
+    tokei
   ];
   programs = {
     home-manager.enable = true;
