@@ -26,7 +26,6 @@
             pkgs.slack
             pkgs.skimpdf
             pkgs.discord
-            pkgs.iterm2
           ];
           fonts.packages = [ pkgs.fira-code-nerdfont ];
           services.nix-daemon.enable = true;
@@ -34,10 +33,6 @@
           homebrew = {
             enable = true;
             casks = [
-              # "google-chrome"
-              # "notion"
-              "wezterm"
-              "warp"
               "karabiner-elements"
               "minecraft"
               "xquartz"
