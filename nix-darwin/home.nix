@@ -32,7 +32,6 @@
   ];
   programs = {
     home-manager.enable = true;
-
     gpg = {
       enable = true;
       homedir = "${home}/.gnupg";
