@@ -9,6 +9,12 @@
     ps = "status --short --branch --show-stash  --untracked-files=all";
     flake-track = "!git add --force --intent-to-add flake.nix flake.lock .envrc && git update-index --assume-unchanged flake.nix flake.lock .envrc";
   };
+
+  signing = {
+    gpgPath = "gpg";
+    key = "gen740 54583542+gen740@users.noreply.github.com";
+    signByDefault = true;
+  };
   extraConfig = {
     diff = {
       colorMoved = "default";
