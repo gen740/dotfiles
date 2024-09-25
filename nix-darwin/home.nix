@@ -48,6 +48,7 @@
         window = {
           decorations = "none";
           option_as_alt = "Both";
+          startup_mode = "Maximized";
           padding = {
             x = 10;
             y = 10;
