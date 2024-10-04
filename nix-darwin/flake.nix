@@ -22,10 +22,6 @@
             pkgs.coreutils
             pkgs.curl
             pkgs.wget
-            pkgs.raycast
-            pkgs.slack
-            pkgs.skimpdf
-            pkgs.discord
           ];
           fonts.packages = [ pkgs.fira-code-nerdfont ];
           services.nix-daemon.enable = true;
@@ -37,6 +33,8 @@
               "minecraft"
               "xquartz"
               "steam"
+              "discord"
+              "skim"
             ];
             caskArgs.appdir = "/Applications/Homebrew Apps";
           };

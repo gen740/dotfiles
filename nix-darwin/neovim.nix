@@ -30,6 +30,7 @@
       copilot-lua
     ]
     ++ [
+      nvim-treesitter-parsers.asm
       nvim-treesitter-parsers.cpp
       nvim-treesitter-parsers.gitcommit
       nvim-treesitter-parsers.diff
