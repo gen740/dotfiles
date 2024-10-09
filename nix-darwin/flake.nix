@@ -22,6 +22,7 @@
             pkgs.coreutils
             pkgs.curl
             pkgs.wget
+            pkgs.python312Packages.ipython
           ];
           fonts.packages = [ pkgs.fira-code-nerdfont ];
           services.nix-daemon.enable = true;
@@ -35,33 +36,47 @@
               "steam"
               "discord"
               "skim"
+              "iterm2"
+              "wezterm"
             ];
             caskArgs.appdir = "/Applications/Homebrew Apps";
           };
           nix = {
+            # /run/current-system/sw/bin/nix
             package = pkgs.nix;
             settings = {
               experimental-features = "nix-command flakes";
               extra-platforms = "aarch64-darwin";
-              # sandbox = true;
             };
+            nixPath = pkgs.lib.mkForce [
+              {
+                darwin-config = builtins.concatStringsSep ":" [
+                  "$HOME/.nixpkgs/darwin-configuration.nix"
+                  "$HOME/.nix-defexpr/channels"
+                ];
+              }
+            ];
           };
           system.stateVersion = 4;
           nixpkgs.hostPlatform = "aarch64-darwin";
           nixpkgs.config.allowUnfree = true;
         };
       home-manager-config =
+        let
+          home = "/Users/gen";
+          name = "gen";
+        in
         { pkgs, ... }:
         {
           users.users.gen = {
-            name = "gen";
-            home = "/Users/gen";
+            name = name;
+            home = home;
           };
           home-manager.users.gen = (
             import ./home.nix {
               pkgs = pkgs;
-              name = "gen";
-              home = "/Users/gen";
+              name = name;
+              home = home;
             }
           );
         };
