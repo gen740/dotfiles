@@ -29,25 +29,26 @@
       tokyonight-nvim
       copilot-lua
     ]
-    ++ [
-      nvim-treesitter-parsers.asm
-      nvim-treesitter-parsers.cpp
-      nvim-treesitter-parsers.gitcommit
-      nvim-treesitter-parsers.diff
-      nvim-treesitter-parsers.gitignore
-      nvim-treesitter-parsers.git_config
-      nvim-treesitter-parsers.git_rebase
-      nvim-treesitter-parsers.javascript
-      nvim-treesitter-parsers.json
-      nvim-treesitter-parsers.lua
-      nvim-treesitter-parsers.nix
-      nvim-treesitter-parsers.python
-      nvim-treesitter-parsers.toml
-      nvim-treesitter-parsers.typescript
-      nvim-treesitter-parsers.vim
-      nvim-treesitter-parsers.yaml
-      nvim-treesitter-parsers.go
-      nvim-treesitter-parsers.rust
-    ];
+    ++ (with nvim-treesitter-parsers; [
+      asm
+      cpp
+      diff
+      git_config
+      git_rebase
+      gitcommit
+      gitignore
+      go
+      javascript
+      json
+      latex
+      lua
+      nix
+      python
+      rust
+      toml
+      typescript
+      vim
+      yaml
+    ]);
   viAlias = true;
 }
