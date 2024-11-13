@@ -1,5 +1,6 @@
 { shell }:
 {
+  sensibleOnTop = false;
   enable = true;
   escapeTime = 0;
   baseIndex = 1;

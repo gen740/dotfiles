@@ -22,7 +22,6 @@
             pkgs.coreutils
             pkgs.curl
             pkgs.wget
-            pkgs.python312Packages.ipython
           ];
           fonts.packages = [ pkgs.fira-code-nerdfont ];
           services.nix-daemon.enable = true;

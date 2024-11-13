@@ -11,6 +11,7 @@
   home.shellAliases = {
     ls = "ls --color -F";
     dr = "direnv allow";
+    ta = "tmux attach";
   };
   home.packages = with pkgs; [
     zsh
@@ -39,7 +40,7 @@
     alacritty = {
       enable = true;
       settings = {
-        import = [
+        general.import = [
           "~/.dotfiles/alacritty/theme.toml"
           "~/.dotfiles/alacritty/keybindings.toml"
         ];
