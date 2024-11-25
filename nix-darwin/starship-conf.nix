@@ -3,7 +3,7 @@
   enableZshIntegration = true;
   settings = {
     add_newline = true;
-    format = "[┃](blue) $directory$git_branch$git_state$git_status$python$direnv\n[┃](blue) ";
+    format = "(blue) $directory$git_branch$git_state$git_status$python$direnv\n(blue) ";
     right_format = "$git_metrics";
     command_timeout = 300;
     git_branch = {
@@ -20,6 +20,9 @@
     };
     python = {
       format = "[\${pyenv_prefix}(\${version} )(\\($virtualenv\\) )]($style)";
+    };
+    direnv = {
+      disabled = false;
     };
   };
 }

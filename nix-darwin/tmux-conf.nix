@@ -2,7 +2,7 @@
 {
   sensibleOnTop = false;
   enable = true;
-  escapeTime = 0;
+  escapeTime = 5;
   baseIndex = 1;
   prefix = "C-s";
   mouse = true;

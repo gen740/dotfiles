@@ -7,6 +7,7 @@
     ".envrc"
     "flake.nix"
     "flake.lock"
+    "workdir"
   ];
   aliases = {
     subup = "submodule update --init --recursive";
