@@ -14,23 +14,16 @@
     ta = "tmux attach";
   };
   home.packages = with pkgs; [
-    zsh
-    zsh-completions
     btop
     fd
     ripgrep
     gh
     glab
-    jq
     trash-cli
     nixd
     nixfmt-rfc-style
-    taplo-lsp
-    vscode-langservers-extracted
-    bash-language-server
     nodejs
     tokei
-    texlive
   ];
   programs = {
     home-manager.enable = true;
