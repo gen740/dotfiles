@@ -30,6 +30,7 @@
     bash-language-server
     nodejs
     tokei
+    texlive
   ];
   programs = {
     home-manager.enable = true;
