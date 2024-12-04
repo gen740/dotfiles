@@ -12,6 +12,7 @@
     ls = "ls --color -F";
     dr = "direnv allow";
     ta = "tmux attach";
+    nix-rebuild = "darwin-rebuild switch --flake ~/.dotfiles/nix-darwin";
   };
   home.packages = with pkgs; [
     btop
