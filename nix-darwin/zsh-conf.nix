@@ -27,6 +27,10 @@
           fzf
     }
 
+    function zshaddhistory() {
+      return 1
+    }
+
     stty stop undef # do not stop the terminal with C-s
 
     bindkey -e
@@ -45,21 +49,15 @@
     VISUAL = "nvim";
     MANPAGER = "nvim +Man!";
     PAGER = "less";
+    HISTFILE = "";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_DATA_HOME = "$HOME/.local/share";
   };
   enable = true;
   history = {
-    save = 100000;
-    size = 10000;
-    extended = true;
-    expireDuplicatesFirst = true;
-    ignoreAllDups = true;
-    ignoreDups = true;
-    share = true;
-    ignoreSpace = true;
-    ignorePatterns = [ "rm *" ];
+    save = 0;
+    size = 0;
   };
   enableCompletion = true;
   syntaxHighlighting.enable = true;
