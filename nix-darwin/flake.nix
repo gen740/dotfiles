@@ -32,7 +32,6 @@
               "karabiner-elements"
               "minecraft"
               "xquartz"
-              "steam"
               "discord"
               "skim"
               "iterm2"
